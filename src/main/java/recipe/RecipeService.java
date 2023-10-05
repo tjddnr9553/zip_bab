@@ -14,10 +14,10 @@ public class RecipeService {
     }
 
     //레시피 번호로 검색
-    public Recipe getById(int recipe_id) {
+    public Recipe getById(int recipeId) {
         SqlSession session = sqlSessionFactory.openSession();
         RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
-        Recipe r = dao.select(recipe_id);
+        Recipe r = dao.select(recipeId);
         session.close();
         return r;
     }
@@ -41,10 +41,10 @@ public class RecipeService {
     }
 
     //쟤료정보로 검색
-    public ArrayList<Recipe> getByIngredient_info(String ingredient_info) {
+    public ArrayList<Recipe> getByIngredientInfo(String ingredientInfo) {
         SqlSession session = sqlSessionFactory.openSession();
         RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
-        ArrayList<Recipe> list = dao.selectByIngredient_info(ingredient_info);
+        ArrayList<Recipe> list = dao.selectByIngredientInfo(ingredientInfo);
         session.close();
         return list;
     }

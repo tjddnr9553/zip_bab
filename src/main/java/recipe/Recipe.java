@@ -7,10 +7,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Recipe {
-    private int recipe_id;
+    private int recipeId;
     private String title;
     private String way;
-    private String ingredient_info;
+    private String ingredientInfo;
     private String manual_01;
     private String manual_02;
     private String manual_03;
