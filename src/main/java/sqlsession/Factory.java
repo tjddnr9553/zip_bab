@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import member.MemberDao;
+import recipe.RecipeDao;
 //import order.ShopOrderDao;
 //import shopprod.ShopProdDao;
 
@@ -29,7 +30,7 @@ public class Factory {
 
 				// 구현할 맵퍼 등록
 				Class[] mapper = {
-						MemberDao.class,
+						MemberDao.class, RecipeDao.class
 				};
 				for (Class m : mapper) {
 					// sqlSessionFactory에 맵퍼를 등록
