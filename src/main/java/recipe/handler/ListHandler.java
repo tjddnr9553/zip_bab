@@ -15,6 +15,6 @@ public class ListHandler implements Handler {
         RecipeService service = new RecipeService();
         ArrayList<Recipe> list = service.getAll();
         request.setAttribute("list",list);
-        return "/test.jsp";
+        return "/recipe/test.jsp";
     }
 }
