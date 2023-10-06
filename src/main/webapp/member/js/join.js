@@ -1,12 +1,9 @@
-/**
- * 
- */
 let contextPath = document.body.dataset.contextPath
 let req = new XMLHttpRequest()
 
-a = () => {
-	let id = f.id.value
-	req.open('GET', contextPath + '/member/idcheck.do?id=' + id)
+const a = () => {
+	let id = f.username.value
+	req.open('GET', contextPath + '/member/idcheck.do?username=' + id)
 	req.send()
 }
 
@@ -17,6 +14,7 @@ req.onload = () => {
 		txt = '가능한 아이디'
 		f.flag.value = true
 	}
+	console.log(txt)
 	document.getElementById('res').innerHTML = txt;
 }
 
@@ -26,19 +24,29 @@ const b = () => {
 		f.id.focus()
 		return
 	}
-	if (f.pwd.value == '') {
+	if (f.password.value == '') {
 		alert("패스워드 입력하시오.")
-		f.pwd.focus()
+		f.password.focus()
 		return
 	}
-	if (f.name.value == '') {
+	if (f.nickname.value == '') {
 		alert("이름 입력하시오.")
-		f.name.focus()
+		f.nickname.focus()
 		return
 	}
 	if (f.email.value == '') {
 		alert("패스워드 입력하시오.")
 		f.email.focus()
+		return
+	}
+	if (f.birthday.value == '') {
+		alert("이름 입력하시오.")
+		f.birthday.focus()
+		return
+	}
+	if (f.gender.value == '') {
+		alert("이름 입력하시오.")
+		f.gender.focus()
 		return
 	}
 	f.submit(); // 서버로 전송함수
