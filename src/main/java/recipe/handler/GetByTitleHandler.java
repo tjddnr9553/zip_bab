@@ -11,12 +11,12 @@ import java.util.ArrayList;
 public class GetByTitleHandler implements Handler {
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) {
-        String view="";
+        String view="/index.jsp";
         String title = request.getParameter("title");
         RecipeService service = new RecipeService();
         ArrayList<Recipe> list = service.getByTitle(title);
         request.setAttribute("list",list);
         request.setAttribute("view","/recipe/list.jsp");
-        return "/index.jsp";
+        return view;
     }
 }

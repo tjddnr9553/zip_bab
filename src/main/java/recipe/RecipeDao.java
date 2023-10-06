@@ -17,11 +17,11 @@ public interface RecipeDao {
     ArrayList<Recipe> selectAll();
 
     //요리제목으로 검색
-    @Select("Select * from \"Recipe\" where \"title\" in #{title}")
+    @Select("Select * from \"Recipe\" where \"title\" like '%'||#{title}||'%'")
     ArrayList<Recipe> selectByTitle(@Param("title") String title);
 
     //재료정보로 검색
-    @Select("Select * from \"Recipe\" where \"ingredientInfo\" in #{ingredientInfo}")
+    @Select("Select * from \"Recipe\" where \"ingredientInfo\" like '%#{ingredientInfo}%'")
     ArrayList<Recipe> selectByIngredientInfo(@Param("ingredientInfo") String ingredientInfo);
 
 
