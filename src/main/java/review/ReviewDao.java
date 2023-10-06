@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.*;
 import java.util.ArrayList;
 
 public interface ReviewDao {
-    @Insert("INSERT INTO \"Review\" VALUES(#{reviewId}, #{writerId}, #{recipe_id}, #{content}, #{writeTime})")
+    @Insert("INSERT INTO \"Review\" VALUES(Review_seq.nextval, #{memberId}, #{recipeId}, #{content}, SYSDATE)")
     void addReview(Review r);
 
     @Select("SELECT * FROM \"Review\" WHERE \"reviewId\" = #{reviewId}")
