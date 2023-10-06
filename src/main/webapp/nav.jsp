@@ -3,7 +3,7 @@ pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <nav class="navbar navbar-expand-sm bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">🍚집밥</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">🍚집밥</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
 <%--                    <a class="nav-link active" aria-current="page" href="#">집밥</a>--%>
 <%--                </li>--%>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">레시피 보기</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/recipe/list.do">레시피 보기</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">재료 보기</a>
