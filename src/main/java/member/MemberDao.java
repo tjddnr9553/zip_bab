@@ -11,18 +11,18 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface MemberDao {
-	@Insert("insert into member values(#{id}, #{pwd}, #{name}, #{email}, #{type})")
+	@Insert("insert into \"Member\" values(Member_seq.nextval, #{username}, #{nickname}, #{password}, #{email}, #{birthday}, #{gender})")
 	void addMember(Member m);
-	
-	@Select("select * from member where id=#{id}")
-	Member getMember(@Param("id") String id);
-	
-	@Select("select * from member")
+
+	@Select("select * from \"Member\" where \"password\"=#{password}")
+	Member getMember(@Param("password") String password);
+
+	@Select("select * from \"Member\"")
 	ArrayList<Member> selectAll();
-	
-	@Update("update member set pwd=#{pwd} where id=#{id}")
+
+	@Update("update \"Member\" set \"password\"=#{password} where password=#{password}")
 	void editMember(Member m);
-	
-	@Delete("delete from member where id=#{id}")
-	void delMember(@Param("id") String id);
+
+	@Delete("delete from \"Member\" where \"username\"=#{username}")
+	void delMember(@Param("username") String username);
 }

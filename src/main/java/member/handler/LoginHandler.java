@@ -17,23 +17,18 @@ public class LoginHandler implements Handler {
 		if (request.getMethod().equals("GET")) {
 			request.setAttribute("view", "/member/login.jsp");
 		} else {
-			String id = request.getParameter("id");
-			String pwd = request.getParameter("pwd");
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
 			
 			MemberService service = new MemberService();
-			Member m = service.getMember(id);
+			Member m = service.getMember(username);
 			String msg = "";
 			msg = "로그인 실패";
-			if (m != null && pwd.equals(m.getPwd())) {
+			if (m != null && password.equals(m.getPassword())) {
 				HttpSession session = request.getSession();
-				session.setAttribute("loginId", id);
-				session.setAttribute("type", m.getType());
-				msg = "로그인 성공 / " + id + " 님은 ";
-				if (m.getType() == 1) {
-					msg += "구매자입니다.";
-				} else {
-					msg += "판매자입니다.";
-				}
+				session.setAttribute("username", username);
+				msg = "로그인 성공 / " + username + " 님은 ";
+
 			} else {
 				request.setAttribute("view", "/member/login.jsp");
 			}

@@ -14,8 +14,8 @@ public class IdCheckHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String id = request.getParameter("id");
-		Member m = (new MemberService()).getMember(id);
+		String username = request.getParameter("username");
+		Member m = (new MemberService()).getMember(username);
 		boolean flag = false;
 		if (m == null) {
 			flag = true;
