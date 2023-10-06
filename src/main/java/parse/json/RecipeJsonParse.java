@@ -75,6 +75,10 @@ public class RecipeJsonParse {
                 String manualImg18 = getParseValue(item.get("MANUAL_IMG18").toString());
                 String manualImg19 = getParseValue(item.get("MANUAL_IMG19").toString());
                 String manualImg20 = getParseValue(item.get("MANUAL_IMG20").toString());
+                String attFileNoMain = getParseValue(item.get("ATT_FILE_NO_MAIN").toString());
+                String infoEn = getParseValue(item.get("INFO_ENG").toString());
+                log.info("attFileNoMain : {}", attFileNoMain);
+                log.info("infoEn : {}", infoEn);
 
                 String str = """
                         insert into "Recipe" ("recipeId", "title", "way", "ingredientInfo", "maunal_01",
@@ -83,14 +87,14 @@ public class RecipeJsonParse {
                           "manual_img_03", "manual_img_04", "manual_img_05", "manual_img_06", "manual_img_07",
                           "manual_img_08", "manual_img_09", "manual_img_10", "manual_img_11", "manual_img_12",
                           "manual_img_13", "manual_img_14", "manual_img_15", "manual_img_16", "manual_img_17",
-                          "manual_img_18", "manual_img_19", "manual_img_20") values (
+                          "manual_img_18", "manual_img_19", "manual_img_20", "completePicture", "calorie") values (
                           %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,
-                          %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+                          %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
                         """.formatted("Recipe_seq.nextval", title, way, ingredientInfo, manual01, manual02, manual03, manual04,
                         manual05, manual06, manual07, manual08, manual09, manual10, manual11, manual12,
                         manualImg01, manualImg02, manualImg03, manualImg04, manualImg05, manualImg06, manualImg07,
                         manualImg08, manualImg09, manualImg10, manualImg11, manualImg12, manualImg13, manualImg14,
-                        manualImg15, manualImg16, manualImg17, manualImg18, manualImg19, manualImg20);
+                        manualImg15, manualImg16, manualImg17, manualImg18, manualImg19, manualImg20, attFileNoMain, infoEn);
 
                 fos.write(str.getBytes());
 
