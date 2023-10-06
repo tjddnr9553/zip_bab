@@ -5,14 +5,15 @@
 <html>
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="css/recipe.css">
 </head>
 <body>
 <div class="container">
-  <h2>${r.title }</h2><br/><br/>
-  <h4>🔘 조 리 방 법</h4>
+  <h2>${r.title }</h2><br/>
+  <h4 id="manual">🔘 조 리 방 법</h4>
   <img src="${r.manual_img_01}" class="img-rounded" alt="Cinque Terre">&emsp; ${r.manual_01}<br/><br/>
   <img src="${r.manual_img_02}" class="img-rounded" alt="Cinque Terre">&emsp; ${r.manual_02}<br/><br/>
   <img src="${r.manual_img_03}" class="img-rounded" alt="Cinque Terre">&emsp; ${r.manual_03}<br/><br/>
@@ -25,8 +26,20 @@
   <img src="${r.manual_img_10}" class="img-rounded" alt="Cinque Terre">&emsp; ${r.manual_10}<br/><br/>
   <img src="${r.manual_img_11}" class="img-rounded" alt="Cinque Terre">&emsp; ${r.manual_11}<br/><br/>
   <img src="${r.manual_img_12}" class="img-rounded" alt="Cinque Terre">&emsp; ${r.manual_12}<br/><br/>
-  <h4>🔘 완 성 사 진</h4>
+  <h4 id="comPic">🔘 완 성 사 진</h4>
   <img src="${r.completePicture}" class="img-rounded" alt="Cinque Terre" style="width:600px; height:450px;">
+</div>
+
+<div id="floatdiv" style="text-align:center;">
+<ul>
+<a href="#manual" style="background-color:pink;">조 리 방 법</a>
+</ul>
+<ul>
+<a href="#comPic" style="background-color:pink;">완 성 사 진</a>
+</ul>
+<ul>
+<a href='#링크 주소' style="background-color:pink;">후 기 보 기</a>
+</ul>
 </div>
 </body>
 </html>
