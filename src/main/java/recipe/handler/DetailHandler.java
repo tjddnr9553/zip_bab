@@ -6,15 +6,15 @@ import recipe.RecipeService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 
-public class ListHandler implements Handler {
+public class DetailHandler implements Handler {
 
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("recipeId"));
         RecipeService service = new RecipeService();
-        ArrayList<Recipe> list = service.getAll();
-        request.setAttribute("list",list);
-        return "/recipe/list.jsp";
+        Recipe r = service.getById(id);
+        request.setAttribute("r",r);
+        return "/recipe/detail.jsp";
     }
 }
