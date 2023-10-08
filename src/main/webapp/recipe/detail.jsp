@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +10,7 @@
 <body>
 <div class="container">
   <h2>${r.title }</h2><br/>
+
   <h4 id="manual">🔘 조 리 방 법</h4>
   <img src="${r.manual_img_01}" class="img-rounded" alt="Cinque Terre">&emsp; ${r.manual_01}<br/><br/>
   <img src="${r.manual_img_02}" class="img-rounded" alt="Cinque Terre">&emsp; ${r.manual_02}<br/><br/>
@@ -23,10 +24,17 @@
   <img src="${r.manual_img_10}" class="img-rounded" alt="Cinque Terre">&emsp; ${r.manual_10}<br/><br/>
   <img src="${r.manual_img_11}" class="img-rounded" alt="Cinque Terre">&emsp; ${r.manual_11}<br/><br/>
   <img src="${r.manual_img_12}" class="img-rounded" alt="Cinque Terre">&emsp; ${r.manual_12}<br/><br/>
+
   <h4 id="comPic">🔘 완 성 사 진</h4>
   <img src="${r.completePicture}" class="img-rounded" alt="Cinque Terre" style="width:600px; height:450px;">
+
+  <h4 id="review">🔘 후 기</h4>
+  <c:forEach var="review" items="${reviews}">
+    <p>${review.nickname} : ${review.content} - ${review.formattedDateTime}</p>
+  </c:forEach>
 </div>
 
+<%-- remote --%>
 <div id="floatdiv" style="text-align:center;">
 <ul>
 <a href="#manual" style="background-color:pink;">조 리 방 법</a>
@@ -35,7 +43,7 @@
 <a href="#comPic" style="background-color:pink;">완 성 사 진</a>
 </ul>
 <ul>
-<a href='#링크 주소' style="background-color:pink;">후 기 보 기</a>
+<a href='#review' style="background-color:pink;">후 기 보 기</a>
 </ul>
 </div>
 </body>
