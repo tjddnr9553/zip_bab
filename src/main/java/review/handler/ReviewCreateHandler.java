@@ -11,7 +11,6 @@ public class ReviewCreateHandler implements Handler {
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) {
         String view = "/index.jsp";
-        ReviewService service = new ReviewService();
 
         int recipeId = Integer.parseInt(request.getParameter("recipeId"));
 
@@ -19,12 +18,14 @@ public class ReviewCreateHandler implements Handler {
             request.setAttribute("recipeId", recipeId);
             request.setAttribute("view", "/review/create.jsp");
         } else {
+            ReviewService service = new ReviewService();
+
             int memberId = Integer.parseInt(request.getParameter("memberId"));
             String content = request.getParameter("content");
 
             Review r = new Review(0, memberId, recipeId, content, null);
             service.addReview(r);
-            view = "redirect:/recipe/detail.do?recipeId=" + recipeId;
+            view = "redirect:/recipe/detail.do?recipeId=" + recipeId + "#review";
         }
         return view;
     }

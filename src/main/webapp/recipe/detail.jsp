@@ -30,7 +30,14 @@
   <h4 id="review">🔘 후 기</h4>
   <a href="<c:url value='/review/create.do?recipeId=${r.recipeId}'/>">후기 작성</a>
   <c:forEach var="review" items="${reviews}">
-    <p>${review.nickname} : ${review.content} - ${review.formattedDateTime}</p>
+    <div>
+      ${review.nickname} : ${review.content} - ${review.formattedDateTime} <a href="<c:url value='/review/edit.do?reviewId=${review.reviewId}&recipeId=${r.recipeId}'/>">수정</a>
+      <form action="<c:url value='/review/delete.do'/>" class="d-inline-block" method="POST">
+        <input type="hidden" name="reviewId" value="${review.reviewId}">
+        <input type="hidden" name="recipeId" value="${review.recipeId}">
+        <input type="submit" value="삭제">
+      </form>
+    </div>
   </c:forEach>
 </div>
 

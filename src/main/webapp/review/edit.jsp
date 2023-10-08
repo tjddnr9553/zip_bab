@@ -6,8 +6,9 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/review/edit.do" method="POST">
-    <input type="hidden" value="1" name="reviewId">
-    <textarea name="content" id="content" cols="30" rows="10" placeholder="후기를 입력해주세요.">111</textarea>
+    <input type="hidden" value="${review.reviewId}" name="reviewId">
+    <input type="hidden" value="${review.recipeId}" name="recipeId">
+    <textarea name="content" id="content" cols="30" rows="10" placeholder="후기를 입력해주세요.">${review.content}</textarea>
     <input type="submit" value="제출">
 </form>
 </body>
