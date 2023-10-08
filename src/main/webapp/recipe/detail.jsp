@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +28,7 @@
   <img src="${r.completePicture}" class="img-rounded" alt="Cinque Terre" style="width:600px; height:450px;">
 
   <h4 id="review">🔘 후 기</h4>
+  <a href="<c:url value='/review/create.do?recipeId=${r.recipeId}'/>">후기 작성</a>
   <c:forEach var="review" items="${reviews}">
     <p>${review.nickname} : ${review.content} - ${review.formattedDateTime}</p>
   </c:forEach>

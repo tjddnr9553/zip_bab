@@ -12,16 +12,19 @@ public class ReviewCreateHandler implements Handler {
     public String process(HttpServletRequest request, HttpServletResponse response) {
         String view = "/index.jsp";
         ReviewService service = new ReviewService();
-        if (request.getMethod().equals("GET")) {
-            request.setAttribute("view", "/review/create.jsp");
 
+        int recipeId = Integer.parseInt(request.getParameter("recipeId"));
+
+        if (request.getMethod().equals("GET")) {
+            request.setAttribute("recipeId", recipeId);
+            request.setAttribute("view", "/review/create.jsp");
         } else {
             int memberId = Integer.parseInt(request.getParameter("memberId"));
-            int recipeId = Integer.parseInt(request.getParameter("recipeId"));
             String content = request.getParameter("content");
 
             Review r = new Review(0, memberId, recipeId, content, null);
             service.addReview(r);
+            view = "redirect:/recipe/detail.do?recipeId=" + recipeId;
         }
         return view;
     }
