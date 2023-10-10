@@ -81,9 +81,9 @@ public class RecipeJsonParse {
                 log.info("infoEn : {}", infoEn);
 
                 String str = """
-                        insert into "Recipe" ("recipeId", "title", "way", "ingredientInfo", "maunal_01",
-                         "maunal_02", "maunal_03","maunal_04","maunal_05","maunal_06","maunal_07","maunal_08",
-                          "maunal_09", "maunal_10", "maunal_11", "maunal_12","manual_img_01", "manual_img_02",
+                        insert into "Recipe" ("recipeId", "title", "way", "ingredientInfo", "manual_01",
+                         "manual_02", "manual_03","manual_04","manual_05","manual_06","manual_07","manual_08",
+                          "manual_09", "manual_10", "manual_11", "manual_12","manual_img_01", "manual_img_02",
                           "manual_img_03", "manual_img_04", "manual_img_05", "manual_img_06", "manual_img_07",
                           "manual_img_08", "manual_img_09", "manual_img_10", "manual_img_11", "manual_img_12",
                           "manual_img_13", "manual_img_14", "manual_img_15", "manual_img_16", "manual_img_17",
