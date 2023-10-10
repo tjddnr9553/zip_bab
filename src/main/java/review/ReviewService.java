@@ -36,6 +36,7 @@ public class ReviewService {
         session.close();
         return r;
     }
+
     public ArrayList<Review> getReviewByWriter(String writerId){
         SqlSession session = sqlSessionFactory.openSession();
         ReviewDao dao = (ReviewDao) session.getMapper(ReviewDao.class);
@@ -43,12 +44,21 @@ public class ReviewService {
         session.close();
         return r;
     }
-    public ArrayList<Review> getReviewByRecipe(String recipeId){
+
+    public ArrayList<Review> getReviewByRecipe(int recipeId){
         SqlSession session = sqlSessionFactory.openSession();
         ReviewDao dao = (ReviewDao) session.getMapper(ReviewDao.class);
         ArrayList<Review> r = dao.selectReviewByRecipe(recipeId);
         session.close();
         return r;
+    }
+
+    public ArrayList<ReviewMember> getReviewMember(int recipeId){
+        SqlSession session = sqlSessionFactory.openSession();
+        ReviewDao dao = (ReviewDao) session.getMapper(ReviewDao.class);
+        ArrayList<ReviewMember> rm = dao.selectReviewJoinMember(recipeId);
+        session.close();
+        return rm;
     }
 
     public void editReview(Review r){
