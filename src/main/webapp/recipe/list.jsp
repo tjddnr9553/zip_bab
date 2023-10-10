@@ -14,27 +14,23 @@
 <body>
 <div class="container">
   <h2>레시피 모음</h2>
- <form action="${pageContext.request.contextPath}/recipe/getByTitle.do"><p>편리하고 다양한 즐거운 집밥<input type="text" name="title" placeholder="Search.." style="position:absolute; right:210px;"></p></form>
-  <table class="table table-striped">
-    <thead style="text-align:center;">
-      <tr>
-        <th>번호</th>
-        <th>레시피 제목</th>
-        <th style="width:75px;">조리방법</th>
-        <th>쟤료목록</th>
-      </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="r" items="${list }">
-      <tr>
-        <td>${r.recipeId}</td>
-        <td><a href="${pageContext.request.contextPath}/recipe/detail.do?recipeId=${r.recipeId}">${r.title}</a></td>
-        <td>${r.way}</td>
-        <td>${r.ingredientInfo}</td>
-      </tr>
-      </c:forEach>
-    </tbody>
-  </table>
+ <form action="${pageContext.request.contextPath}/recipe/getByTitle.do"><p>편리하고 다양한 즐거운 집밥
+    <input type="text" name="title" placeholder="Search.." style="position:absolute; right:210px;"></p></form><br/>
+        <div class="container mt-3">
+            <div class="row">
+                <c:forEach var="r" items="${list}">
+                    <div class="col-md-2 mb-1">
+                        <div class="card h-100" style="width:200px;">
+                            <img class="card-img-top img-fluid" src="${r.completePicture}" alt="이미지 없음" style="width:250px;height:220px;">
+                            <div class="card-body">
+                                <h6 class="card-title"><a href="${pageContext.request.contextPath}/recipe/detail.do?recipeId=${r.recipeId}">${r.title}</a></h6>
+                                <p class="card-text">${r.way}</p>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
 
     <ul class="pagination justify-content-center">
       <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
