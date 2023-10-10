@@ -1,9 +1,6 @@
-package mebmerofrecipe;
+package memberrecipe;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +8,7 @@ import java.time.LocalDateTime;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class MemberRecipe {
     private int memberRecipeId;
     private int memberId;
@@ -42,16 +40,8 @@ public class MemberRecipe {
     private String manual_img_10;
     private String manual_img_11;
     private String manual_img_12;
-    private String manual_img_13;
-    private String manual_img_14;
-    private String manual_img_15;
-    private String manual_img_16;
-    private String manual_img_17;
-    private String manual_img_18;
-    private String manual_img_19;
-    private String manual_img_20;
     private String completePicture;
-    private double calorie;
+    private String calorie;
     private LocalDateTime writeTime;
     private LocalDateTime editTime;
 }

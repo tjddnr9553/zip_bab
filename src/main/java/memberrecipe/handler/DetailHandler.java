@@ -1,4 +1,4 @@
-package mebmerofrecipe.handler;
+package memberrecipe.handler;
 
 import handler.Handler;
 
