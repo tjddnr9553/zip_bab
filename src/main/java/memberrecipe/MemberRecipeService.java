@@ -1,4 +1,4 @@
-package mebmerofrecipe;
+package memberrecipe;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
@@ -58,5 +58,12 @@ public class MemberRecipeService {
         session.close();
 
         return list;
+    }
+
+    public void addMemberRecipe(MemberRecipe memberRecipe) {
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
+        dao.addMemberRecipe(memberRecipe);
+        session.close();
     }
 }
