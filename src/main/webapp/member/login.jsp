@@ -9,8 +9,8 @@
 <body>
 <h3 class="text-lg">로그인</h3>
 <form action="${pageContext.request.contextPath }/member/login.do" method="POST">
-ID: <input type="text" name="id"><br/>
-PWD: <input type="password" name="pwd"><br/>
+아이디: <input type="text" name="loginId"><br/>
+비밀번호: <input type="password" name="password"><br/>
 <input type="submit" value="로그인">
 </form>
 </body>

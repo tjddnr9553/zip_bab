@@ -1,20 +1,20 @@
-let contextPath = document.body.dataset.contextPath
-let req = new XMLHttpRequest()
+let contextPath = document.body.dataset.contextPath;
+let req = new XMLHttpRequest();
 
 const a = () => {
-	let id = f.username.value
-	req.open('GET', contextPath + '/member/idcheck.do?username=' + id)
-	req.send()
+	let loginId = f.loginId.value;
+	req.open('GET', contextPath + '/member/idcheck.do?loginId=' + loginId);
+	req.send();
 }
 
 req.onload = () => {
 	let obj = JSON.parse(req.responseText) // 받은 응답을 json으로 파싱
 	let txt = '중복된 아이디'
 	if (obj.flag) {
-		txt = '가능한 아이디'
+		txt = '사용 가능한 아이디'
 		f.flag.value = true
 	}
-	console.log(txt)
+	//console.log(txt)
 	document.getElementById('res').innerHTML = txt;
 }
 

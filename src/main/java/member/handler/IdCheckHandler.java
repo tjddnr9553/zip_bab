@@ -14,17 +14,18 @@ public class IdCheckHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String username = request.getParameter("username");
-		Member m = (new MemberService()).getMember(username);
+		String loginId = request.getParameter("loginId");
+
+		Member m = (new MemberService()).getMember(loginId);
+		System.out.println("가져온 아이디"+m);
 		boolean flag = false;
-		if (m == null) {
+		if(m==null) {
 			flag = true;
 		}
 		JSONObject obj = new JSONObject();
 		obj.put("flag", flag);
-		
 		String txt = obj.toJSONString();
-		return "responsebody/" + txt;
+		return "responsebody/"+txt;
 	}
 
 }

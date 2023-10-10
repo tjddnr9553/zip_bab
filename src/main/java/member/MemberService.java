@@ -30,10 +30,10 @@ public class MemberService {
 		session.close();
 	}
 	
-	public Member getMember(String username){
+	public Member getMember(String loginId){
 		SqlSession session = sqlSessionFactory.openSession();
 		MemberDao dao = (MemberDao) session.getMapper(MemberDao.class);
-		Member m = dao.getMember(username);
+		Member m = dao.getMember(loginId);
 		session.close();
 		return m;
 	}
@@ -46,10 +46,10 @@ public class MemberService {
 		session.close();
 	}
 	
-	public void delMember(String username){
+	public void delMember(String loginId){
 		SqlSession session = sqlSessionFactory.openSession();
 		MemberDao mapper = (MemberDao) session.getMapper(MemberDao.class);
-		mapper.delMember(username);
+		mapper.delMember(loginId);
 		session.commit();
 		session.close();
 	}

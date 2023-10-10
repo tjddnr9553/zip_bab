@@ -21,6 +21,7 @@ public class ReviewService {
         session.close();
     }
 
+
     public Review getReview(int num){
         SqlSession session = sqlSessionFactory.openSession();
         ReviewDao dao = (ReviewDao) session.getMapper(ReviewDao.class);
