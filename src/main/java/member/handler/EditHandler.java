@@ -17,19 +17,15 @@ public class EditHandler implements Handler {
 		String view = "/index.jsp";
 		MemberService service = new MemberService();
 		if (request.getMethod().equals("GET")) {
-			String username = request.getParameter("username");
-
-			Member m = service.getMember(username);
-
+			String loginId = request.getParameter("loginId");
+			Member m = service.getMember(loginId);
 			request.setAttribute("m", m);
 			request.setAttribute("view", "/member/edit.jsp");
 		} else {
-			String username = request.getParameter("username");
-			String password = request.getParameter("password");
+			String loginId = request.getParameter("loginId");
+			//String password = request.getParameter("password");
 			String nickname = request.getParameter("nickname");
-			String birthdayStr = request.getParameter("birthday");
-			LocalDate birthday =null;
-			service.editMember(new Member(0,username, nickname, password, "",null, 0));
+			service.editMember(new Member(0,loginId, nickname, "", "",null, 0));
 			view = "redirect:" + view;
 		}
 

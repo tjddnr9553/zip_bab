@@ -16,16 +16,14 @@ public class JoinHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 
-		log.info("JoinHandler 실행확인");
-
+		//log.info("JoinHandler 실행확인");
 
 		// TODO Auto-generated method stub
 		String view = "/index.jsp";
 		if (request.getMethod().equals("GET")) {
-
 			view = "/member/join.jsp";
 		} else {
-			String username = request.getParameter("username");
+			String loginId = request.getParameter("loginId");
 			//log.info("username 확인 : {}", username);
 			String nickname = request.getParameter("nickname");
 			String password = request.getParameter("password");
@@ -35,8 +33,9 @@ public class JoinHandler implements Handler {
 					LocalDate.parse(request.getParameter("birthday"));
 			int gender = Integer.parseInt(request.getParameter("gender"));
 
+
 			MemberService service = new MemberService();
-			service.addMember(new Member(0, username, nickname, password, email,birthday,gender));
+			service.addMember(new Member(0, loginId, nickname, password, email,birthday,gender));
 
 			view = "redirect:/index.jsp";
 		}

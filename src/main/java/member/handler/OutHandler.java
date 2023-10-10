@@ -15,10 +15,10 @@ public class OutHandler implements Handler {
 		String view = "/index.jsp";
 
 		if (request.getMethod().equals("POST")) {
-			String id = request.getParameter("id");
+			String loginId = request.getParameter("loginId");
 
 			MemberService service = new MemberService();
-			service.delMember(id);
+			service.delMember(loginId);
 			view = "redirect:/index.jsp";
 		}
 
