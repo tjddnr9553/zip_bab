@@ -40,16 +40,16 @@ public class MemberService {
 	
 	public void editMember(Member m){
 		SqlSession session = sqlSessionFactory.openSession();
-		MemberDao mapper = (MemberDao) session.getMapper(MemberDao.class);
-		mapper.editMember(m);
+		MemberDao dao = (MemberDao) session.getMapper(MemberDao.class);
+		dao.editMember(m.getLoginId(), m.getNickname(), m.getProfile());
 		session.commit();
 		session.close();
 	}
 	
 	public void delMember(String loginId){
 		SqlSession session = sqlSessionFactory.openSession();
-		MemberDao mapper = (MemberDao) session.getMapper(MemberDao.class);
-		mapper.delMember(loginId);
+		MemberDao dao = (MemberDao) session.getMapper(MemberDao.class);
+		dao.delMember(loginId);
 		session.commit();
 		session.close();
 	}
