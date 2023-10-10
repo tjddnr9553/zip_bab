@@ -3,7 +3,6 @@ package recipe;
 import lombok.*;
 
 @Data
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Recipe {
@@ -45,4 +44,5 @@ public class Recipe {
     private String manual_img_20;
     private String completePicture; //완성사진
     private double calorie;    //열량
+    private String[] ingredient; //재료목록
 }

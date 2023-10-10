@@ -1,12 +1,12 @@
 package member.handler;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import handler.Handler;
 import member.Member;
 import member.MemberService;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class LoginHandler implements Handler {
 
@@ -27,6 +27,7 @@ public class LoginHandler implements Handler {
 			if (m != null && password.equals(m.getPassword())) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginId", m);
+				msg = "로그인 성공 / " + loginId + " 님은 ";
 			} else {
 				view = "/member/login.jsp";
 //				request.setAttribute("view", "/member/login.jsp");

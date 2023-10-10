@@ -2,6 +2,8 @@ package sqlsession;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import member.MemberDao;
+import memberrecipe.MemberRecipeDao;
+
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
@@ -48,6 +50,7 @@ public class Factory {
 					MemberDao.class,
 					RecipeDao.class,
 					ReviewDao.class,
+					MemberRecipeDao.class
 			};
 
 			for (Class mapperClass : mapperClasses) {

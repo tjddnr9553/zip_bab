@@ -48,4 +48,13 @@ public class RecipeService {
         session.close();
         return list;
     }
+
+    // 선호도 증가
+    public void increaseRpCnt(RecipePref rp) {
+        SqlSession session = sqlSessionFactory.openSession();
+        RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
+        dao.upsertRecipePreference(rp);
+        session.commit();
+        session.close();
+    }
 }

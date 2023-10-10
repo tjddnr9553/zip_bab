@@ -1,14 +1,6 @@
 package req;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Properties;
+import handler.Handler;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,8 +8,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import handler.Handler;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 //import handler.member.JoinHandler;
 //import handler.member.LoginHandler;
 
@@ -129,8 +127,8 @@ public class DispatcherServlet extends HttpServlet {
                     String[] path = view.split(":");
                     response.sendRedirect(request.getContextPath() + path[1]);
                 } else if (view.startsWith("responsebody")) {
-                    String[] path = view.split("/");
-                    response.getWriter().append(path[1]);//{flag:true}
+                    String[] path = view.split("/", 2);
+                    response.getWriter().append(path[1]);
                 } else {
                     RequestDispatcher dis = request.getRequestDispatcher(view);
                     dis.forward(request, response);
