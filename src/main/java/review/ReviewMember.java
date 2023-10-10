@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 @ToString(callSuper = true)
 public class ReviewMember extends Review {
     // Member
-//    private String username;
+//    private String loginId;
     private String nickname;
 //    private String password;
 //    private String email;
