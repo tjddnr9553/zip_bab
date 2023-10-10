@@ -32,10 +32,14 @@ public class JoinHandler implements Handler {
 			LocalDate birthday =
 					LocalDate.parse(request.getParameter("birthday"));
 			int gender = Integer.parseInt(request.getParameter("gender"));
+			String profile = request.getParameter("profile");
 
-
+			if (profile == null) {
+				profile = "";
+			}
+			Member m = new Member(0, loginId, nickname, password, email,birthday,gender,profile);
 			MemberService service = new MemberService();
-			service.addMember(new Member(0, loginId, nickname, password, email,birthday,gender));
+			service.addMember(m);
 
 			view = "redirect:/index.jsp";
 		}

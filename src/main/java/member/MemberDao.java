@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface MemberDao {
-	@Insert("insert into \"Member\" values(Member_seq.nextval, #{loginId}, #{nickname}, #{password}, #{email}, #{birthday}, #{gender})")
+	@Insert("insert into \"Member\" values(Member_seq.nextval, #{loginId}, #{nickname}, #{password}, #{email}, #{birthday}, #{gender}, #{profile})")
 	void addMember(Member m);
 
 	@Select("select * from \"Member\" where \"loginId\"=#{loginId}")
@@ -21,8 +21,8 @@ public interface MemberDao {
 	@Select("select * from \"Member\"")
 	ArrayList<Member> selectAll();
 
-	@Update("update \"Member\" set \"nickname\"=#{nickname} where \"loginId\"=#{loginId}")
-	void editMember(Member m);
+	@Update("update \"Member\" set \"nickname\"=#{nickname}, \"profile\"=#{profile} where \"loginId\"=#{loginId}")
+	void editMember(@Param("loginId") String loginId , @Param("nickname") String nickname , @Param("profile") String profile );
 
 	@Delete("delete from \"Member\" where \"loginId\"=#{loginId}")
 	void delMember(@Param("loginId") String loginId);
