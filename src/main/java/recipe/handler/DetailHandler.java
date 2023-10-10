@@ -42,15 +42,57 @@ public class DetailHandler implements Handler {
         }
 
         Recipe r = service.getById(id);
-        ArrayList<ReviewMember> reviews = rService.getReviewMember(id);
-        System.out.println("rm = ");
-        for (ReviewMember rm : reviews) {
-            System.out.println("rm = " + rm);
-            System.out.println(rm);
+        String input = r.getIngredientInfo();
+
+        ArrayList<String> ingredient = new ArrayList<>();
+
+        if (input.startsWith("●")) {
+            String[] splitInput = input.split("●");
+            for (String str : splitInput) {
+                if (!str.trim().isEmpty()) {
+                    String[] colonSplit = str.split(":");
+                    if (colonSplit.length > 1) {
+                        String[] commaSplit = colonSplit[1].split(",");
+                        for (String s : commaSplit) {
+                            ingredient.add(s.trim());
+                        }
+                    }
+                }
+            }
+        } else if (input.startsWith("•")) {
+            String[] splitInput = input.split("•");
+            for (String str : splitInput) {
+                if (!str.trim().isEmpty()) {
+                    String[] colonSplit = str.split(":");
+                    if (colonSplit.length > 1) {
+                        String[] commaSplit = colonSplit[1].split(",");
+                        for (String s : commaSplit) {
+                            ingredient.add(s.trim());
+                        }
+                    }
+                }
+            }
         }
-        request.setAttribute("r",r);
+//        else if (input.startsWith("")) {
+//            String[] splitInput = input.split("");
+//            for (String str : splitInput) {
+//                if (!str.trim().isEmpty()) {
+//                    String[] colonSplit = str.split(":");
+//                    if (colonSplit.length > 1) {
+//                        String[] commaSplit = colonSplit[1].split(",");
+//                        for (String s : commaSplit) {
+//                            ingredient.add(s.trim());
+//                        }
+//                    }
+//                }
+//            }
+//        }
+
+        ArrayList<ReviewMember> reviews = rService.getReviewMember(id);
+        request.setAttribute("ingredient", ingredient);
+        request.setAttribute("r", r);
         request.setAttribute("reviews", reviews);
-        request.setAttribute("view","/recipe/detail.jsp");
+        request.setAttribute("view", "/recipe/detail.jsp");
         return view;
     }
 

@@ -10,7 +10,7 @@
 </head>
 <body>
 <h3>프로필 수정</h3>
-<form action="${pageContext.request.contextPath }/member/edit.do" method="post">
+<form action="${pageContext.request.contextPath }/member/edit.do" method="post" ENCTYPE="multipart/form-data">
 아이디: <input type="text" name="loginId" value="${m.loginId }"readonly><br/>
 비밀번호: <input type="password" name="password" value="${m.password }"readonly><br/>
 닉네임: <input type="text" name="nickname" value="${m.nickname }" ><br/>
