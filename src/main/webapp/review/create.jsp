@@ -10,7 +10,6 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/review/create.do" method="POST">
-    <input type="hidden" value="1" name="memberId">
     <input type="hidden" value="${recipeId}" name="recipeId">
     <textarea name="content" id="content" cols="30" rows="10" placeholder="후기를 입력해주세요."></textarea>
     <input type="submit" value="후기 작성">

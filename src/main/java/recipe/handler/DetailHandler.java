@@ -43,7 +43,11 @@ public class DetailHandler implements Handler {
 
         Recipe r = service.getById(id);
         ArrayList<ReviewMember> reviews = rService.getReviewMember(id);
-
+        System.out.println("rm = ");
+        for (ReviewMember rm : reviews) {
+            System.out.println("rm = " + rm);
+            System.out.println(rm);
+        }
         request.setAttribute("r",r);
         request.setAttribute("reviews", reviews);
         request.setAttribute("view","/recipe/detail.jsp");
