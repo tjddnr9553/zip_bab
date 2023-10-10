@@ -20,7 +20,7 @@
       <tr>
         <th>번호</th>
         <th>레시피 제목</th>
-        <th style="width:75px;">음식종류</th>
+        <th style="width:75px;">조리방법</th>
         <th>쟤료목록</th>
       </tr>
     </thead>
