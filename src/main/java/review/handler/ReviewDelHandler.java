@@ -9,13 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 public class ReviewDelHandler implements Handler {
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) {
+        int reviewId = Integer.parseInt(request.getParameter("reviewId"));
+        int recipeId = Integer.parseInt(request.getParameter("recipeId"));
+        String view = "redirect:/recipe/detail.do?recipeId=" + recipeId + "#review";
+
         if (request.getMethod() == "GET") {
-            return null;
+
         } else {
-            int reviewId = Integer.parseInt(request.getParameter("reviewId"));
             ReviewService service = new ReviewService();
             service.delReview(reviewId);
         }
-        return null;
+        return view;
     }
 }

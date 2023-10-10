@@ -14,13 +14,13 @@
 <body>
 <div class="container">
   <h2>레시피 모음</h2>
- <form><p>편리하고 다양한 즐거운 집밥<input type="text" name="search" placeholder="Search.." style="position:absolute; right:210px;"></p></form>
+ <form action="${pageContext.request.contextPath}/recipe/getByTitle.do"><p>편리하고 다양한 즐거운 집밥<input type="text" name="title" placeholder="Search.." style="position:absolute; right:210px;"></p></form>
   <table class="table table-striped">
     <thead style="text-align:center;">
       <tr>
         <th>번호</th>
         <th>레시피 제목</th>
-        <th style="width:75px;">음식종류</th>
+        <th style="width:75px;">조리방법</th>
         <th>쟤료목록</th>
       </tr>
     </thead>

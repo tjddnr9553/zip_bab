@@ -1,8 +1,3 @@
-.jumbotron {
-  background-color: #f4511e;
-  color: #fff;
-}
-
 /* 떠다니는 메뉴 (Floating Menu) */
 #floatdiv {
     position:fixed; _position:absolute; _z-index:-1;

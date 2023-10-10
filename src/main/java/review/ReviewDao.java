@@ -11,14 +11,17 @@ public interface ReviewDao {
     @Select("SELECT * FROM \"Review\" WHERE \"reviewId\" = #{reviewId}")
     Review selectReview(@Param("reviewId") int reviewId);
 
-    @Select("SELECT * FROM \"Review\"")
+    @Select("SELECT * FROM \"Review\" ORDER BY \"reviewId\" DESC")
     ArrayList<Review> selectAll();
 
-    @Select("SELECT * FROM \"Review\" WHERE \"memberId\" = #{writerId}")
+    @Select("SELECT * FROM \"Review\" WHERE \"memberId\" = #{writerId} ORDER BY \"reviewId\" DESC")
     ArrayList<Review> selectReviewByWriter(@Param("writerId") String writerId);
 
-    @Select("SELECT * FROM \"Review\" WHERE \"recipeId\" = #{recipeId}")
-    ArrayList<Review> selectReviewByRecipe(@Param("recipeId") String recipeId);
+    @Select("SELECT * FROM \"Review\" WHERE \"recipeId\" = #{recipeId} ORDER BY \"reviewId\" DESC")
+    ArrayList<Review> selectReviewByRecipe(@Param("recipeId") int recipeId);
+
+    @Select("SELECT r.*, m.* FROM \"Review\" r JOIN \"Member\" m ON r.\"memberId\" = m.\"memberId\" WHERE \"recipeId\" = #{recipeId} ORDER BY \"reviewId\" DESC")
+    ArrayList<ReviewMember> selectReviewJoinMember(@Param("recipeId") int recipeId);
 
     @Update("UPDATE \"Review\" SET \"content\" = #{content} WHERE \"reviewId\" = #{reviewId}")
     void editReview(Review r);
