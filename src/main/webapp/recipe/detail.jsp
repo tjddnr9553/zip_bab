@@ -16,7 +16,11 @@
 <div class="container">
   <h2>${r.title }</h2><br/>
   <h4 id="ingredient">🔘 재 료 목 록</h4>
-  <div><c:forEach var="ingredient" items="${ingredient }"><li><a href="#navershopping">${ingredient }</a></li></c:forEach></div><br/>
+  <div><c:forEach var="ingredient" items="${ingredient}">
+           <c:if test="${not empty ingredient}">
+               <li><a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}">${ingredient}</a></li>
+           </c:if>
+       </c:forEach></div><br/>
   <h4 id="calorie">🔘 열 량</h4>
   <div>${r.calorie } kcal</div><br/>
   <h4 id="manual">🔘 조 리 방 법</h4>
@@ -33,7 +37,7 @@
   <div><img src="${r.manual_img_11}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_11}</div>
   <div><img src="${r.manual_img_12}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_12}</div>
   <h4 id="comPic">🔘 완 성 사 진</h4>
-  <div><img src="${r.completePicture}" class="img-rounded" alt="Cinque Terre" style="width:500px; height:400px;"></div><br/>
+  <div><img src="${r.completePicture}" class="img-rounded" alt=/" style="width:500px; height:400px;"></div><br/>
 
   <h4 id="review">🔘 후 기</h4>
   <a href="<c:url value='/review/create.do?recipeId=${r.recipeId}'/>">후기 작성</a>

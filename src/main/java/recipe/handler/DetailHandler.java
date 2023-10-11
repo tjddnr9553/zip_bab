@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DetailHandler implements Handler {
 
@@ -27,7 +29,7 @@ public class DetailHandler implements Handler {
         MemberService mService = new MemberService();
 
         // recipe 선호도 관련
-        HttpSession session = request.getSession(false) ;
+        HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("loginId") != null && session.getAttribute("r_view_" + id) == null) {
             session.setAttribute("r_view_" + id, true);
             LocalDate currentDate = LocalDate.now();
@@ -43,39 +45,65 @@ public class DetailHandler implements Handler {
 
         Recipe r = service.getById(id);
         String input = r.getIngredientInfo();
+        input = input.replaceAll("재료","");
+        input = input.replaceAll("[()]","");
+        input = input.replaceAll("[\\[\\]]", "");
 
         ArrayList<String> ingredient = new ArrayList<>();
 
-        if (input.startsWith("●")) {
-            String[] splitInput = input.split("●");
-            for (String str : splitInput) {
-                if (!str.trim().isEmpty()) {
-                    String[] colonSplit = str.split(":");
-                    if (colonSplit.length > 1) {
-                        String[] commaSplit = colonSplit[1].split(",");
-                        for (String s : commaSplit) {
-                            ingredient.add(s.trim());
-                        }
-                    }
-                }
-            }
-        } else if (input.startsWith("•")) {
-            String[] splitInput = input.split("•");
-            for (String str : splitInput) {
-                if (!str.trim().isEmpty()) {
-                    String[] colonSplit = str.split(":");
-                    if (colonSplit.length > 1) {
-                        String[] commaSplit = colonSplit[1].split(",");
-                        for (String s : commaSplit) {
-                            ingredient.add(s.trim());
-                        }
-                    }
-                }
+        // 정규 표현식을 사용하여 "●"로 시작하고 ":"로 끝나는 부분을 제거
+        Pattern pattern = Pattern.compile("●(.*?)\\s:");
+        Matcher matcher = pattern.matcher(input);
+        StringBuffer result = new StringBuffer();
+
+        while (matcher.find()) {
+            matcher.appendReplacement(result, "");
+        }
+        matcher.appendTail(result);
+        String remainingText = result.toString().trim();
+
+        // 숫자 이전의 내용을 출력
+        String[] items = remainingText.split(",");
+        Pattern wordPattern = Pattern.compile(".*?(?=\\d)");
+
+        for (String item : items) {
+            String cleanedItem = item.replaceAll("[^가-힣\\s]", ""); // 한글과 공백만 남김
+            cleanedItem = cleanedItem.trim(); // 양 옆의 공백 제거
+            Matcher wordMatcher = wordPattern.matcher(item);
+            if (wordMatcher.find()) {
+                ingredient.add(wordMatcher.group().trim());
             }
         }
-//        else if (input.startsWith("")) {
-//            String[] splitInput = input.split("");
+
+//        if (input.startsWith("●")) {
+//            String[] splitInput = input.split("●");
 //            for (String str : splitInput) {
+//                if (!str.trim().isEmpty()) {
+//                    String[] colonSplit = str.split(":");
+//                    if (colonSplit.length > 1) {
+//                        String[] commaSplit = colonSplit[1].split(",");
+//                        for (String s : commaSplit) {
+//                            ingredient.add(s.trim());
+//                        }
+//                    }
+//                }
+//            }
+//        } else if (input.startsWith("•")) {
+//            String[] splitInput = input.split("•");
+//            for (String str : splitInput) {
+//                if (!str.trim().isEmpty()) {
+//                    String[] colonSplit = str.split(":");
+//                    if (colonSplit.length > 1) {
+//                        String[] commaSplit = colonSplit[1].split(",");
+//                        for (String s : commaSplit) {
+//                            ingredient.add(s.trim());
+//                        }
+//                    }
+//                }
+//            }
+//        } else {
+//            String[] enterSplit = input.split("\n");
+//            for (String str : enterSplit) {
 //                if (!str.trim().isEmpty()) {
 //                    String[] colonSplit = str.split(":");
 //                    if (colonSplit.length > 1) {

@@ -19,7 +19,8 @@ public interface RecipeDao {
     ArrayList<Recipe> selectByTitle(@Param("title") String title);
 
     //재료정보로 검색
-    @Select("Select * from \"Recipe\" where \"ingredientInfo\" like '%#{ingredientInfo}%'")
+    //jdbcType=VARCHAR을 사용하여 데이터베이스 컬럼과 파라미터의 데이터 유형을 일치
+    @Select("Select * from \"Recipe\" where \"ingredientInfo\" like '%'||#{ingredientInfo, jdbcType=VARCHAR}||'%'")
     ArrayList<Recipe> selectByIngredientInfo(@Param("ingredientInfo") String ingredientInfo);
 
 
