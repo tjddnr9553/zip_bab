@@ -19,7 +19,7 @@
                 <%--                    <a class="nav-link active" aria-current="page" href="#">집밥</a>--%>
                 <%--                </li>--%>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/recipe/list.do">레시피 보기</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=1">레시피 보기</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">재료 보기</a>

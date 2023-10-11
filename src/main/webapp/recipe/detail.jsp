@@ -10,36 +10,34 @@
     width: 180px;
     height: 140px;
 }
+a {
+    color: black;
+}
 </style>
 </head>
 <body>
 <div class="container">
   <h2>${r.title }</h2><br/>
-  <h4 id="ingredient">🔘 재 료 목 록</h4>
+  <h3 id="ingredient"><span class="badge bg-secondary">🔘 재 료 목 록</span></h3>
   <div><c:forEach var="ingredient" items="${ingredient}">
            <c:if test="${not empty ingredient}">
-               <li><a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}">${ingredient}</a></li>
+               <h6><p><strong><li><a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}">${ingredient}</a></li></strong></p></h6>
            </c:if>
        </c:forEach></div><br/>
-  <h4 id="calorie">🔘 열 량</h4>
-  <div>${r.calorie } kcal</div><br/>
-  <h4 id="manual">🔘 조 리 방 법</h4>
-  <div><img src="${r.manual_img_01}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_01}</div>
-  <div><img src="${r.manual_img_02}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_02}</div>
-  <div><img src="${r.manual_img_03}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_03}</div>
-  <div><img src="${r.manual_img_04}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_04}</div>
-  <div><img src="${r.manual_img_05}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_05}</div>
-  <div><img src="${r.manual_img_06}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_06}</div>
-  <div><img src="${r.manual_img_07}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_07}</div>
-  <div><img src="${r.manual_img_09}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_09}</div>
-  <div><img src="${r.manual_img_08}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_08}</div>
-  <div><img src="${r.manual_img_10}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_10}</div>
-  <div><img src="${r.manual_img_11}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_11}</div>
-  <div><img src="${r.manual_img_12}" class="img-rounded" onerror="this.style.display='none'" alt=/">&emsp; ${r.manual_12}</div>
-  <h4 id="comPic">🔘 완 성 사 진</h4>
-  <div><img src="${r.completePicture}" class="img-rounded" alt=/" style="width:500px; height:400px;"></div><br/>
+  <h3 id="calorie"><span class="badge bg-secondary">🔘 열 량</span></h3>
+  <div><h6><p><strong>${r.calorie } kcal</strong></p></h6></div><br/>
+  <h3 id="manual"><span class="badge bg-secondary">🔘 조 리 방 법</span></h3>
+ <div><img src="${r.manual_img_01}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-01">&emsp; ${r.manual_01}</div>
+ <div><img src="${r.manual_img_02}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-02">&emsp; ${r.manual_02}</div>
+ <div><img src="${r.manual_img_03}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-03">&emsp; ${r.manual_03}</div>
+ <div><img src="${r.manual_img_04}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-04">&emsp; ${r.manual_04}</div>
+ <div><img src="${r.manual_img_05}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-05">&emsp; ${r.manual_05}</div>
+ <div><img src="${r.manual_img_06}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-06">&emsp; ${r.manual_06}</div>
+ <br/>
+ <h3 id="comPic"><span class="badge bg-secondary">🔘 완 성 사 진</span></h3>
+ <div><img src="${r.completePicture}" class="img-rounded" alt=/" style="width:500px; height:400px;"></div><br/>
 
-  <h4 id="review">🔘 후 기</h4>
+  <h3 id="review"><span class="badge bg-secondary">🔘 후 기</span></h3>
   <a href="<c:url value='/review/create.do?recipeId=${r.recipeId}'/>">후기 작성</a>
   <c:forEach var="review" items="${reviews}">
     <div>

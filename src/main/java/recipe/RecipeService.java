@@ -49,6 +49,15 @@ public class RecipeService {
         return list;
     }
 
+    //페이징 처리
+    public ArrayList<Recipe> getByPage(int pageNum,int amount) {
+        SqlSession session = sqlSessionFactory.openSession();
+        RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
+        ArrayList<Recipe> list = dao.selectByPage(pageNum,amount);
+        session.close();
+        return list;
+    }
+
     // 선호도 증가
     public void increaseRpCnt(RecipePref rp) {
         SqlSession session = sqlSessionFactory.openSession();
