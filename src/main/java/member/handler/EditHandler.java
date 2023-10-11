@@ -15,11 +15,17 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class EditHandler implements Handler {
-    private final String path = "C:\\Users\\김현주\\OneDrive\\바탕 화면\\집밥\\zip_bab\\src\\main\\webapp\\images\\profile";
+    //private final String path = "C:\\Users\\김현주\\OneDrive\\바탕 화면\\집밥\\zip_bab\\src\\main\\webapp\\images\\profile";
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) {
         // FIX Auto-generated method stub
+        ServletContext context = request.getServletContext();
+        String path = context.getRealPath("/images/profile/");
+
+        System.out.println("path = " + path);
+
         String view = "/index.jsp";
+
         MemberService service = new MemberService();
         if (request.getMethod().equals("GET")) {
             String loginId = request.getParameter("loginId");
