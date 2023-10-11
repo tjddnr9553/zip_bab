@@ -12,7 +12,7 @@
 }
 </style>
 </head>
-<body>
+<body data-recipe-id="${r.recipeId }" data-recipe-img="${r.completePicture }">
 <div class="container">
   <h2>${r.title }</h2><br/>
   <h4 id="ingredient">🔘 재 료 목 록</h4>
@@ -69,5 +69,10 @@
 </ul>
 </div>
 
+<%-- view history --%>
+<div id="viewHistory">
+
+</div>
+<script src="${pageContext.request.contextPath}/recipe/js/detail_view_history.js"></script>
 </body>
 </html>
