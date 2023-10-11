@@ -6,21 +6,34 @@
 <head>
 <meta charset="UTF-8">
     <title>Insert title here</title>
+    <style>
+        .box {
+            width: 150px;
+            height: 150px;
+            border-radius: 70%;
+            overflow: hidden;
+        }
+        .profile {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    </style>
+
 </head>
 <body>
 
 <h3>프로필 수정</h3>
 <form action="${pageContext.request.contextPath }/member/edit.do" method="post" enctype="multipart/form-data">
     <c:if test="${m.profile != null}">
-        <c:set var="timestamp" value="${System.currentTimeMillis()}" />
-87        <img src="${pageContext.request.contextPath }/images/profile/${m.profile}?timestamp=${timestamp}" alt="profile_img" width="200px;"><br/>
-        기존 이미지 : ${m.profile}
-        <label for="imgUpload" class="btn btn-primary">사진 수정</label>
-        <label for="imgUpload" class="btn btn-primary">사진 삭제</label>
+
+<div>
+        <label for="imgUpload" class="box"><img class="profile" src="${pageContext.request.contextPath }/images/profile/${m.profile}" alt="profile_img" width="200px;"></label>
+</div>
     </c:if>
     <c:if test="${m.profile == null}">
-        <img src="/images/profile/프사기본.jpg"  alt="profile_img" width="200px;"><br/>
-        <label for="imgUpload" class="btn btn-primary">사진 추가</label>
+        <label for="imgUpload" class="box"><img class="profile" src="/images/profile/프사기본.jpg" alt="profile_img" width="200px;"></label>
     </c:if>
 <input id="imgUpload" type="file" name="profile" class="d-none"><br/>
 아이디: <input type="text" name="loginId" value="${m.loginId }"readonly><br/>
