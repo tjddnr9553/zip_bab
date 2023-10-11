@@ -27,7 +27,6 @@ public class LoginHandler implements Handler {
 			if (m != null && password.equals(m.getPassword())) {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginId", m);
-				msg = "로그인 성공 / " + loginId + " 님은 ";
 			} else {
 				view = "/member/login.jsp";
 //				request.setAttribute("view", "/member/login.jsp");
