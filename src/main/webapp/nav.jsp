@@ -3,7 +3,12 @@
 <meta charset="UTF-8">
 <nav class="navbar navbar-expand-sm bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/">🍚집밥</a>
+        <div class="d-inline-block" style="width:40px;">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/">
+                <img src="${pageContext.request.contextPath }/images/logo/main_logo.png" alt="logo" class="img-fluid">
+            </a>
+        </div>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/">집밥</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
