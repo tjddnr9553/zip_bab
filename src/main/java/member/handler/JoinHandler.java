@@ -28,7 +28,6 @@ public class JoinHandler implements Handler {
 			String nickname = request.getParameter("nickname");
 			String password = request.getParameter("password");
 			String email = request.getParameter("email");
-			String birthdayStr = request.getParameter("birthday");
 			LocalDate birthday =
 					LocalDate.parse(request.getParameter("birthday"));
 			int gender = Integer.parseInt(request.getParameter("gender"));
