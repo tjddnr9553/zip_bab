@@ -75,47 +75,6 @@ public class DetailHandler implements Handler {
             }
         }
 
-//        if (input.startsWith("●")) {
-//            String[] splitInput = input.split("●");
-//            for (String str : splitInput) {
-//                if (!str.trim().isEmpty()) {
-//                    String[] colonSplit = str.split(":");
-//                    if (colonSplit.length > 1) {
-//                        String[] commaSplit = colonSplit[1].split(",");
-//                        for (String s : commaSplit) {
-//                            ingredient.add(s.trim());
-//                        }
-//                    }
-//                }
-//            }
-//        } else if (input.startsWith("•")) {
-//            String[] splitInput = input.split("•");
-//            for (String str : splitInput) {
-//                if (!str.trim().isEmpty()) {
-//                    String[] colonSplit = str.split(":");
-//                    if (colonSplit.length > 1) {
-//                        String[] commaSplit = colonSplit[1].split(",");
-//                        for (String s : commaSplit) {
-//                            ingredient.add(s.trim());
-//                        }
-//                    }
-//                }
-//            }
-//        } else {
-//            String[] enterSplit = input.split("\n");
-//            for (String str : enterSplit) {
-//                if (!str.trim().isEmpty()) {
-//                    String[] colonSplit = str.split(":");
-//                    if (colonSplit.length > 1) {
-//                        String[] commaSplit = colonSplit[1].split(",");
-//                        for (String s : commaSplit) {
-//                            ingredient.add(s.trim());
-//                        }
-//                    }
-//                }
-//            }
-//        }
-
         ArrayList<ReviewMember> reviews = rService.getReviewMember(id);
         request.setAttribute("ingredient", ingredient);
         request.setAttribute("r", r);

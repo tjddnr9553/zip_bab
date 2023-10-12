@@ -6,14 +6,24 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/list.css">
+<style>
+h2 {
+  text-shadow: 2px 2px 4px rgba(92, 248, 113, 1.5);
+  shadow-color: red;
+}
+
+.shadow-effect {
+    text-shadow: 2px 2px 4px rgba(92, 248, 113, 1.5);
+}
+</style>
 <title>Document</title>
 </head>
 <body>
 <c:set var="currentPage" value="${param.pageNum != null ? param.pageNum : 1}" />
 <div class="container">
- <br/><h2><p><strong>레시피 모음</p></strong></h2>
- <form action="${pageContext.request.contextPath}/recipe/getByTitle.do"><p>편리하고 다양한 즐거운 집밥
-    <input type="text" name="title" placeholder="Search.." style="position:absolute; right:210px;"></p></form><br/>
+ <br/><h2 class="shadow-effect"><strong>레시피 모음</strong></h2>
+ <form action="${pageContext.request.contextPath}/recipe/getByTitle.do"><a><strong>편리하고 다양한 즐거운 집밥</strong></a>
+    <input type="text" name="title" placeholder="Search.." style="position:absolute; right:210px;"></form><br/>
         <div class="container mt-3">
             <div class="row">
                 <c:forEach var="r" items="${list}">

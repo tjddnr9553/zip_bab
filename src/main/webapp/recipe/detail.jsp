@@ -13,20 +13,43 @@
 a {
     color: black;
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+  gap: 0px;
+}
+
+.grid-container > div {
+  text-align: left;
+}
+h3 {
+  column-span: 1/3;
+}
 </style>
 </head>
 <body data-recipe-id="${r.recipeId }" data-recipe-img="${r.completePicture }">
 <div class="container">
-  <br/><h2>${r.title }</h2><br/>
-  <h3 id="ingredient"><span class="badge bg-secondary">🔘 재 료 목 록</span></h3>
-  <div><c:forEach var="ingredient" items="${ingredient}">
-           <c:if test="${not empty ingredient}">
-               <h6><p><strong><li><a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}">${ingredient}</a></li></strong></p></h6>
-           </c:if>
-       </c:forEach></div><br/>
-  <h3 id="calorie"><span class="badge bg-secondary">🔘 열 량</span></h3>
-  <div><h6><p><strong>${r.calorie } kcal</strong></p></h6></div><br/>
-  <h3 id="manual"><span class="badge bg-secondary">🔘 조 리 방 법</span></h3>
+   <br/><h2>${r.title }</h2><br/>
+    <div class="grid-container">
+        <div class="grid-item">
+            <h3 id="ingredient"><span class="badge bg-secondary">🔘 재 료 목 록</span></h3>
+        </div>
+        <div class="grid-item">
+            <h3 id="calorie"><span class="badge bg-secondary">🔘 열 량</span></h3>
+        </div>
+        <div class="grid-item">
+            <h3 id="calorie"><span class="badge bg-secondary">🔘 조 리 방 법</span></h3>
+        </div>
+        <div><c:forEach var="ingredient" items="${ingredient}">
+                   <c:if test="${not empty ingredient}">
+                       <h6><p><strong><li><a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}">${ingredient}</a></li></strong></p></h6>
+                   </c:if>
+               </c:forEach></div>
+            <div><h6><strong>${r.calorie } kcal</strong></h6></div>
+            <div><h6><strong>${r.way }</strong></h6></div>
+    </div>
+    <br/><h3 id="manual"><span class="badge bg-secondary">🔘 조 리 방 법</h3>
  <div><img src="${r.manual_img_01}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-01">&emsp; ${r.manual_01}</div>
  <div><img src="${r.manual_img_02}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-02">&emsp; ${r.manual_02}</div>
  <div><img src="${r.manual_img_03}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-03">&emsp; ${r.manual_03}</div>
