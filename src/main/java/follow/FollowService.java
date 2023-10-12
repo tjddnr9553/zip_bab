@@ -22,6 +22,14 @@ public class FollowService {
         session.close();
     }
 
+    public void delFollow(int followerId, int followingId) {
+        SqlSession session = sqlSessionFactory.openSession();
+        FollowDao dao = session.getMapper(FollowDao.class);
+        dao.delFollow(followerId,followingId);
+        session.commit();
+        session.close();
+    }
+
     public int getFollower(int memberId){
         SqlSession session = sqlSessionFactory.openSession();
         FollowDao dao = session.getMapper(FollowDao.class);
@@ -41,4 +49,13 @@ public class FollowService {
 
         return count;
     }
+    public boolean isFollowed(int followerId, int followingId){
+        SqlSession session = sqlSessionFactory.openSession();
+        FollowDao dao = session.getMapper(FollowDao.class);
+        int count = dao.getFollowCheck(followerId,followingId);
+        session.close();
+
+        return count==1;
+    }
+
 }

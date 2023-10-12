@@ -1,5 +1,6 @@
 package sqlsession;
 
+import follow.FollowDao;
 import io.github.cdimascio.dotenv.Dotenv;
 import member.MemberDao;
 import memberrecipe.MemberRecipeDao;
@@ -50,7 +51,8 @@ public class Factory {
 					MemberDao.class,
 					RecipeDao.class,
 					ReviewDao.class,
-					MemberRecipeDao.class
+					MemberRecipeDao.class,
+					FollowDao.class
 			};
 
 			for (Class mapperClass : mapperClasses) {
