@@ -17,44 +17,6 @@
     <link rel="icon" href="<c:url value='/images/logo/favicon.png'/>">
 
     <link rel="stylesheet" href="<c:url value='/css/index.css'/>"/>
-    <style>
- .main-image-container {
-        position: relative;
-        width: 100%;
-        height: 100vh; /* 높이를 뷰포트의 높이로 설정 */
-    }
-
-    .main-image-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* 이미지 비율 유지 */
-        transition: filter 0.3s ease-in-out; /* 부드럽게 필터 효과 전환 */
-    }
-
-    .main-image-container img:hover {
-      filter: blur(6px); /* 마우스 호버 시 블러 효과 적용 */
-    }
-
-    .main-text {
-       position: absolute;
-       top: 50%;
-       left: 50%;
-       transform-origin:center center;
-       transform-style:preserve-3d;
-       transform : translate(-50%, -50%);
-       color:white;
-       text-align:center;
-
-   }
-
-   .main-text h1,strong,p{
-     transition : transform 0.5s ease-in-out;
-   }
-
-   .main-text:hover h1,strong,p{
-     transform : scale(2.0);
-   }
-    </style>
 </head>
 <body>
 <!-- 네비게이션 바 -->

@@ -5,28 +5,6 @@
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/remote.css">
-  <style>
-.img-rounded {
-    width: 180px;
-    height: 140px;
-}
-a {
-    color: black;
-}
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto;
-  gap: 0px;
-}
-
-.grid-container > div {
-  text-align: left;
-}
-h3 {
-  column-span: 1/3;
-}
-</style>
 </head>
 <body data-recipe-id="${r.recipeId }" data-recipe-img="${r.completePicture }">
 <div class="container">
