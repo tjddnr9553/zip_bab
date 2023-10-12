@@ -22,6 +22,15 @@ public class RecipeService {
         return r;
     }
 
+    //요리방법으로 검색
+//    public ArrayList<Recipe> getByWay(int pageNum, int amount, String way) {
+//        SqlSession session = sqlSessionFactory.openSession();
+//        RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
+//        ArrayList<Recipe> list = dao.selectByWay(pageNum, amount, way);
+//        session.close();
+//        return list;
+//    }
+
     //레시피 전체 목록 출력
     public ArrayList<Recipe> getAll() {
         SqlSession session = sqlSessionFactory.openSession();

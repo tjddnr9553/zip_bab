@@ -17,7 +17,7 @@ a {
 </head>
 <body data-recipe-id="${r.recipeId }" data-recipe-img="${r.completePicture }">
 <div class="container">
-  <h2>${r.title }</h2><br/>
+  <br/><h2>${r.title }</h2><br/>
   <h3 id="ingredient"><span class="badge bg-secondary">🔘 재 료 목 록</span></h3>
   <div><c:forEach var="ingredient" items="${ingredient}">
            <c:if test="${not empty ingredient}">

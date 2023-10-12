@@ -11,6 +11,10 @@ public interface RecipeDao {
     @Select("Select * from \"Recipe\" where \"recipeId\"=#{recipeId}")
     Recipe select(@Param("recipeId") int recipeId);
 
+    //요리방법으로 검색
+//    @Select("SELECT * FROM (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM \"Recipe\" WHERE \"way\" = #{way}) a WHERE ROWNUM <= #{pageNum}) WHERE rnum >= #{amount}")
+//    ArrayList<Recipe> selectByWay(@Param("pageNum") int pageNum, @Param("amount") int amount, @Param("way") String way);
+
     //레시피 전체 목록 출력
     @Select("Select * from \"Recipe\" order by \"recipeId\"")
     ArrayList<Recipe> selectAll();
@@ -25,8 +29,6 @@ public interface RecipeDao {
     ArrayList<Recipe> selectByIngredientInfo(@Param("ingredientInfo") String ingredientInfo);
 
     //페이징 처리
-    //amount1: 초기값 30
-    //amonut2: 초기값 1
     @Select("Select * FROM (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM \"Recipe\") a WHERE ROWNUM <= #{pageNum})WHERE rnum >= #{amount}")
     ArrayList<Recipe> selectByPage(@Param("pageNum") int pageNum,@Param("amount") int amount);
 
