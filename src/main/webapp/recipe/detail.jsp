@@ -4,18 +4,10 @@
 <html>
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/detail.css">
   <link rel="stylesheet" href="css/remote.css">
-  <style>
-.img-rounded {
-    width: 180px;
-    height: 140px;
-}
-a {
-    color: black;
-}
-</style>
 </head>
-<body data-recipe-id="${r.recipeId }" data-recipe-img="${r.completePicture }">
+<body data-context-path="${pageContext.request.contextPath }" data-recipe-id="${r.recipeId }" data-recipe-img="${r.completePicture }">
 <div class="container">
   <h2>${r.title }</h2><br/>
   <h3 id="ingredient"><span class="badge bg-secondary">🔘 재 료 목 록</span></h3>
@@ -37,21 +29,44 @@ a {
  <h3 id="comPic"><span class="badge bg-secondary">🔘 완 성 사 진</span></h3>
  <div><img src="${r.completePicture}" class="img-rounded" alt=/" style="width:500px; height:400px;"></div><br/>
 
-  <h3 id="review"><span class="badge bg-secondary">🔘 후 기</span></h3>
-  <a href="<c:url value='/review/create.do?recipeId=${r.recipeId}'/>">후기 작성</a>
+  <h4 id="review">🔘 후 기</h4>
+
+  <c:if test="${sessionScope.loginId != null}">
+    <a href="<c:url value='/review/create.do?recipeId=${r.recipeId}'/>">후기 작성</a>
+  </c:if>
+
   <c:forEach var="review" items="${reviews}">
-    <div>
-      ${review.nickname} : ${review.content} - ${review.formattedDateTime} <a href="<c:url value='/review/edit.do?reviewId=${review.reviewId}&recipeId=${r.recipeId}'/>">수정</a>
-      <form action="<c:url value='/review/delete.do'/>" class="d-inline-block" method="POST">
-        <input type="hidden" name="reviewId" value="${review.reviewId}">
-        <input type="hidden" name="recipeId" value="${review.recipeId}">
-        <input type="submit" value="삭제">
-      </form>
+  <div class="review-item border-bottom pt-3 px-4 pb-5">
+    <div class="review-info">
+      <div class="profile-img d-inline-block rounded-circle" style="">
+        <c:if test="${review.profile != null}">
+          <img src="${pageContext.request.contextPath}/images/profile/${review.profile}" alt="profile_img" class="img-fluid rounded-circle">
+        </c:if>
+        <c:if test="${review.profile == null}">
+          <img src="${pageContext.request.contextPath}/images/profile/프사기본.jpg" alt="default_profile_img" class="img-fluid rounded-circle">
+        </c:if>
+      </div>
+        ${review.nickname} | <span class="text-secondary">${review.formattedDateTime}</span>&nbsp;
+        <c:if test="${sessionScope.loginId.memberId == review.memberId}">
+          <a href="<c:url value='/review/edit.do?reviewId=${review.reviewId}&recipeId=${r.recipeId}'/>" class="btn btn-outline-dark btn-sm">수정</a>
+          <form action="<c:url value='/review/delete.do'/>" class="d-inline-block" method="POST">
+            <input type="hidden" name="reviewId" value="${review.reviewId}">
+            <input type="hidden" name="recipeId" value="${review.recipeId}">
+            <input type="submit" value="삭제" class="btn btn-outline-danger btn-sm">
+          </form>
+        </c:if>
     </div>
+    <div class="review-content mb-2">
+        ${review.content}
+    </div>
+    <div class="review-like">
+      <button id="r-like-${review.reviewId}" class="r-like-btn btn btn-outline-danger" data-review-id="${review.reviewId}" <c:if test="${loginId == null}">disabled</c:if>><i class="bi bi-heart-fill"></i> <span id="like-cnt-${review.reviewId}">${review.likeCnt}</span></button>
+    </div>
+  </div>
   </c:forEach>
 </div>
 
-<%-- remote --%>                
+<%-- remote --%>
 <div id="floatdiv" style="text-align:center;">
 <ul>
 <a href="#ingredient" style="background-color:pink;">재 료 목 록</a>
@@ -72,5 +87,6 @@ a {
 
 </div>
 <script src="${pageContext.request.contextPath}/recipe/js/detail_view_history.js"></script>
+<script src="${pageContext.request.contextPath}/recipe/js/review_like.js"></script>
 </body>
 </html>

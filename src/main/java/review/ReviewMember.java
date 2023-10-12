@@ -18,8 +18,10 @@ public class ReviewMember extends Review {
 //    private String email;
 //    private LocalDate birthday;
 //    private int gender;
+    private String profile;
 
     // Custom
+    private int likeCnt;
     private String formattedDateTime;
 
     @Override

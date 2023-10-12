@@ -6,7 +6,6 @@ const recipeImg = document.body.dataset.recipeImg
 const newItem = { id: recipeId, img: recipeImg }
 const existingItemIndex = rView.findIndex((item) => item.id === recipeId);
 
-console.log(existingItemIndex)
 if (existingItemIndex === -1) { // 없을 때
     if (rView.length > 9) {
         rView.pop()
