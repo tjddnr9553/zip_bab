@@ -1,7 +1,5 @@
-let contextPath = document.body.dataset.contextPath
-
-let likeBtns = document.querySelectorAll(".r-like-btn")
 window.onload = () => {
+    let likeBtns = document.querySelectorAll(".r-like-btn")
     likeBtns.forEach((likeBtn) => {
         likeBtn.addEventListener('click', (event) => {
             let likeReq = new XMLHttpRequest()

@@ -29,15 +29,19 @@
  <h3 id="comPic"><span class="badge bg-secondary">🔘 완 성 사 진</span></h3>
  <div><img src="${r.completePicture}" class="img-rounded" alt=/" style="width:500px; height:400px;"></div><br/>
 
-  <h4 id="review">🔘 후 기</h4>
+  <h3 class="mb-3" id="review"><span class="badge bg-secondary">🔘 후 기</span></h3>
 
-  <c:if test="${sessionScope.loginId != null}">
-    <a href="<c:url value='/review/create.do?recipeId=${r.recipeId}'/>">후기 작성</a>
-  </c:if>
-
+  <button id="write-review" class="btn btn-primary">후기 작성</button>
+  <div class="py-3 px-4 mb-5 border-bottom">
+    <form id="write-review-form" action="${pageContext.request.contextPath}/review/create.do" method="POST" class="w-75 d-flex d-none">
+      <input type="hidden" value="${recipeId}" name="recipeId">
+      <textarea name="content" id="content" placeholder="후기를 입력해주세요." class="form-control flex-fill"></textarea>
+      <input type="submit" value="작성" class="btn btn-primary align-self-end">
+    </form>
+  </div>
   <c:forEach var="review" items="${reviews}">
   <div class="review-item border-bottom pt-3 px-4 pb-5">
-    <div class="review-info">
+    <div class="review-info d-flex w-75">
       <div class="profile-img d-inline-block rounded-circle" style="">
         <c:if test="${review.profile != null}">
           <img src="${pageContext.request.contextPath}/images/profile/${review.profile}" alt="profile_img" class="img-fluid rounded-circle">
@@ -46,7 +50,10 @@
           <img src="${pageContext.request.contextPath}/images/profile/프사기본.jpg" alt="default_profile_img" class="img-fluid rounded-circle">
         </c:if>
       </div>
+      <div class="">
         ${review.nickname} | <span class="text-secondary">${review.formattedDateTime}</span>&nbsp;
+      </div>
+      <div class="ms-auto">
         <c:if test="${sessionScope.loginId.memberId == review.memberId}">
           <a href="<c:url value='/review/edit.do?reviewId=${review.reviewId}&recipeId=${r.recipeId}'/>" class="btn btn-outline-dark btn-sm">수정</a>
           <form action="<c:url value='/review/delete.do'/>" class="d-inline-block" method="POST">
@@ -55,6 +62,7 @@
             <input type="submit" value="삭제" class="btn btn-outline-danger btn-sm">
           </form>
         </c:if>
+      </div>
     </div>
     <div class="review-content mb-2">
         ${review.content}
@@ -86,7 +94,8 @@
 <div id="viewHistory">
 
 </div>
-<script src="${pageContext.request.contextPath}/recipe/js/detail_view_history.js"></script>
-<script src="${pageContext.request.contextPath}/recipe/js/review_like.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/recipe/js/detail_view_history.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/recipe/js/review.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/recipe/js/review_like.js"></script>
 </body>
 </html>

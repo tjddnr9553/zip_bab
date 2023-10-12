@@ -21,8 +21,7 @@ public interface ReviewDao {
     List<Review> selectReviewByRecipe(@Param("recipeId") int recipeId);
 
     @Select("SELECT r.*, " +
-            "m.\"nickname\", " +
-            "m.\"profile\", " +
+            "m.*, " +
             "(SELECT COUNT(*) FROM \"Like\" l WHERE r.\"reviewId\" = l.\"reviewId\") as \"likeCnt\" " +
             "FROM \"Review\" r " +
             "JOIN \"Member\" m ON (r.\"memberId\" = m.\"memberId\") " +
