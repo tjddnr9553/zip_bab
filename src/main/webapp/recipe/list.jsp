@@ -12,7 +12,7 @@
 <c:set var="currentPage" value="${param.pageNum != null ? param.pageNum : 1}" />
 <div class="container">
  <br/><h2 class="shadow-effect"><strong>레시피 모음</strong></h2>
- <form action="${pageContext.request.contextPath}/recipe/getByTitle.do"><a><h4><strong>편리하고 다양한 즐거운 집밥</strong></h4></a>
+ <form action="${pageContext.request.contextPath}/recipe/getByTitle.do?pageNum=${currentPage}"><a><h4><strong>편리하고 다양한 즐거운 집밥</strong></h4></a>
     <input type="text" name="title" placeholder="Search.." style="position:absolute; right:280px;"></form><br/><br/>
         <div class="container mt-3">
             <div class="row">
@@ -20,7 +20,7 @@
                     <div class="col-md-2 mb-4">
                         <div class="card h-100" style="width:200px;">
                             <a href="${pageContext.request.contextPath}/recipe/detail.do?recipeId=${r.recipeId}">
-                                <img class="card-img-top img-fluid" src="${r.completePicture}" alt="이미지 없음" style="width:250px;height:220px;" >
+                                <img class="card-img-top img-fluid" src="${r.completePicture}" alt="${pageContext.request.contextPath }/images/recipe/default.jpg" style="width:250px;height:220px;" >
                             </a>
                             <div class="card-body">
                                 <div class="col text-center">
@@ -38,37 +38,64 @@
 
 <!-- 페이징 처리 -->
     <ul class="pagination justify-content-center">
+
         <c:if test="${currentPage > 1}">
+        <c:if test="${empty title && empty ingredient}">
             <li class="page-item">
                 <a class="page-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=${currentPage - 1}">Previous</a>
             </li>
         </c:if>
+        <c:if test="${not empty title}">
+            <li class="page-item">
+                <a class="page-link" href="${pageContext.request.contextPath}/recipe/getByTitle.do?title=${title}&pageNum=${currentPage - 1}">Previous</a>
+            </li>
+        </c:if>
+        <c:if test="${not empty ingredient}">
+            <li class="page-item">
+                <a class="page-link" href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}&pageNum=${currentPage - 1}">Previous</a>
+            </li>
+        </c:if>
+        </c:if>
 
-    <c:if test="${currentPage > 0 && currentPage < 11}">
-        <c:forEach var="p" begin="1" end="10">
-            <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=${p }">${p }</a></li>
+    <c:if test="${currentPage > 0}">
+        <c:set var="startPage" value="${(currentPage - 1) / 10 * 10 + 1}" />
+        <c:set var="endPage" value="${startPage + 9}" />
+        <c:if test="${endPage > total}">
+            <c:set var="endPage" value="${total}" />
+        </c:if>
+        <c:if test="${empty title && empty ingredient}">
+        <c:forEach var="p" begin="${startPage}" end="${endPage}">
+            <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=${p}">${p}</a></li>
         </c:forEach>
-    </c:if>
-    <c:if test="${currentPage > 10 && currentPage < 21}">
-            <c:forEach var="p" begin="11" end="20">
-                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=${p }">${p }</a></li>
+        </c:if>
+        <c:if test="${not empty title}">
+            <c:forEach var="p" begin="${startPage}" end="${endPage}">
+                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/recipe/getByTitle.do?title=${title}&pageNum=${p}">${p}</a></li>
             </c:forEach>
         </c:if>
-    <c:if test="${currentPage > 20 && currentPage < 31}">
-        <c:forEach var="p" begin="21" end="30">
-            <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=${p }">${p }</a></li>
+        <c:if test="${not empty ingredient}">
+            <c:forEach var="p" begin="${startPage}" end="${endPage}">
+                <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}&pageNum=${p}">${p}</a></li>
         </c:forEach>
-    </c:if>
-    <c:if test="${currentPage > 30 && currentPage < 39}">
-        <c:forEach var="p" begin="31" end="38">
-            <li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=${p }">${p }</a></li>
-        </c:forEach>
+        </c:if>
     </c:if>
 
-   <c:if test="${currentPage < 38}">
+   <c:if test="${currentPage < total}">
+   <c:if test="${empty title && empty ingredient}">
       <li class='page-item'>
           <a class='page-link' href='${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=${currentPage + 1}'>Next</a>
       </li>
+   </c:if>
+   <c:if test="${not empty title}">
+        <li class='page-item'>
+            <a class='page-link' href='${pageContext.request.contextPath}/recipe/getByTitle.do?title=${title}&pageNum=${currentPage + 1}'>Next</a>
+        </li>
+    </c:if>
+    <c:if test="${not empty ingredient}">
+        <li class='page-item'>
+            <a class='page-link' href='${pageContext.request.contextPath}/recipe/recipe/getByIngredient.do?ingredient=${ingredient}&pageNum=${currentPage + 1}'>Next</a>
+        </li>
+    </c:if>
   </c:if>
 </ul>
 </div>

@@ -28,6 +28,15 @@ public interface RecipeDao {
     @Select("Select * from \"Recipe\" where \"ingredientInfo\" like '%'||#{ingredientInfo, jdbcType=VARCHAR}||'%'")
     ArrayList<Recipe> selectByIngredientInfo(@Param("ingredientInfo") String ingredientInfo);
 
+    //요리제목으로 검색(페이징)
+    @Select("Select * FROM (SELECT a.*, ROWNUM rnum FROM (Select * from \"Recipe\" where \"title\" like '%'||#{title}||'%') a WHERE ROWNUM <= #{pageNum}) WHERE rnum >= #{amount}")
+    ArrayList<Recipe> selectByTitlePage(@Param("title") String title, @Param("pageNum") int pageNum,@Param("amount") int amount);
+
+    //재료정보로 검색(페이징)
+    //jdbcType=VARCHAR을 사용하여 데이터베이스 컬럼과 파라미터의 데이터 유형을 일치
+    @Select("Select * FROM (SELECT a.*, ROWNUM rnum FROM (Select * from \"Recipe\" where \"ingredientInfo\" like '%'||#{ingredientInfo, jdbcType=VARCHAR}||'%') a WHERE ROWNUM <= #{pageNum}) WHERE rnum >= #{amount}")
+    ArrayList<Recipe> selectByIngredientInfoPage(@Param("ingredientInfo") String ingredientInfo, @Param("pageNum") int pageNum, @Param("amount") int amount);
+
     //페이징 처리
     @Select("Select * FROM (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM \"Recipe\") a WHERE ROWNUM <= #{pageNum})WHERE rnum >= #{amount}")
     ArrayList<Recipe> selectByPage(@Param("pageNum") int pageNum,@Param("amount") int amount);

@@ -27,7 +27,7 @@
 <!-- <main id="wrapper-main"> -->
 <c:if test="${view == null}">
       <div class="main-image-container">
-            <img src="${pageContext.request.contextPath }/images/profile/main.jpg" alt="Main image">
+            <img src="${pageContext.request.contextPath }/images/main/main.jpg" alt="Main image">
             <div class="main-text">
            <a class="nav-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=1">
                 <h1><strong>환영합니다!<br/><h3>ZipBab에서 맛있는 레시피를 발견하세요.</h3></strong></h1>
