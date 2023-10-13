@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface ReviewDao {
     @Insert("INSERT INTO \"Review\" VALUES(Review_seq.nextval, #{memberId}, #{recipeId}, #{content}, SYSDATE)")
+    @SelectKey(statement="SELECT Review_seq.nextval FROM dual", keyProperty="reviewId", before=true, resultType=int.class)
     void addReview(Review r);
 
     @Select("SELECT * FROM \"Review\" WHERE \"reviewId\" = #{reviewId}")

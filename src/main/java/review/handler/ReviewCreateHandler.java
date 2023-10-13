@@ -33,7 +33,14 @@ public class ReviewCreateHandler implements Handler {
 
             Review r = new Review(0, memberId, recipeId, content, null);
             service.addReview(r);
+
+//            ReviewMember rm = (ReviewMember) service.getReviewMember(r.getReviewId());
+//            System.out.println("r = " + r);
+//            JSONObject review = new JSONObject();
+//            review.put("")
+
             view = "redirect:/recipe/detail.do?recipeId=" + recipeId + "#review";
+
         }
         return view;
     }
