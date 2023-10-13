@@ -26,6 +26,6 @@ public class MypageHandler implements Handler {
         request.setAttribute("member", m);
         request.setAttribute("followerCount", followerCount);
         request.setAttribute("followingCount", followingCount);
-        return "/follow/mypage.jsp";
+        return "/member/projection/index.jsp";
     }
 }
