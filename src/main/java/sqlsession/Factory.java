@@ -1,5 +1,6 @@
 package sqlsession;
 
+import bookmark.BookmarkDao;
 import follow.FollowDao;
 import io.github.cdimascio.dotenv.Dotenv;
 import member.MemberDao;
@@ -52,6 +53,7 @@ public class Factory {
 					RecipeDao.class,
 					ReviewDao.class,
 					MemberRecipeDao.class,
+					BookmarkDao.class
 					FollowDao.class
 			};
 

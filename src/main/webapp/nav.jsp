@@ -20,10 +20,10 @@
                 <%--                </li>--%>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=1">레시피 보기</a>
-                </li>
+                </li>&emsp;
                 <li class="nav-item">
                     <a class="nav-link" href="#">재료 보기</a>
-                </li>
+                </li>&emsp;
 
                 <c:if test="${sessionScope.loginId != null }">
                 <li class="nav-item dropdown">

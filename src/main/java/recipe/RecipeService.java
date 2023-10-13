@@ -22,6 +22,15 @@ public class RecipeService {
         return r;
     }
 
+    //요리방법으로 검색
+//    public ArrayList<Recipe> getByWay(int pageNum, int amount, String way) {
+//        SqlSession session = sqlSessionFactory.openSession();
+//        RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
+//        ArrayList<Recipe> list = dao.selectByWay(pageNum, amount, way);
+//        session.close();
+//        return list;
+//    }
+
     //레시피 전체 목록 출력
     public ArrayList<Recipe> getAll() {
         SqlSession session = sqlSessionFactory.openSession();
@@ -49,11 +58,29 @@ public class RecipeService {
         return list;
     }
 
-    //페이징 처리
-    public ArrayList<Recipe> getByPage(int pageNum,int amount) {
+    //요리제목으로 검색(페이징)
+    public ArrayList<Recipe> getByTitlePage(String title, int pageNum, int amount) {
         SqlSession session = sqlSessionFactory.openSession();
         RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
-        ArrayList<Recipe> list = dao.selectByPage(pageNum,amount);
+        ArrayList<Recipe> list = dao.selectByTitlePage(title, pageNum, amount);
+        session.close();
+        return list;
+    }
+
+    //쟤료정보로 검색(페이징)
+    public ArrayList<Recipe> getByIngredientInfoPage(String ingredientInfo, int pageNum, int amount) {
+        SqlSession session = sqlSessionFactory.openSession();
+        RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
+        ArrayList<Recipe> list = dao.selectByIngredientInfoPage(ingredientInfo, pageNum, amount);
+        session.close();
+        return list;
+    }
+
+    //페이징 처리
+    public ArrayList<Recipe> getByPage(int pageNum, int amount) {
+        SqlSession session = sqlSessionFactory.openSession();
+        RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
+        ArrayList<Recipe> list = dao.selectByPage(pageNum, amount);
         session.close();
         return list;
     }
