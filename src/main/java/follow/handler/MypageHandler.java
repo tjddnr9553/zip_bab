@@ -3,6 +3,7 @@ package follow.handler;
 import follow.FollowService;
 import handler.Handler;
 import member.Member;
+import member.MemberService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,13 +12,20 @@ import javax.servlet.http.HttpSession;
 public class MypageHandler implements Handler {
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
-        Member member = (Member) session.getAttribute("loginId");
-        FollowService followService = new FollowService();
-        int followerCount = followService.getFollower(member.getMemberId());
-        int followingCount = followService.getFollowing(member.getMemberId());
+        String loginId = request.getParameter("loginId");
 
-        
-        return null;
+        HttpSession session = request.getSession();
+//        Member loginMember = (Member) session.getAttribute("loginId");
+        FollowService followService = new FollowService();
+
+        MemberService service = new MemberService();
+        Member m = service.getMember(loginId);
+        int followerCount = followService.getFollower(m.getMemberId());
+        int followingCount = followService.getFollowing(m.getMemberId());
+
+        request.setAttribute("member", m);
+        request.setAttribute("followerCount", followerCount);
+        request.setAttribute("followingCount", followingCount);
+        return "/follow/mypage.jsp";
     }
 }

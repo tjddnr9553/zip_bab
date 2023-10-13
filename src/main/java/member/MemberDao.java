@@ -17,6 +17,8 @@ public interface MemberDao {
 	@Select("select * from \"Member\" where \"loginId\"=#{loginId}")
 	Member getMember(@Param("loginId") String loginId);
 
+	@Select("select * from \"Member\" where \"memberId\"=#{memberId}")
+	Member getMemberByMemberId(@Param("memberId") int memberId);
 
 	@Select("select * from \"Member\"")
 	ArrayList<Member> selectAll();
