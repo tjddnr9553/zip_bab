@@ -18,7 +18,7 @@
             <h3 id="calorie"><span class="badge bg-secondary">🔘 열 량</span></h3>
         </div>
         <div class="grid-item">
-            <h3 id="calorie"><span class="badge bg-secondary">🔘 조 리 방 법</span></h3>
+            <h3 id="way"><span class="badge bg-secondary">🔘 조 리 방 법</span></h3>
         </div>
         <div><c:forEach var="ingredient" items="${ingredient}">
                    <c:if test="${not empty ingredient}">
@@ -28,7 +28,7 @@
             <div><h6><strong>${r.calorie } kcal</strong></h6></div>
             <div><h6><strong>${r.way }</strong></h6></div>
     </div>
-    <br/><h3 id="manual"><span class="badge bg-secondary">🔘 조 리 방 법</h3>
+  <br/><h3 id="manual"><span class="badge bg-secondary">🔘 조 리 방 법</span></h3>
  <div><img src="${r.manual_img_01}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-01">&emsp; ${r.manual_01}</div>
  <div><img src="${r.manual_img_02}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-02">&emsp; ${r.manual_02}</div>
  <div><img src="${r.manual_img_03}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-03">&emsp; ${r.manual_03}</div>
