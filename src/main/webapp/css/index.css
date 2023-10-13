@@ -37,5 +37,5 @@
    }
 
    .main-text:hover h1,strong,p{
-     transform : scale(2.0);
+     transform : scale(2.5);
    }
