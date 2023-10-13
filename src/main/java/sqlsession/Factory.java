@@ -53,7 +53,7 @@ public class Factory {
 					RecipeDao.class,
 					ReviewDao.class,
 					MemberRecipeDao.class,
-					BookmarkDao.class
+					BookmarkDao.class,
 					FollowDao.class
 			};
 
