@@ -37,7 +37,13 @@ public class MemberService {
 		session.close();
 		return m;
 	}
-	
+	public Member getMemberByMemberId(int memberId){
+		SqlSession session = sqlSessionFactory.openSession();
+		MemberDao dao = (MemberDao) session.getMapper(MemberDao.class);
+		Member m = dao.getMemberByMemberId(memberId);
+		session.close();
+		return m;
+	}
 	public void editMember(Member m){
 		SqlSession session = sqlSessionFactory.openSession();
 		MemberDao dao = (MemberDao) session.getMapper(MemberDao.class);

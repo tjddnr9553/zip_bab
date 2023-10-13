@@ -74,8 +74,8 @@ public class DetailHandler implements Handler {
                 ingredient.add(wordMatcher.group().trim());
             }
         }
-
-        ArrayList<ReviewMember> reviews = rService.getReviewMember(id);
+        List<ReviewMember> reviews = rService.getReviewMember(id);
+      
         request.setAttribute("ingredient", ingredient);
         request.setAttribute("r", r);
         request.setAttribute("reviews", reviews);

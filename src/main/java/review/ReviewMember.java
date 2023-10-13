@@ -12,14 +12,16 @@ import java.time.format.DateTimeFormatter;
 @ToString(callSuper = true)
 public class ReviewMember extends Review {
     // Member
-//    private String loginId;
+    private String loginId;
     private String nickname;
 //    private String password;
 //    private String email;
 //    private LocalDate birthday;
 //    private int gender;
+    private String profile;
 
     // Custom
+    private int likeCnt;
     private String formattedDateTime;
 
     @Override

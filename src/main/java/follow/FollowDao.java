@@ -1,9 +1,6 @@
 package follow;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface FollowDao {
@@ -15,4 +12,10 @@ public interface FollowDao {
 
     @Select("select count(*) from \"Follow\" where \"followingId\" = #{memberId}")
     int getFollowing(@Param("memberId") int memberId);
+
+    @Select("select count(*) from \"Follow\" where \"followerId\"=#{followerId} and \"followingId\"=#{followingId}")
+    int getFollowCheck(@Param("followerId") int followerId,@Param("followingId") int followingId);
+
+    @Delete("delete from \"Follow\" where \"followerId\"=#{followerId} and \"followingId\"=#{followingId}")
+    int delFollow(@Param("followerId") int followerId,@Param("followingId") int followingId);
 }
