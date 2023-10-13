@@ -1,5 +1,6 @@
 package memberrecipe;
 
+import member.Member;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -35,10 +36,20 @@ public interface MemberRecipeDao {
             " ,#{calorie} ,sysdate, sysdate)")
     void addMemberRecipe(MemberRecipe memberRecipe);
 
-    // TODO: 2023/10/09 Update문 만들어야 한다!
-
-    // TODO: 2023/10/09 Pageing selects 만들어야 한다!
-
     @Delete("delete from \"MemberRecipe\" where \"memberRecipeId\"=#{memberRecipeId}")
-    void delete(@Param("memberRecipeId") String memberRecipeId);
+    void delete(@Param("memberRecipeId") int memberRecipeId);
+
+    @Update("update \"MemberRecipe\" set \"title\"=#{title}, \"subTitle\"=#{subTitle}, \"way\"=#{way}" +
+            "\"ingredientInfo\"=#{ingredientInfo}, \"manual_01\"=#{manual_01},\"manual_02\"=#{manual_02},\"manual_03\"=#{manual_03}" +
+            ",\"manual_04\"=#{manual_04},\"manual_05\"=#{manual_05},\"manual_06\"=#{manual_06},\"manual_07\"=#{manual_07}" +
+            " ,\"manual_08\"=#{manual_08}, \"manual_09\"=#{manual_09}, \"manual_10\"=#{manual_10}, \"manual_11\"=#{manual_11}" +
+            ", \"manual_12\"=#{manual_12} , \"calorie\"=#{calorie} where \"memberRecipeId\"=#{memberRecipeId} ")
+    void edit(MemberRecipe memberRecipe);
+
+    @Update("update \"MemberRecipe\" set \"manual_img_01\"=#{manual_img_01}, \"manual_img_02\"=#{manual_img_02}," +
+            " \"manual_img_03\"=#{manual_img_03}, \"manual_img_04\"=#{manual_img_04}, \"manual_img_05\"=#{manual_img_05}"  +
+            ", \"manual_img_06\"=#{manual_img_06}, \"manual_img_07\"=#{manual_img_07}, \"manual_img_08\"=#{manual_img_08}" +
+            ", \"manual_img_09\"=#{manual_img_09}, \"manual_img_10\"=#{manual_img_10}, \"manual_img_11\"=#{manual_img_11}" +
+            ", \"manual_img_12\"=#{manual_img_12}, \"completePicture\"=#{completePicture} where \"memberRecipeId\"=#{memberRecipeId}")
+    void updateImg(MemberRecipe memberRecipe);
 }
