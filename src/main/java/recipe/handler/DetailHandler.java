@@ -116,7 +116,7 @@ public class DetailHandler implements Handler {
 //            }
 //        }
 
-        ArrayList<ReviewMember> reviews = (ArrayList<ReviewMember>) rService.getReviewMember(id);
+        List<ReviewMember> reviews = rService.getReviewMember(id);
         request.setAttribute("ingredient", ingredient);
         request.setAttribute("r", r);
         request.setAttribute("reviews", reviews);
