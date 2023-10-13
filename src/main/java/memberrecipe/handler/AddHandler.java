@@ -3,6 +3,7 @@ package memberrecipe.handler;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import handler.Handler;
+import lombok.extern.slf4j.Slf4j;
 import memberrecipe.MemberRecipe;
 import memberrecipe.MemberRecipeService;
 
@@ -11,9 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 
+@Slf4j
 public class AddHandler implements Handler {
-
-    private final String path = "/Users/a000/Desktop/Team-shoushou/zip_bab/src/main/webapp/images/memberrecipe";
 
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) {
@@ -22,6 +22,7 @@ public class AddHandler implements Handler {
             request.setAttribute("view", "/memberrecipe/create.jsp");
         } else {
             try {
+                String path = request.getServletContext().getRealPath("/images/memberrecipe/");
                 MultipartRequest req = new MultipartRequest(request, path, size, "utf-8", new DefaultFileRenamePolicy());
                 File[] f = {req.getFile("img1"), req.getFile("img2"), req.getFile("img3"), req.getFile("img4"),
                         req.getFile("img5"), req.getFile("img6"), req.getFile("img7"), req.getFile("img8"),
@@ -100,7 +101,7 @@ public class AddHandler implements Handler {
                 e.printStackTrace();
             }
 
-            view = "redirect:/index.jsp";
+            view = "redirect:/memberrecipe/list.do?page=1";
         }
 
         return view;

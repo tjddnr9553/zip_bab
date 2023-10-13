@@ -19,8 +19,13 @@
                 <%--                    <a class="nav-link active" aria-current="page" href="#">집밥</a>--%>
                 <%--                </li>--%>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=1">레시피 보기</a>
-                </li>&emsp;
+                    <a class="nav-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=1">레시피
+                        보기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/memberrecipe/list.do?pageNum=1">유저 레시피
+                        보기</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">재료 보기</a>
                 </li>&emsp;
@@ -35,20 +40,21 @@
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/follow/mypage.do?loginId=${sessionScope.loginId.loginId}">마이페이지</a></li>
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/edit.do?loginId=${sessionScope.loginId.getLoginId()}">수정페이지</a></li>
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/out.do">로그아웃</a></li>
+
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-<%--                        <li><a class="dropdown-item" href="#">회원 탈퇴</a></li>--%>
+                            <%--                        <li><a class="dropdown-item" href="#">회원 탈퇴</a></li>--%>
                         </c:if>
 
-                 <c:if test="${sessionScope.loginId == null }">
-                        <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/member/login.do">로그인</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
-                        </li>
-                 </c:if>
+                        <c:if test="${sessionScope.loginId == null }">
+                            <li class="nav-item">
+                                <a class="nav-link" href="${pageContext.request.contextPath}/member/login.do">로그인</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
+                            </li>
+                        </c:if>
                     </ul>
                 </li>
                 <%--                <li class="nav-item">--%>

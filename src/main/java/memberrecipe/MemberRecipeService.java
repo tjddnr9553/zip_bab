@@ -64,6 +64,31 @@ public class MemberRecipeService {
         SqlSession session = sqlSessionFactory.openSession();
         MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
         dao.addMemberRecipe(memberRecipe);
+        session.commit();
+        session.close();
+    }
+
+    public void delMemberRecipe(int memberRecipeId) {
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
+        dao.delete(memberRecipeId);
+        session.commit();
+        session.close();
+    }
+
+    public void editMemberRecipe(MemberRecipe memberRecipe) {
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
+        dao.edit(memberRecipe);
+        session.commit();
+        session.close();
+    }
+
+    public void editMemberRecipeImg(MemberRecipe memberRecipe) {
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
+        dao.updateImg(memberRecipe);
+        session.commit();
         session.close();
     }
 }

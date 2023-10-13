@@ -1,20 +1,24 @@
 package memberrecipe.handler;
 
 import handler.Handler;
-import recipe.Recipe;
-import recipe.RecipeService;
+import memberrecipe.MemberRecipe;
+import memberrecipe.MemberRecipeService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
+import java.util.List;
 
 public class ListHandler implements Handler {
 
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) {
-        RecipeService service = new RecipeService();
-        ArrayList<Recipe> list = service.getAll();
-        request.setAttribute("list",list);
-        return "/recipe/test.jsp";
+        String path = request.getServletContext().getRealPath("/images/memberrecipe/");
+        MemberRecipeService service = new MemberRecipeService();
+        List<MemberRecipe> list = service.getAll();
+        request.setAttribute("path", path);
+        request.setAttribute("list", list);
+        request.setAttribute("view", "/memberrecipe/list.jsp");
+
+        return "/index.jsp";
     }
 }
