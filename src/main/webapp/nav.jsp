@@ -19,6 +19,7 @@
                 <%--                    <a class="nav-link active" aria-current="page" href="#">집밥</a>--%>
                 <%--                </li>--%>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=1">레시피
                         보기</a>
                 </li>
@@ -26,9 +27,13 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/memberrecipe/list.do?pageNum=1">유저 레시피
                         보기</a>
                 </li>
+=======
+                    <a class="nav-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=1">레시피 보기</a>
+                </li>&emsp;
+>>>>>>> master
                 <li class="nav-item">
                     <a class="nav-link" href="#">재료 보기</a>
-                </li>
+                </li>&emsp;
 
                 <c:if test="${sessionScope.loginId != null }">
                 <li class="nav-item dropdown">
@@ -37,11 +42,17 @@
                             ${sessionScope.loginId.getNickname()}
                     </a>
                     <ul class="dropdown-menu">
+<<<<<<< HEAD
                         <li><a class="dropdown-item"
                                href="${pageContext.request.contextPath}/member/edit.do?loginId=${sessionScope.loginId.getLoginId()}">수정페이지</a>
                         </li>
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/out.do">로그아웃</a>
                         </li>
+=======
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/follow/mypage.do?loginId=${sessionScope.loginId.loginId}">마이페이지</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/edit.do?loginId=${sessionScope.loginId.getLoginId()}">수정페이지</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/out.do">로그아웃</a></li>
+>>>>>>> master
                         <li>
                             <hr class="dropdown-divider">
                         </li>

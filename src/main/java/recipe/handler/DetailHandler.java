@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -74,49 +75,8 @@ public class DetailHandler implements Handler {
                 ingredient.add(wordMatcher.group().trim());
             }
         }
-
-//        if (input.startsWith("●")) {
-//            String[] splitInput = input.split("●");
-//            for (String str : splitInput) {
-//                if (!str.trim().isEmpty()) {
-//                    String[] colonSplit = str.split(":");
-//                    if (colonSplit.length > 1) {
-//                        String[] commaSplit = colonSplit[1].split(",");
-//                        for (String s : commaSplit) {
-//                            ingredient.add(s.trim());
-//                        }
-//                    }
-//                }
-//            }
-//        } else if (input.startsWith("•")) {
-//            String[] splitInput = input.split("•");
-//            for (String str : splitInput) {
-//                if (!str.trim().isEmpty()) {
-//                    String[] colonSplit = str.split(":");
-//                    if (colonSplit.length > 1) {
-//                        String[] commaSplit = colonSplit[1].split(",");
-//                        for (String s : commaSplit) {
-//                            ingredient.add(s.trim());
-//                        }
-//                    }
-//                }
-//            }
-//        } else {
-//            String[] enterSplit = input.split("\n");
-//            for (String str : enterSplit) {
-//                if (!str.trim().isEmpty()) {
-//                    String[] colonSplit = str.split(":");
-//                    if (colonSplit.length > 1) {
-//                        String[] commaSplit = colonSplit[1].split(",");
-//                        for (String s : commaSplit) {
-//                            ingredient.add(s.trim());
-//                        }
-//                    }
-//                }
-//            }
-//        }
-
-        ArrayList<ReviewMember> reviews = rService.getReviewMember(id);
+        List<ReviewMember> reviews = rService.getReviewMember(id);
+      
         request.setAttribute("ingredient", ingredient);
         request.setAttribute("r", r);
         request.setAttribute("reviews", reviews);

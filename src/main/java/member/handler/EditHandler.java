@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import handler.Handler;
+import lombok.extern.slf4j.Slf4j;
 import member.Member;
 import member.MemberService;
 
@@ -14,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 
+@Slf4j
 public class EditHandler implements Handler {
     //private final String path = "C:\\Users\\김현주\\OneDrive\\바탕 화면\\집밥\\zip_bab\\src\\main\\webapp\\images\\profile";
     @Override
@@ -29,7 +31,9 @@ public class EditHandler implements Handler {
         MemberService service = new MemberService();
         if (request.getMethod().equals("GET")) {
             String loginId = request.getParameter("loginId");
+            log.info("loginId : {}", loginId);
             Member m = service.getMember(loginId);
+            log.info("member : {}", m);
             request.setAttribute("m", m);
             request.setAttribute("view", "/member/edit.jsp");
         } else {

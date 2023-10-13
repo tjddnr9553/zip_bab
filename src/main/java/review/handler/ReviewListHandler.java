@@ -6,7 +6,7 @@ import review.ReviewService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
+import java.util.List;
 
 public class ReviewListHandler implements Handler {
     @Override
@@ -14,7 +14,7 @@ public class ReviewListHandler implements Handler {
         String view = "/index.jsp";
         ReviewService service = new ReviewService();
         if (request.getMethod().equals("GET")) {
-            ArrayList<Review> list = service.getAll();
+            List<Review> list = service.getAll();
             Review r = list.get(0);
             request.setAttribute("r", r);
 
