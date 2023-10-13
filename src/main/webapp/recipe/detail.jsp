@@ -9,35 +9,66 @@
 </head>
 <body data-context-path="${pageContext.request.contextPath }" data-recipe-id="${r.recipeId }" data-recipe-img="${r.completePicture }">
 <div class="container">
-   <br/><h2>${r.title }</h2><br/>
+   <br/><h2>${r.title }</h2>
     <div class="grid-container">
+        <div class="container mt-3">
         <div class="grid-item">
-            <h3 id="ingredient"><span class="badge bg-secondary">🔘 재 료 목 록</span></h3>
+            <button type="button" class="btn btn-success" data-bs-toggle="collapse" data-bs-target="#col1"><h5 id="ingredient"><strong><i class="bi bi-card-list"></i>&nbsp; 재 료 목 록</strong></h5></button>
+                <div class="collapse" id="col1">
+                    <c:forEach var="ingredient" items="${ingredient}">
+                       <c:if test="${not empty ingredient}">
+                           <h5><p><strong><li><a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}">${ingredient}</a></li></strong></p></h5>
+                       </c:if>
+                   </c:forEach>
+                </div>
+            </div>
+        <div class="grid-item">
+            <button type="button" class="btn btn-success" data-bs-toggle="collapse" data-bs-target="#col2"><h5 id="calorie"><strong><i class="bi bi-fire" style="color:red;"></i>&nbsp; 열 량</strong></h5></button>
+                <div class="collapse" id="col2">
+                    <h5><strong>${r.calorie } kcal</strong></h5>
+                </div>
         </div>
         <div class="grid-item">
-            <h3 id="calorie"><span class="badge bg-secondary">🔘 열 량</span></h3>
+            <button type="button" class="btn btn-success" data-bs-toggle="collapse" data-bs-target="#col3"><h5 id="way"><strong><i class="bi bi-book-half"></i>&nbsp; 요 리 종 류</strong></h5></button>
+                <div class="collapse" id="col3">
+                    <h5><strong>${r.way }</strong></h5>
+                </div>
         </div>
-        <div class="grid-item">
-            <h3 id="way"><span class="badge bg-secondary">🔘 조 리 방 법</span></h3>
-        </div>
-        <div><c:forEach var="ingredient" items="${ingredient}">
-                   <c:if test="${not empty ingredient}">
-                       <h6><p><strong><li><a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}">${ingredient}</a></li></strong></p></h6>
-                   </c:if>
-               </c:forEach></div>
-            <div><h6><strong>${r.calorie } kcal</strong></h6></div>
-            <div><h6><strong>${r.way }</strong></h6></div>
     </div>
-  <br/><h3 id="manual"><span class="badge bg-secondary">🔘 조 리 방 법</span></h3>
- <div><img src="${r.manual_img_01}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-01">&emsp; ${r.manual_01}</div>
- <div><img src="${r.manual_img_02}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-02">&emsp; ${r.manual_02}</div>
- <div><img src="${r.manual_img_03}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-03">&emsp; ${r.manual_03}</div>
- <div><img src="${r.manual_img_04}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-04">&emsp; ${r.manual_04}</div>
- <div><img src="${r.manual_img_05}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-05">&emsp; ${r.manual_05}</div>
- <div><img src="${r.manual_img_06}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-06">&emsp; ${r.manual_06}</div>
- <br/>
- <h3 id="comPic"><span class="badge bg-secondary">🔘 완 성 사 진</span></h3>
- <div><img src="${r.completePicture}" class="img-rounded" alt=/" style="width:500px; height:400px;"></div><br/>
+    </div>
+    <div class="img-box">
+        <h3 id="manual"><span class="badge">조 리 방 법</span></h3>
+         <div>
+         <img src="${r.manual_img_01}" class="img-rounded" onerror="this.style.display='none'" alt="" class="img-thumbnail" id="image-01">
+         <span class="badge text-wrap" style="width: 60rem; text-align:left;">${r.manual_01}</span>
+         </div>
+         <div>
+         <img src="${r.manual_img_02}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-02">
+         <span class="badge text-wrap" style="width: 60rem;">${r.manual_02}</span>
+         </div>
+         <div>
+         <img src="${r.manual_img_03}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-03">
+         <span class="badge text-wrap" style="width: 60rem;">${r.manual_03}</span>
+         </div>
+         <div>
+         <img src="${r.manual_img_04}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-04">
+         <span class="badge text-wrap" style="width: 60rem;">${r.manual_04}</span>
+         </div>
+         <div>
+         <img src="${r.manual_img_05}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-05">
+         <span class="badge text-wrap" style="width: 60rem;">${r.manual_05}</span>
+         </div>
+         <div>
+         <img src="${r.manual_img_06}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-06">
+         <span class="badge text-wrap" style="width: 60rem;">${r.manual_06}</span>
+         </div>
+    </div>
+    <div class="img-box">
+        <h3 id="comPic"><span class="badge">완 성 사 진</span></h3>
+        <div>
+        <img src="${r.completePicture}" class="img-rounded" alt=/" style="width:500px; height:400px;">
+        </div>
+    </div>
 
   <%-- 후기 --%>
   <div id="review-container">
