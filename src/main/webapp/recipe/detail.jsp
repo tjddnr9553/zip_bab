@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/remote.css">
 </head>
 <body data-context-path="${pageContext.request.contextPath }" data-recipe-id="${r.recipeId }" data-recipe-img="${r.completePicture }">
-<div class="container">
+<div data-bs-spy="scroll" data-bs-target="#remote-controller" data-bs-smooth-scroll="true" class="scrollspy-example container" tabindex="0">
    <br/><h2>${r.title }</h2>
     <div class="grid-container">
         <div class="container mt-3">
@@ -141,25 +141,18 @@
 </div>
 
 <%-- remote --%>
-<div id="floatdiv" style="text-align:center;">
-<ul>
-<a href="#ingredient" style="background-color:pink;">재 료 목 록</a>
-</ul>
-<ul>
-<a href="#manual" style="background-color:pink;">조 리 방 법</a>
-</ul>
-<ul>
-<a href="#comPic" style="background-color:pink;">완 성 사 진</a>
-</ul>
-<ul>
-<a href='#review' style="background-color:pink;">후 기 보 기</a>
-</ul>
+<div id="float-div" class="d-flex gap-2">
+  <div id="remote-controller" class="text-center list-group">
+    <a href="#ingredient" class="list-group-item list-group-item-action">재 료 목 록</a>
+    <a href="#manual" class="list-group-item list-group-item-action">조 리 방 법</a>
+    <a href="#comPic" class="list-group-item list-group-item-action">완 성 사 진</a>
+    <a href="#review" class="list-group-item list-group-item-action">후 기 보 기</a>
+  </div>
+  <div id="view-history" class="">
+
+  </div>
 </div>
 
-<%-- view history --%>
-<div id="viewHistory">
-
-</div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/recipe/js/detail_view_history.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/recipe/js/review.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/recipe/js/review_like.js"></script>

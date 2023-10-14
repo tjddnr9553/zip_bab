@@ -19,6 +19,8 @@
 a {
     color: black;
 }
+
+/* 후기 프로필 사진*/
 .profile-img,
 .profile-img img {
     width:50px;

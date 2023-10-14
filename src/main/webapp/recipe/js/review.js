@@ -1,4 +1,3 @@
-let contextPath = document.body.dataset.contextPath
 const wrBtn = document.getElementById('write-review')
 wrBtn.addEventListener('click', (event) => {
     const wrFormDiv = document.getElementById('write-review-form')
@@ -52,7 +51,6 @@ const delForms = document.querySelectorAll('.del-review-form')
 delForms.forEach((ele) => {
     ele.addEventListener('submit', (event) => {
         event.preventDefault()
-        console.log("1111")
         let req = new XMLHttpRequest()
         let recipeId = ele.recipeId.value
         let reviewId = ele.reviewId.value
