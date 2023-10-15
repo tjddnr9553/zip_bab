@@ -14,7 +14,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+            <ul class="navbar-nav mb-2 mb-sm-0 w-100">
                 <%--                <li class="nav-item">--%>
                 <%--                    <a class="nav-link active" aria-current="page" href="#">집밥</a>--%>
                 <%--                </li>--%>
@@ -31,31 +31,35 @@
                 </li>&emsp;
 
                 <c:if test="${sessionScope.loginId != null }">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                            ${sessionScope.loginId.getNickname()}
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/follow/mypage.do?loginId=${sessionScope.loginId.loginId}&memberId=${sessionScope.loginId.memberId}">마이페이지</a></li>
-                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/out.do">로그아웃</a></li>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                            <%--                        <li><a class="dropdown-item" href="#">회원 탈퇴</a></li>--%>
-                        </c:if>
-
-                        <c:if test="${sessionScope.loginId == null }">
-                            <li class="nav-item">
-                                <a class="nav-link" href="${pageContext.request.contextPath}/member/login.do">로그인</a>
+                    <li class="nav-item dropdown ms-auto">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                                ${sessionScope.loginId.nickname}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item"
+                                   href="${pageContext.request.contextPath}/follow/mypage.do?loginId=${sessionScope.loginId.loginId}">마이페이지</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
+                            <li><a class="dropdown-item"
+                                   href="${pageContext.request.contextPath}/member/out.do">로그아웃</a>
                             </li>
-                        </c:if>
-                    </ul>
-                </li>
+
+                                <%--                        <li>--%>
+                                <%--                            <hr class="dropdown-divider">--%>
+                                <%--                        </li>--%>
+                                <%--                        <li><a class="dropdown-item" href="#">회원 탈퇴</a></li>--%>
+                        </ul>
+                    </li>
+                </c:if>
+
+                <c:if test="${sessionScope.loginId == null }">
+                    <li class="nav-item ms-auto">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/member/login.do">로그인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
+                    </li>
+                </c:if>
                 <%--                <li class="nav-item">--%>
                 <%--                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>--%>
                 <%--                </li>--%>

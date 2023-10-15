@@ -8,7 +8,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>유저 레시피 수정</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#ef").hide();
@@ -111,7 +110,7 @@
             <th>사진1</th>
             <td>
                 <c:if test="${not empty memberRecipe.manual_img_01}">
-                    <img src="/images/memberrecipe/${memberRecipe.manual_img_01 }" style="width:200px;height:200px">
+                    <img src="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.manual_img_01 }" style="width:200px;height:200px">
                     <input type="button" value="변경" class="imgedit" val="manual_img_1">
                     <input type="button" value="삭제" class="imgdel" val="manual_img_1">
                 </c:if>
@@ -125,7 +124,7 @@
             <th>사진2</th>
             <td>
                 <c:if test="${not empty memberRecipe.manual_img_02}">
-                    <img src="/images/memberrecipe/${memberRecipe.manual_img_02 }" style="width:200px;height:200px">
+                    <img src="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.manual_img_02 }" style="width:200px;height:200px">
                     <input type="button" value="변경" class="imgedit" val="manual_img_2">
                     <input type="button" value="삭제" class="imgdel" val="manual_img_2">
                 </c:if>
@@ -139,7 +138,7 @@
             <th>사진3</th>
             <td>
                 <c:if test="${not empty memberRecipe.manual_img_03}">
-                    <img src="/images/memberrecipe/${memberRecipe.manual_img_03 }" style="width:200px;height:200px">
+                    <img src="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.manual_img_03 }" style="width:200px;height:200px">
                     <input type="button" value="변경" class="imgedit" val="manual_img_3">
                     <input type="button" value="삭제" class="imgdel" val="manual_img_3">
                 </c:if>
@@ -153,7 +152,7 @@
             <th>사진4</th>
             <td>
                 <c:if test="${not empty memberRecipe.manual_img_04}">
-                    <img src="/images/memberrecipe/${memberRecipe.manual_img_04 }" style="width:200px;height:200px">
+                    <img src="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.manual_img_04 }" style="width:200px;height:200px">
                     <input type="button" value="변경" class="imgedit" val="manual_img_4">
                     <input type="button" value="삭제" class="imgdel" val="manual_img_4">
                 </c:if>
@@ -167,7 +166,7 @@
             <th>사진5</th>
             <td>
                 <c:if test="${not empty memberRecipe.manual_img_05}">
-                    <img src="/images/memberrecipe/${memberRecipe.manual_img_05 }" style="width:200px;height:200px">
+                    <img src="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.manual_img_05 }" style="width:200px;height:200px">
                     <input type="button" value="변경" class="imgedit" val="manual_img_5">
                     <input type="button" value="삭제" class="imgdel" val="manual_img_5">
                 </c:if>
@@ -181,7 +180,7 @@
             <th>사진6</th>
             <td>
                 <c:if test="${not empty memberRecipe.manual_img_06}">
-                    <img src="/images/memberrecipe/${memberRecipe.manual_img_06 }" style="width:200px;height:200px">
+                    <img src="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.manual_img_06 }" style="width:200px;height:200px">
                     <input type="button" value="변경" class="imgedit" val="manual_img_6">
                     <input type="button" value="삭제" class="imgdel" val="manual_img_6">
                 </c:if>
@@ -195,8 +194,8 @@
             <th>사진7</th>
             <td>
                 <c:if test="${not empty memberRecipe.manual_img_07}">
-                    <img src="/images/memberrecipe/${memberRecipe.manual_img_07 }" style="width:200px;height:200px">
-                    <%--                    <input type="file" name="manual_img_07" value="/images/memberrecipe/${memberRecipe.manual_img_07 }">--%>
+                    <img src="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.manual_img_07 }" style="width:200px;height:200px">
+                    <%--                    <input type="file" name="manual_img_07" value="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.manual_img_07 }">--%>
                     <input type="button" value="변경" class="imgedit" val="manual_img_7">
                     <input type="button" value="삭제" class="imgdel" val="manual_img_7">
                 </c:if>
@@ -210,7 +209,7 @@
             <th>사진8</th>
             <td>
                 <c:if test="${not empty memberRecipe.manual_img_08}">
-                    <img src="/images/memberrecipe/${memberRecipe.manual_img_08 }" style="width:200px;height:200px">
+                    <img src="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.manual_img_08 }" style="width:200px;height:200px">
                     <input type="button" value="변경" class="imgedit" val="manual_img_8">
                     <input type="button" value="삭제" class="imgdel" val="manual_img_8">
                 </c:if>
@@ -224,7 +223,7 @@
             <th>사진9</th>
             <td>
                 <c:if test="${not empty memberRecipe.manual_img_09}">
-                    <img src="/images/memberrecipe/${memberRecipe.manual_img_09 }" style="width:200px;height:200px">
+                    <img src="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.manual_img_09 }" style="width:200px;height:200px">
                     <input type="button" value="변경" class="imgedit" val="manual_img_9">
                     <input type="button" value="삭제" class="imgdel" val="manual_img_9">
                 </c:if>
@@ -238,7 +237,7 @@
             <th>사진10</th>
             <td>
                 <c:if test="${not empty memberRecipe.manual_img_10}">
-                    <img src="/images/memberrecipe/${memberRecipe.manual_img_10}" style="width:200px;height:200px">
+                    <img src="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.manual_img_10}" style="width:200px;height:200px">
                     <input type="button" value="변경" class="imgedit" val="manual_img_10">
                     <input type="button" value="삭제" class="imgdel" val="manual_img_10">
                 </c:if>
@@ -252,7 +251,7 @@
             <th>사진11</th>
             <td>
                 <c:if test="${not empty memberRecipe.manual_img_11}">
-                    <img src="/images/memberrecipe/${memberRecipe.manual_img_11}" style="width:200px;height:200px">
+                    <img src="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.manual_img_11}" style="width:200px;height:200px">
                     <input type="button" value="변경" class="imgedit" val="manual_img_11">
                     <input type="button" value="삭제" class="imgdel" val="manual_img_11">
                 </c:if>
@@ -266,7 +265,7 @@
             <th>사진12</th>
             <td>
                 <c:if test="${not empty memberRecipe.manual_img_12}">
-                    <img src="/images/memberrecipe/${memberRecipe.manual_img_12 }" style="width:200px;height:200px">
+                    <img src="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.manual_img_12 }" style="width:200px;height:200px">
                     <input type="button" value="변경" class="imgedit" val="manual_img_12">
                     <input type="button" value="삭제" class="imgdel" val="manual_img_12">
                 </c:if>
@@ -280,7 +279,7 @@
             <th>완성 사진</th>
             <td>
                 <c:if test="${not empty memberRecipe.completePicture}">
-                    <img src="/images/memberrecipe/${memberRecipe.completePicture }" style="width:200px;height:200px">
+                    <img src="${pageContext.request.contextPath}/images/memberrecipe/${memberRecipe.completePicture }" style="width:200px;height:200px">
                     <input type="button" value="변경" class="imgedit" val="manual_img_13">
                     <input type="button" value="삭제" class="imgdel" val="manual_img_13">
                 </c:if>
