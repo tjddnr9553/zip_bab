@@ -1,41 +1,45 @@
 #wrapper-main {
-  position: relative;
-  height: auto;
-  min-height: 100vh;
+    position: relative;
+    height: auto;
+    min-height: 100vh;
 }
 
 .main-image-container {
-        position: relative;
-        width: 100%;
-        height: 100vh; /* 높이를 뷰포트의 높이로 설정 */
-    }
+    position: relative;
+    width: 100%;
+    height: 100vh; /* 높이를 뷰포트의 높이로 설정 */
+}
 
-    .main-image-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* 이미지 비율 유지 */
-        transition: filter 0.3s ease-in-out; /* 부드럽게 필터 효과 전환 */
-    }
+.main-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율 유지 */
+    transition: filter 0.3s ease-in-out; /* 부드럽게 필터 효과 전환 */
+}
 
-    .main-image-container img:hover {
-      filter: blur(6px); /* 마우스 호버 시 블러 효과 적용 */
-    }
+.main-image-container img:hover {
+    filter: blur(6px); /* 마우스 호버 시 블러 효과 적용 */
+}
 
-    .main-text {
-       position: absolute;
-       top: 50%;
-       left: 50%;
-       transform-origin:center center;
-       transform-style:preserve-3d;
-       transform : translate(-50%, -50%);
-       color:white;
-       text-align:center;
-   }
+.main-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
 
-   .main-text h1,strong,p{
-     transition : transform 0.5s ease-in-out;
-   }
+.main-text h1,
+.main-text h1 strong,
+.main-text h1 p {
+    transition: transform 0.5s ease-in-out;
+}
 
-   .main-text:hover h1,strong,p{
-     transform : scale(2.5);
-   }
+.main-text:hover h1,
+.main-text:hover strong,
+.main-text:hover p {
+    transform: scale(2.5);
+}

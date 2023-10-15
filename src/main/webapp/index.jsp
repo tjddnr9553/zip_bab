@@ -18,6 +18,7 @@
     <%-- favicon --%>
     <link rel="icon" href="<c:url value='/images/logo/favicon.png'/>">
 
+    <link rel="stylesheet" href="<c:url value='/css/base.css'/>"/>
     <link rel="stylesheet" href="<c:url value='/css/index.css'/>"/>
 </head>
 <body>
