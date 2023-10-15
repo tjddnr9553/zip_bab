@@ -27,17 +27,21 @@
 
 <!-- 메인화면 -->
 
-<!-- <main id="wrapper-main"> -->
-<c:if test="${view == null}">
-      <div class="main-image-container">
+<main id="wrapper-main">
+    <c:if test="${view == null}">
+        <div class="main-image-container">
             <img src="${pageContext.request.contextPath }/images/main/main.jpg" alt="Main image">
             <div class="main-text">
-           <a class="nav-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=1">
-                <h1><strong>환영합니다!<br/><h3>ZipBab에서 맛있는 레시피를 발견하세요.</h3></strong></h1>
-            </a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=1">
+                    <h1><strong>환영합니다!<br/>
+                        <h3>ZipBab에서 맛있는 레시피를 발견하세요.</h3></strong></h1>
+                </a>
             </div>
         </div>
-</c:if>
+    </c:if>
+    <c:if test="${not empty view}">
+        <jsp:include page="${view }"/>
+    </c:if>
     <%--    <a href="${pageContext.request.contextPath }/member/login.do">로그인</a>--%>
     <%--  <a href="${pageContext.request.contextPath}/member/join.do">회원가입</a><br/>--%>
     <%--    <a href="${pageContext.request.contextPath }/member/edit.do?id=${sessionScope.loginId}">내정보</a><br/>--%>
@@ -45,10 +49,7 @@
     <%--    <form action="${pageContext.request.contextPath }/member/out.do?id=${sessionScope.loginId}" method="post">--%>
     <%--        <button>탈퇴</button>--%>
     <%--    </form>--%>
-    <c:if test="${view != null}">
-        <jsp:include page="${view }"/>
-    </c:if>
-<!-- </main> -->
+</main>
 
 <!-- footer -->
 <%@ include file="footer.jsp" %>
