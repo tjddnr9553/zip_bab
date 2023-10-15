@@ -14,8 +14,8 @@
     <table border="1">
         <tr>
             <th>memberId</th>
-<%--            <td><input type="hidden" name="memberId" value="${sessionScope.loginId }" readonly></td>--%>
-            <td><input type="hidden" name="memberId" value="1" readonly></td>
+            <td><input type="hidden" name="memberId" value="${sessionScope.loginId.memberId }" readonly></td>
+<%--            <td><input type="hidden" name="memberId" value="1" readonly></td>--%>
         </tr>
         <tr>
             <th>title</th>

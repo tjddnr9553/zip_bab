@@ -1,9 +1,5 @@
 package member.handler;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import handler.Handler;
@@ -11,9 +7,11 @@ import lombok.extern.slf4j.Slf4j;
 import member.Member;
 import member.MemberService;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 
 @Slf4j
 public class EditHandler implements Handler {
@@ -25,6 +23,11 @@ public class EditHandler implements Handler {
         String path = context.getRealPath("/images/profile/");
 
         System.out.println("path = " + path);
+
+        File directory = new File(path);
+        if (!directory.exists()){
+            directory.mkdirs();
+        }
 
         String view = "/index.jsp";
 

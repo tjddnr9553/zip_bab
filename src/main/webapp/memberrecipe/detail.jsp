@@ -21,11 +21,11 @@
     <h2>${r.title }</h2><br/>
     <c:if test="${sessionScope.loginId.memberId eq r.memberId}">
         <button type="button" class="btn btn-primary"
-                onclick="location.href='/memberrecipe/delete.do?memberRecipeId='+${r.memberRecipeId}">
+                onclick="location.href='${pageContext.request.contextPath }/memberrecipe/delete.do?memberRecipeId='+${r.memberRecipeId}">
             삭제하기
         </button>
         <button type="button" class="btn btn-primary"
-                onclick="location.href='/memberrecipe/edit.do?memberRecipeId='+${r.memberRecipeId}">
+                onclick="location.href='${pageContext.request.contextPath }/memberrecipe/edit.do?memberRecipeId='+${r.memberRecipeId}">
             수정하기
         </button>
     </c:if>
@@ -48,21 +48,21 @@
     </div>
     <br/>
     <h3 id="manual"><span class="badge bg-secondary">🔘 조 리 방 법</span></h3>
-    <div><img src="/images/memberrecipe/${r.manual_img_01}" class="img-rounded" onerror="this.style.display='none'" alt=/"
+    <div><img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_01}" class="img-rounded" onerror="this.style.display='none'" alt=/"
               class="img-thumbnail" id="image-01">&emsp; ${r.manual_01}</div>
-    <div><img src="/images/memberrecipe/${r.manual_img_02}" class="img-rounded" onerror="this.style.display='none'" alt=/"
+    <div><img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_02}" class="img-rounded" onerror="this.style.display='none'" alt=/"
               class="img-thumbnail" id="image-02">&emsp; ${r.manual_02}</div>
-    <div><img src="/images/memberrecipe/${r.manual_img_03}" class="img-rounded" onerror="this.style.display='none'" alt=/"
+    <div><img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_03}" class="img-rounded" onerror="this.style.display='none'" alt=/"
               class="img-thumbnail" id="image-03">&emsp; ${r.manual_03}</div>
-    <div><img src="/images/memberrecipe/${r.manual_img_04}" class="img-rounded" onerror="this.style.display='none'" alt=/"
+    <div><img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_04}" class="img-rounded" onerror="this.style.display='none'" alt=/"
               class="img-thumbnail" id="image-04">&emsp; ${r.manual_04}</div>
-    <div><img src="/images/memberrecipe/${r.manual_img_05}" class="img-rounded" onerror="this.style.display='none'" alt=/"
+    <div><img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_05}" class="img-rounded" onerror="this.style.display='none'" alt=/"
               class="img-thumbnail" id="image-05">&emsp; ${r.manual_05}</div>
-    <div><img src="/images/memberrecipe/${r.manual_img_06}" class="img-rounded" onerror="this.style.display='none'" alt=/"
+    <div><img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_06}" class="img-rounded" onerror="this.style.display='none'" alt=/"
               class="img-thumbnail" id="image-06">&emsp; ${r.manual_06}</div>
     <br/>
     <h3 id="comPic"><span class="badge bg-secondary">🔘 완 성 사 진</span></h3>
-    <div><img src="/images/memberrecipe/${r.completePicture}" class="img-rounded" alt=/" style="width:500px; height:400px;"></div>
+    <div><img src="${pageContext.request.contextPath}/images/memberrecipe/${r.completePicture}" class="img-rounded" alt=/" style="width:500px; height:400px;"></div>
     <br/>
 
     <h3 id="review"><span class="badge bg-secondary">🔘 후 기</span></h3>

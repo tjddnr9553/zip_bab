@@ -23,6 +23,10 @@ public class AddHandler implements Handler {
         } else {
             try {
                 String path = request.getServletContext().getRealPath("/images/memberrecipe/");
+                File directory = new File(path);
+                if (!directory.exists()){
+                    directory.mkdirs();
+                }
                 MultipartRequest req = new MultipartRequest(request, path, size, "utf-8", new DefaultFileRenamePolicy());
                 File[] f = {req.getFile("img1"), req.getFile("img2"), req.getFile("img3"), req.getFile("img4"),
                         req.getFile("img5"), req.getFile("img6"), req.getFile("img7"), req.getFile("img8"),
