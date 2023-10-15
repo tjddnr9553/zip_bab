@@ -37,7 +37,7 @@
                             ${sessionScope.loginId.getNickname()}
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/follow/mypage.do?loginId=${sessionScope.loginId.loginId}">마이페이지</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/follow/mypage.do?loginId=${sessionScope.loginId.loginId}&memberId=${sessionScope.loginId.memberId}">마이페이지</a></li>
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/out.do">로그아웃</a></li>
 
                         <li>
