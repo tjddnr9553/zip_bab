@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <meta charset="UTF-8">
-<nav class="navbar navbar-expand-sm bg-body-tertiary">
+<nav class="navbar navbar-expand-md bg-body-tertiary">
     <div class="container-fluid">
         <div class="d-inline-block" style="width:40px;">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/">
