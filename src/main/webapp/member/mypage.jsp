@@ -5,6 +5,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/css/mypage.css">
     <title>Insert title here</title>
 
     <script type="text/javascript">
@@ -42,6 +44,37 @@
     <input type="button" value="프로필편집" onclick="editProfile()">
     </c:if>
 
+<c:if test="${rlist != null}">
+    <h3>북마크 목록</h3>
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <c:forEach var="r" items="${rlist}" varStatus="loop">
+                  <div class="swiper-slide">
+                    <a href="${pageContext.request.contextPath}/recipe/detail.do?recipeId=${r.recipeId}">
+                      <img src="${r.completePicture}" style="width:200px; height:200px;" class="border rounded" alt="${pageContext.request.contextPath }/images/recipe/default.jpg">
+                    </a>
+                  </div>
+                </c:forEach>
+              </div>
+            <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            </div>
+            <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+            <script>
+            var swiper = new Swiper('.swiper-container', {
+              slidesPerView: 6,
+              spaceBetween: 100,
+
+               navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+               },
+            });
+
+            document.querySelector('.swiper-button-next').style.top = 350 + 'px';
+            document.querySelector('.swiper-button-prev').style.top = 350 + 'px';
+            </script>
+</c:if>
 </body>
 </html>
 

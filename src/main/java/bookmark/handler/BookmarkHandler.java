@@ -21,6 +21,7 @@ public class BookmarkHandler implements Handler {
         int currentPage = Integer.parseInt(request.getParameter("pageNum"));
         int recipeId = Integer.parseInt(request.getParameter("recipeId"));
         int memberId = ((Member)session.getAttribute("loginId")).getMemberId();
+        String url = request.getContextPath()+"/recipe/listByPage.do?pageNum="+currentPage;
         BookmarkService service = new BookmarkService();
         RecipeService rservice = new RecipeService();
         Recipe r = rservice.getById(recipeId);
@@ -32,7 +33,7 @@ public class BookmarkHandler implements Handler {
                 PrintWriter w = null;
                 w = response.getWriter();
                 String msg = r.getTitle()+" 레시피가 북마크에 추가됐습니다.";
-                w.write("<script>alert('"+msg+"');history.go(-1);</script>");
+                w.write("<script>alert('"+msg+"');location.href='"+url+"';</script>");
                 w.flush();
                 w.close();
             } catch (IOException e) {
@@ -45,7 +46,7 @@ public class BookmarkHandler implements Handler {
                 PrintWriter w = null;
                 w = response.getWriter();
                 String msg = r.getTitle()+" 레시피가 북마크에서 삭제됐습니다.";
-                w.write("<script>alert('"+msg+"');history.go(-1);</script>");
+                w.write("<script>alert('"+msg+"');location.href='"+url+"';</script>");
                 w.flush();
                 w.close();
             } catch (IOException e) {
