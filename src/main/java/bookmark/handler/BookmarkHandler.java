@@ -31,34 +31,14 @@ public class BookmarkHandler implements Handler {
         Recipe r = rservice.getById(recipeId);
         Bookmark b = service.checkBookmark(recipeId, memberId);
 
-
         if (b == null) {
-            try {
                 service.addBookmark(new Bookmark(0, recipeId, memberId));
-                response.setContentType("text/html; charset=utf-8");
-                PrintWriter w = response.getWriter();
                 String msg = r.getTitle() + " 레시피가 북마크에 추가됐습니다.";
-                w.write("<script>alert('" + msg + "'); window.location.href='" + url + "';</script>");
-                w.flush();
-                w.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+                return "responsebody/<script>alert('" + msg + "'); window.location.href='" + url + "';</script>";
         } else {
-            try {
-                service.delBookmark(recipeId, memberId);
-                response.setContentType("text/html; charset=utf-8");
-                PrintWriter w = response.getWriter();
-                String msg = r.getTitle() + " 레시피가 북마크에서 삭제됐습니다.";
-                w.write("<script>alert('" + msg + "'); window.location.href='" + url + "';</script>");
-                w.flush();
-                w.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            service.delBookmark(recipeId, memberId);
+            String msg = r.getTitle() + " 레시피가 북마크에서 삭제됐습니다.";
+            return "responsebody/<script>alert('" + msg + "'); window.location.href='" + url + "';</script>";
         }
-
-        request.setAttribute("view","redirect:/recipe/listByPage.do?pageNum="+currentPage);
-        return view;
     }
 }
