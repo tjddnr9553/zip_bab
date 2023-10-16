@@ -50,10 +50,10 @@ public class ListByPageHandler implements Handler {
         // list 분기
         String queryStr = "";
         if (Objects.nonNull(title) && !title.isEmpty()) {
-            list = service.getAllByTitle(endRow, startRow, title, memberId);
+            list = service.getAllByTitle(startRow, endRow, title, memberId);
             queryStr = "title=" + title;
         } else if (Objects.nonNull(ingredient) && !ingredient.isEmpty()) {
-            list = service.getAllByIngred(endRow, startRow, ingredient, memberId);
+            list = service.getAllByIngred(startRow, endRow, ingredient, memberId);
             queryStr = "ingredient=" + ingredient;
         } else if (Objects.nonNull(paramOrder) && !paramOrder.isEmpty()) {
             int order = Integer.parseInt(paramOrder);
@@ -65,7 +65,7 @@ public class ListByPageHandler implements Handler {
             list = service.getAllByPrefOrder(startRow, endRow, order, memberId);
             queryStr = "order=" + order;
         } else {
-            list = service.getAllByPage(endRow, startRow, memberId);
+            list = service.getAllByPage(startRow, endRow, memberId);
         }
 
         int totalPage = 0;

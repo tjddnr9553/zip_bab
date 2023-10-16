@@ -65,7 +65,7 @@ public interface RecipeDao {
     //전체 목록 (페이징 처리)
     @Select("SELECT " +
                 "c.*, " +
-                "(SELECT count(*) FROM \"Bookmark\" b WHERE b.\"memberId\" = #{memberId} AND b.\"recipeId\" = c.\"recipeId\") AS \"isBooked\", " +
+                "(SELECT COUNT(*) FROM \"Bookmark\" b WHERE b.\"memberId\" = #{memberId} AND b.\"recipeId\" = c.\"recipeId\") AS \"isBooked\", " +
                 "(SELECT COUNT(*) FROM \"Recipe\") AS \"totalCnt\" " +
             "FROM (" +
                 "SELECT a.*, ROWNUM rnum " +
@@ -74,14 +74,14 @@ public interface RecipeDao {
                     "FROM \"Recipe\" r " +
                     "FULL OUTER JOIN \"RecipePreference\" rp ON r.\"recipeId\" = rp.\"recipeId\" " +
                     "ORDER BY r.\"recipeId\") a " +
-                "WHERE ROWNUM <= #{pageNum}) c " + // 30
-            "WHERE c.rnum >= #{amount}") // 1
-    ArrayList<RecipePrefDto> selectAllByPage(@Param("pageNum") int pageNum, @Param("amount") int amount, @Param("memberId") int memberId);
+                "WHERE ROWNUM <= #{endRow}) c " +
+            "WHERE c.rnum >= #{startRow}")
+    ArrayList<RecipePrefDto> selectAllByPage(@Param("startRow") int startRow, @Param("endRow") int endRow, @Param("memberId") int memberId);
 
     // title 검색 (페이징 처리)
     @Select("SELECT " +
                 "c.*, " +
-                "(SELECT count(*) FROM \"Bookmark\" b WHERE b.\"memberId\" = #{memberId} AND b.\"recipeId\" = c.\"recipeId\") AS \"isBooked\", " +
+                "(SELECT COUNT(*) FROM \"Bookmark\" b WHERE b.\"memberId\" = #{memberId} AND b.\"recipeId\" = c.\"recipeId\") AS \"isBooked\", " +
                 "(SELECT COUNT(*) FROM \"Recipe\" WHERE \"title\" like '%'||#{title}||'%') AS \"totalCnt\" " +
             "FROM (" +
                 "SELECT a.*, ROWNUM rnum " +
@@ -91,14 +91,14 @@ public interface RecipeDao {
                     "FULL OUTER JOIN \"RecipePreference\" rp ON r.\"recipeId\" = rp.\"recipeId\" " +
                     "WHERE \"title\" like '%'||#{title}||'%' " +
                     "ORDER BY r.\"recipeId\") a " +
-                "WHERE ROWNUM <= #{pageNum}) c " + // 30
-            "WHERE c.rnum >= #{amount}") // 1
-    ArrayList<RecipePrefDto> selectAllByTitle(@Param("pageNum") int pageNum, @Param("amount") int amount, @Param("title") String title, @Param("memberId") int memberId);
+                "WHERE ROWNUM <= #{endRow}) c " +
+            "WHERE c.rnum >= #{startRow}")
+    ArrayList<RecipePrefDto> selectAllByTitle(@Param("startRow") int startRow, @Param("endRow") int endRow, @Param("title") String title, @Param("memberId") int memberId);
 
     // 재료 검색 (페이징 처리)
     @Select("SELECT " +
                 "c.*, " +
-                "(SELECT count(*) FROM \"Bookmark\" b WHERE b.\"memberId\" = #{memberId} AND b.\"recipeId\" = c.\"recipeId\") AS \"isBooked\", " +
+                "(SELECT COUNT(*) FROM \"Bookmark\" b WHERE b.\"memberId\" = #{memberId} AND b.\"recipeId\" = c.\"recipeId\") AS \"isBooked\", " +
                 "(SELECT COUNT(*) FROM \"Recipe\" WHERE \"ingredientInfo\" like '%'||#{ingredientInfo}||'%') AS \"totalCnt\" " +
             "FROM (" +
                 "SELECT a.*, ROWNUM rnum " +
@@ -108,14 +108,14 @@ public interface RecipeDao {
                     "FULL OUTER JOIN \"RecipePreference\" rp ON r.\"recipeId\" = rp.\"recipeId\" " +
                     "WHERE \"ingredientInfo\" like '%'||#{ingredientInfo}||'%' " +
                     "ORDER BY r.\"recipeId\") a " +
-                "WHERE ROWNUM <= #{pageNum}) c " + // 30
-            "WHERE c.rnum >= #{amount}") // 1
-    ArrayList<RecipePrefDto> selectAllByIngred(@Param("pageNum") int pageNum, @Param("amount") int amount, @Param("title") String ingredientInfo, @Param("memberId") int memberId);
+                "WHERE ROWNUM <= #{endRow}) c " + // 30
+            "WHERE c.rnum >= #{startRow}") // 1
+    ArrayList<RecipePrefDto> selectAllByIngred(@Param("startRow") int startRow, @Param("endRow") int endRow, @Param("title") String ingredientInfo, @Param("memberId") int memberId);
 
     // 선호도 정렬(페이징 처리)
     @Select("SELECT " +
                 "c.*, " +
-                "(SELECT count(*) FROM \"Bookmark\" b WHERE b.\"memberId\" = #{memberId} AND b.\"recipeId\" = c.\"recipeId\") AS \"isBooked\", " +
+                "(SELECT COUNT(*) FROM \"Bookmark\" b WHERE b.\"memberId\" = #{memberId} AND b.\"recipeId\" = c.\"recipeId\") AS \"isBooked\", " +
                 "(SELECT COUNT(*) FROM \"Recipe\") AS \"totalCnt\" " +
             "FROM (" +
                 "SELECT a.*, ROWNUM rnum " +
@@ -124,7 +124,7 @@ public interface RecipeDao {
                     "FROM \"Recipe\" r " +
                     "FULL OUTER JOIN \"RecipePreference\" rp ON r.\"recipeId\" = rp.\"recipeId\" " +
                     "ORDER BY ${order} DESC, 1) a " +
-                "WHERE ROWNUM <= #{pageNum}) c " +
-            "WHERE c.rnum >= #{amount}")
-    ArrayList<RecipePrefDto> selectAllByPrefOrder(@Param("pageNum") int pageNum, @Param("amount") int amount, @Param("order") int order, @Param("memberId") int memberId);
+                "WHERE ROWNUM <= #{endRow}) c " +
+            "WHERE c.rnum >= #{startRow}")
+    ArrayList<RecipePrefDto> selectAllByPrefOrder(@Param("startRow") int startRow, @Param("endRow") int endRow, @Param("order") int order, @Param("memberId") int memberId);
 }

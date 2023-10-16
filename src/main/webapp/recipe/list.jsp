@@ -56,7 +56,7 @@
                     <div class="card h-100" style="">
                         <a href="${pageContext.request.contextPath}/recipe/detail.do?recipeId=${r.recipeId}">
                             <img class="card-img-top img-fluid" src="${r.completePicture}"
-                                 alt="${pageContext.request.contextPath }/images/recipe/default.jpg"
+                                 alt="${pageContext.request.contextPath }/images/logo/z_no_image.png"
                                  style="height:220px;">
                         </a>
                         <div class="card-body">

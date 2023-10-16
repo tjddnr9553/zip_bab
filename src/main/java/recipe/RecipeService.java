@@ -96,26 +96,26 @@ public class RecipeService {
     }
 
     // 전체 목록 (페이징 처리)
-    public ArrayList<RecipePrefDto> getAllByPage(int pageNum, int amount, int memberId) {
+    public ArrayList<RecipePrefDto> getAllByPage(int startRow, int endRow, int memberId) {
         SqlSession session = sqlSessionFactory.openSession();
         RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
-        ArrayList<RecipePrefDto> list = dao.selectAllByPage(pageNum, amount, memberId);
+        ArrayList<RecipePrefDto> list = dao.selectAllByPage(startRow, endRow, memberId);
         session.close();
         return list;
     }
 
-    public ArrayList<RecipePrefDto> getAllByTitle(int endRow, int startRow, String title, int memberId) {
+    public ArrayList<RecipePrefDto> getAllByTitle(int startRow, int endRow, String title, int memberId) {
         SqlSession session = sqlSessionFactory.openSession();
         RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
-        ArrayList<RecipePrefDto> list = dao.selectAllByTitle(endRow, startRow, title, memberId);
+        ArrayList<RecipePrefDto> list = dao.selectAllByTitle(startRow, endRow, title, memberId);
         session.close();
         return list;
     }
 
-    public ArrayList<RecipePrefDto> getAllByIngred(int endRow, int startRow, String ingred, int memberId) {
+    public ArrayList<RecipePrefDto> getAllByIngred(int startRow, int endRow, String ingred, int memberId) {
         SqlSession session = sqlSessionFactory.openSession();
         RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
-        ArrayList<RecipePrefDto> list = dao.selectAllByIngred(endRow, startRow, ingred, memberId);
+        ArrayList<RecipePrefDto> list = dao.selectAllByIngred(startRow, endRow, ingred, memberId);
         session.close();
         return list;
     }
@@ -123,7 +123,7 @@ public class RecipeService {
     public ArrayList<RecipePrefDto> getAllByPrefOrder(int startRow, int endRow, int order, int memberId) {
         SqlSession session = sqlSessionFactory.openSession();
         RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
-        ArrayList<RecipePrefDto> list = dao.selectAllByPrefOrder(endRow, startRow, order, memberId);
+        ArrayList<RecipePrefDto> list = dao.selectAllByPrefOrder(startRow, endRow, order, memberId);
         session.close();
         return list;
     }
