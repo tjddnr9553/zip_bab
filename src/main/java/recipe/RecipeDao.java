@@ -1,9 +1,12 @@
 package recipe;
 
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+import recipe.dto.RecipePrefDto;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Mapper
 public interface RecipeDao {
@@ -58,4 +61,70 @@ public interface RecipeDao {
             "    INSERT (\"rpId\", \"recipeId\", \"under_20\", \"over_20\", \"over_30\", \"over_40\", \"over_50\", \"male\", \"female\", \"hits\")\n" +
             "    VALUES (RecipePreference_seq.nextval, new_rp.\"recipeId\", new_rp.\"under_20\", new_rp.\"over_20\", new_rp.\"over_30\", new_rp.\"over_40\", new_rp.\"over_50\", new_rp.\"male\", new_rp.\"female\", 1)")
     void upsertRecipePreference(RecipePref rp);
+
+    //전체 목록 (페이징 처리)
+    @Select("SELECT " +
+                "c.*, " +
+                "(SELECT count(*) FROM \"Bookmark\" b WHERE b.\"memberId\" = #{memberId} AND b.\"recipeId\" = c.\"recipeId\") AS \"isBooked\", " +
+                "(SELECT COUNT(*) FROM \"Recipe\") AS \"totalCnt\" " +
+            "FROM (" +
+                "SELECT a.*, ROWNUM rnum " +
+                "FROM (" +
+                    "SELECT r.*, rp.\"rpId\", rp.\"recipeId\" as \"rp_recipeId\", NVL(rp.\"under_20\", 0) \"under_20\", NVL(rp.\"over_20\", 0) \"over_20\", NVL(rp.\"over_30\", 0) \"over_30\", NVL(rp.\"over_40\", 0) \"over_40\", NVL(rp.\"over_50\", 0) \"over_50\", NVL(rp.\"male\", 0) \"male\", NVL(rp.\"female\", 0) \"female\", NVL(rp.\"hits\", 0) \"hits\" " +
+                    "FROM \"Recipe\" r " +
+                    "FULL OUTER JOIN \"RecipePreference\" rp ON r.\"recipeId\" = rp.\"recipeId\" " +
+                    "ORDER BY r.\"recipeId\") a " +
+                "WHERE ROWNUM <= #{pageNum}) c " + // 30
+            "WHERE c.rnum >= #{amount}") // 1
+    ArrayList<RecipePrefDto> selectAllByPage(@Param("pageNum") int pageNum, @Param("amount") int amount, @Param("memberId") int memberId);
+
+    // title 검색 (페이징 처리)
+    @Select("SELECT " +
+                "c.*, " +
+                "(SELECT count(*) FROM \"Bookmark\" b WHERE b.\"memberId\" = #{memberId} AND b.\"recipeId\" = c.\"recipeId\") AS \"isBooked\", " +
+                "(SELECT COUNT(*) FROM \"Recipe\" WHERE \"title\" like '%'||#{title}||'%') AS \"totalCnt\" " +
+            "FROM (" +
+                "SELECT a.*, ROWNUM rnum " +
+                "FROM (" +
+                    "SELECT r.*, rp.\"rpId\", rp.\"recipeId\" as \"rp_recipeId\", NVL(rp.\"under_20\", 0) \"under_20\", NVL(rp.\"over_20\", 0) \"over_20\", NVL(rp.\"over_30\", 0) \"over_30\", NVL(rp.\"over_40\", 0) \"over_40\", NVL(rp.\"over_50\", 0) \"over_50\", NVL(rp.\"male\", 0) \"male\", NVL(rp.\"female\", 0) \"female\", NVL(rp.\"hits\", 0) \"hits\" " +
+                    "FROM \"Recipe\" r " +
+                    "FULL OUTER JOIN \"RecipePreference\" rp ON r.\"recipeId\" = rp.\"recipeId\" " +
+                    "WHERE \"title\" like '%'||#{title}||'%' " +
+                    "ORDER BY r.\"recipeId\") a " +
+                "WHERE ROWNUM <= #{pageNum}) c " + // 30
+            "WHERE c.rnum >= #{amount}") // 1
+    ArrayList<RecipePrefDto> selectAllByTitle(@Param("pageNum") int pageNum, @Param("amount") int amount, @Param("title") String title, @Param("memberId") int memberId);
+
+    // 재료 검색 (페이징 처리)
+    @Select("SELECT " +
+                "c.*, " +
+                "(SELECT count(*) FROM \"Bookmark\" b WHERE b.\"memberId\" = #{memberId} AND b.\"recipeId\" = c.\"recipeId\") AS \"isBooked\", " +
+                "(SELECT COUNT(*) FROM \"Recipe\" WHERE \"ingredientInfo\" like '%'||#{ingredientInfo}||'%') AS \"totalCnt\" " +
+            "FROM (" +
+                "SELECT a.*, ROWNUM rnum " +
+                "FROM (" +
+                    "SELECT r.*, rp.\"rpId\", rp.\"recipeId\" as \"rp_recipeId\", NVL(rp.\"under_20\", 0) \"under_20\", NVL(rp.\"over_20\", 0) \"over_20\", NVL(rp.\"over_30\", 0) \"over_30\", NVL(rp.\"over_40\", 0) \"over_40\", NVL(rp.\"over_50\", 0) \"over_50\", NVL(rp.\"male\", 0) \"male\", NVL(rp.\"female\", 0) \"female\", NVL(rp.\"hits\", 0) \"hits\" " +
+                    "FROM \"Recipe\" r " +
+                    "FULL OUTER JOIN \"RecipePreference\" rp ON r.\"recipeId\" = rp.\"recipeId\" " +
+                    "WHERE \"ingredientInfo\" like '%'||#{ingredientInfo}||'%' " +
+                    "ORDER BY r.\"recipeId\") a " +
+                "WHERE ROWNUM <= #{pageNum}) c " + // 30
+            "WHERE c.rnum >= #{amount}") // 1
+    ArrayList<RecipePrefDto> selectAllByIngred(@Param("pageNum") int pageNum, @Param("amount") int amount, @Param("title") String ingredientInfo, @Param("memberId") int memberId);
+
+    // 선호도 정렬(페이징 처리)
+    @Select("SELECT " +
+                "c.*, " +
+                "(SELECT count(*) FROM \"Bookmark\" b WHERE b.\"memberId\" = #{memberId} AND b.\"recipeId\" = c.\"recipeId\") AS \"isBooked\", " +
+                "(SELECT COUNT(*) FROM \"Recipe\") AS \"totalCnt\" " +
+            "FROM (" +
+                "SELECT a.*, ROWNUM rnum " +
+                "FROM (" +
+                    "SELECT r.*, rp.\"rpId\", rp.\"recipeId\" as \"rp_recipeId\", NVL(rp.\"under_20\", 0) \"under_20\", NVL(rp.\"over_20\", 0) \"over_20\", NVL(rp.\"over_30\", 0) \"over_30\", NVL(rp.\"over_40\", 0) \"over_40\", NVL(rp.\"over_50\", 0) \"over_50\", NVL(rp.\"male\", 0) \"male\", NVL(rp.\"female\", 0) \"female\", NVL(rp.\"hits\", 0) \"hits\" " +
+                    "FROM \"Recipe\" r " +
+                    "FULL OUTER JOIN \"RecipePreference\" rp ON r.\"recipeId\" = rp.\"recipeId\" " +
+                    "ORDER BY ${order} DESC, 1) a " +
+                "WHERE ROWNUM <= #{pageNum}) c " +
+            "WHERE c.rnum >= #{amount}")
+    ArrayList<RecipePrefDto> selectAllByPrefOrder(@Param("pageNum") int pageNum, @Param("amount") int amount, @Param("order") int order, @Param("memberId") int memberId);
 }
