@@ -32,8 +32,22 @@
                                 <h6 class="card-title" style="text-align:center"><strong>${r.title}</strong></h6>
                                 <a href="${pageContext.request.contextPath}/recipe/detail.do?recipeId=${r.recipeId}"
                                    class="btn btn-success btn-sm">레시피</a>&emsp;
-                                <a href="${pageContext.request.contextPath}/bookmark/bookmark.do?recipeId=${r.recipeId}&pageNum=${currentPage}"
-                                   class="btn btn-success btn-sm">북마크</a>
+
+                               <!-- 북마크 여부 확인 -->
+                               <c:set var="isBookmarked" value="false" />
+                                 <c:forEach var="bookmark" items="${blist}">
+                                   <c:if test="${bookmark.recipeId == r.recipeId}">
+                                     <c:set var="isBookmarked" value="true" />
+                                     <!-- 중복된 recipeId가 있는 경우에만 북마크 취소 버튼 출력 -->
+                                     <a href="${pageContext.request.contextPath}/bookmark/bookmark.do?recipeId=${r.recipeId}&pageNum=${currentPage}"
+                                        class="btn btn-warning btn-sm"><i class="bi bi-check-circle-fill"></i>찜</a>
+                                   </c:if>
+                                 </c:forEach>
+                                 <!-- 중복된 recipeId가 없는 경우 북마크 완료 버튼 출력 -->
+                                 <c:if test="${!isBookmarked}">
+                                   <a href="${pageContext.request.contextPath}/bookmark/bookmark.do?recipeId=${r.recipeId}&pageNum=${currentPage}"
+                                      class="btn btn-success btn-sm"><i class="bi bi-check-circle"></i>찜</a>
+                                 </c:if>
                             </div>
                         </div>
                     </div>

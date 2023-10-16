@@ -1,11 +1,15 @@
 package recipe.handler;
 
+import bookmark.Bookmark;
+import bookmark.BookmarkService;
 import handler.Handler;
+import member.Member;
 import recipe.Recipe;
 import recipe.RecipeService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,6 +21,19 @@ public class ListByPageHandler implements Handler {
         String view = "/index.jsp";
         RecipeService service = new RecipeService();
         ArrayList<Recipe> allRecipe = service.getAll();
+
+        //북마크 여부 확인
+        int memberId = 0;
+        BookmarkService bservice = new BookmarkService();
+        HttpSession session = request.getSession(true);
+        if(((Member)session.getAttribute("loginId")) == null){
+            memberId = 0 ;
+        }else{
+            memberId = ((Member)session.getAttribute("loginId")).getMemberId();
+        }
+
+        ArrayList<Bookmark> blist = bservice.getByMemberId(memberId);
+
         int total = (int) Math.ceil((double) allRecipe.size() / RECIPES_PER_PAGE);
         if(request.getParameter("pageNum")==null){
             try {
@@ -51,6 +68,7 @@ public class ListByPageHandler implements Handler {
 
 
         ArrayList<Recipe> list = service.getByPage(endRow, startRow);
+        request.setAttribute("blist",blist);
         request.setAttribute("total",total);
         request.setAttribute("list", list);
         request.setAttribute("view", "/recipe/list.jsp");
