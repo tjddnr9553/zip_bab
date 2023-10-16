@@ -72,3 +72,24 @@ h5 {
     justify-content: center;
     align-items: center;
 }
+
+span.badge.text-wrap {
+    height: 150px;
+    padding: 3px;
+    margin: 5px;
+    justify-content: left;
+    align-items: center;
+}
+
+.dropend-toggle {
+    width: auto;
+    height: auto;
+}
+
+div .dropdown {
+    text-align: center;
+}
+
+.dropdown-menu {
+     text-align: center;
+}

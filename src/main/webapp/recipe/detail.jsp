@@ -6,6 +6,9 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/detail.css">
   <link rel="stylesheet" href="css/remote.css">
+  <script type="text/javascript">
+
+  </script>
 </head>
 <body data-context-path="${pageContext.request.contextPath }" data-recipe-id="${r.recipeId }" data-recipe-img="${r.completePicture }">
 <div data-bs-spy="scroll" data-bs-target="#remote-controller" data-bs-smooth-scroll="true" class="scrollspy-example container" tabindex="0">
@@ -17,7 +20,13 @@
                 <div class="collapse" id="col1">
                     <c:forEach var="ingredient" items="${ingredient}">
                        <c:if test="${not empty ingredient}">
-                           <h5><p><strong><li><a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}">${ingredient}</a></li></strong></p></h5>
+                           <div class="dropdown">
+                             <a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}" class="dropend-toggle" data-bs-toggle="dropdown" aria-expanded="false"><h5><strong>${ingredient}</strong></h5></a>
+                             <ul class="dropdown-menu">
+                                <li><a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}">재료가 포함된 레시피</a></li>
+                                <li><a href="=${pageContext.request.contextPath}/recipe/naverShopping.do?ingredient=${ingredient}">재료 구매하기</a></li>
+                             </ul>
+                           </div>
                        </c:if>
                    </c:forEach>
                 </div>
