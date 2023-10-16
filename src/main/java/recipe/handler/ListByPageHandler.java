@@ -23,9 +23,15 @@ public class ListByPageHandler implements Handler {
         ArrayList<Recipe> allRecipe = service.getAll();
 
         //북마크 여부 확인
+        int memberId = 0;
         BookmarkService bservice = new BookmarkService();
-        HttpSession session = request.getSession(false);
-        int memberId = ((Member)session.getAttribute("loginId")).getMemberId();
+        HttpSession session = request.getSession(true);
+        if(((Member)session.getAttribute("loginId")) == null){
+            memberId = 0 ;
+        }else{
+            memberId = ((Member)session.getAttribute("loginId")).getMemberId();
+        }
+
         ArrayList<Bookmark> blist = bservice.getByMemberId(memberId);
 
         int total = (int) Math.ceil((double) allRecipe.size() / RECIPES_PER_PAGE);
