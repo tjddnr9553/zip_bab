@@ -1,0 +1,74 @@
+.img-box .img-rounded {
+    width: 200px;
+    height: 160px;
+    border-radius: 10%;
+    padding: 5px;
+}
+
+.img-box > div {
+    display: flex;
+    align-items: center;
+}
+
+.img-box > div > span {
+    justify-content: flex-start;
+    font-size: 17px;
+    background-color: #78e08f;
+}
+
+a {
+    color: black;
+}
+
+/* 후기 프로필 사진*/
+.profile-img,
+.profile-img img {
+    width:50px;
+    height:50px;
+}
+.profile-img img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.grid-item button {
+    padding: 3px;
+    margin: 5px;
+    text-align: center;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 150px;
+    grid-template-rows: auto;
+}
+
+.grid-item {
+   text-align: left;
+   display: grid;
+   justify-content: left;
+   align-items: left;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0px 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+h5 {
+    text-align:center;
+}
+
+.badge {
+    width: 158px;
+    height: 40px;
+    padding: 3px;
+    margin: 5px;
+    border: 1px;
+    font-size: 20px;
+    background-color: #198754;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

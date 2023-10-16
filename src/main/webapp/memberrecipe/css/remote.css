@@ -1,16 +1,71 @@
 /* 떠다니는 메뉴 (Floating Menu) */
-#floatdiv {
+#float-div {
     position:fixed; _position:absolute; _z-index:-1;
-    width:160px; /* 가로폭 조절*/
     overflow:hidden;
     right:45%;
-    top:24%; /* 이미지 높이 조절 */
+    top:15%; /* 높이 조절 */
     background-color: transparent;
-    margin-right: -530px; /* 좌우측 여백 조절 */
+    margin-right: -650px; /* 좌우측 여백 조절 */
+    padding:0;
+}
+#float-div a {
+    text-decoration: none;
+}
+#remote-controller {
+    width:140px; /* 가로폭 조절*/
+}
+
+#view-history {
+    /*width: 100px;*/
+}
+#view-history div {
+    /*--bs-list-group-item-padding-x: 1rem;*/
+    /*--bs-list-group-item-padding-y: 1rem;*/
+}
+.history-img-container,
+.history-img-container img {
+    width: 100px;
+    height: 100px;
+}
+.history-img-container img{
+    max-width: 100%;
+    object-fit: cover;
+}
+/* 떠다니는 메뉴 끝*/
+
+/*#floatdiv {
+    position:fixed; _position:absolute; _z-index:-1;
+    width:160px; !* 가로폭 조절*!
+    overflow:hidden;
+    right:45%;
+    top:24%; !* 이미지 높이 조절 *!
+    background-color: transparent;
+    margin-right: -530px; !* 좌우측 여백 조절 *!
     padding:0;
 }
 #floatdiv ul  { list-style: none; }
 #floatdiv li  { margin-bottom: 2px; text-align: center; }
 #floatdiv a   { color: #5D5D5D; border: 0; text-decoration: none; display: block; }
 #floatdiv a:hover, #floatdiv .menu  { background-color: #5D5D5D; color: #fff; }
-#floatdiv .menu, #floatdiv .last    { margin-bottom: 0px; }
+#floatdiv .menu, #floatdiv .last    { margin-bottom: 0px; }*/
+
+.img-rounded {
+    width: 180px;
+    height: 140px;
+}
+a {
+    color: black;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+  gap: 0px;
+}
+
+.grid-container > div {
+  text-align: left;
+}
+h3 {
+  column-span: 1/3;
+}

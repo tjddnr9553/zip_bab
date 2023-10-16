@@ -7,6 +7,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>유저 레시피 수정</title>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -15,6 +16,14 @@
                 $("#imgname").val($(this).attr("val"));
                 $("#ef").show();
             });
+
+            $(".imgdel").click(function () {
+                console.log("실행은 되는거니?");
+                let imgNum = $(this).attr("val");
+                console.log(imgNum);
+                location.href = "${pageContext.request.contextPath}/memberrecipe/imgdel.do?memberRecipeId=${memberRecipe.memberRecipeId}&imgNum=" + imgNum;
+            });
+
             $("#cancel").click(function () {
                 $("#ef").hide();
             });
