@@ -26,6 +26,9 @@ public interface MemberDao {
 	@Update("update \"Member\" set \"nickname\"=#{nickname}, \"profile\"=#{profile} where \"loginId\"=#{loginId}")
 	void editMember(@Param("loginId") String loginId , @Param("nickname") String nickname , @Param("profile") String profile );
 
+	@Update("update \"Member\" set \"nickname\"=#{nickname} where \"loginId\"=#{loginId}")
+	void editMember2(@Param("loginId") String loginId , @Param("nickname") String nickname);
+
 	@Delete("delete from \"Member\" where \"loginId\"=#{loginId}")
 	void delMember(@Param("loginId") String loginId);
 }
