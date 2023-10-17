@@ -29,6 +29,7 @@ public class FollowerListHandler implements Handler {
         }
 
         request.setAttribute("list", followersMembers);
+        request.setAttribute("subTitle", "follower List");
 
         return "/member/followList.jsp";
     }

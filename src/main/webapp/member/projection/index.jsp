@@ -114,8 +114,8 @@
 
 <script>
     function loadFollowingList() {
-        var width = 1000;
-        var height = 1800;
+        var width = 600;
+        var height = 600;
         var left = (window.innerWidth - width) / 2;
         var top = (window.innerHeight - height) / 2;
 
@@ -125,8 +125,8 @@
 </script>
 <script>
     function loadFollowerList() {
-        var width = 1000;
-        var height = 1800;
+        var width = 600;
+        var height = 600;
         var left = (window.innerWidth - width) / 2;
         var top = (window.innerHeight - height) / 2;
 
