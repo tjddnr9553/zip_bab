@@ -26,7 +26,8 @@ public class FollowingListHandler implements Handler {
             follwingMembers.add(member);
         }
 
-        request.setAttribute("followingMembers", follwingMembers);
+        request.setAttribute("list", follwingMembers);
+        request.setAttribute("subTitle", "following List");
 
         return "/member/followList.jsp";
     }

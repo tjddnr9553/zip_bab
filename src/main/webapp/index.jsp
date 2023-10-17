@@ -42,13 +42,6 @@
     <c:if test="${not empty view}">
         <jsp:include page="${view }"/>
     </c:if>
-    <%--    <a href="${pageContext.request.contextPath }/member/login.do">로그인</a>--%>
-    <%--  <a href="${pageContext.request.contextPath}/member/join.do">회원가입</a><br/>--%>
-    <%--    <a href="${pageContext.request.contextPath }/member/edit.do?id=${sessionScope.loginId}">내정보</a><br/>--%>
-    <%--    <a href="${pageContext.request.contextPath }/member/out.do">로그아웃</a><br/>--%>
-    <%--    <form action="${pageContext.request.contextPath }/member/out.do?id=${sessionScope.loginId}" method="post">--%>
-    <%--        <button>탈퇴</button>--%>
-    <%--    </form>--%>
 </main>
 
 <!-- footer -->
