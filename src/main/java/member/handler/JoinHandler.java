@@ -21,7 +21,7 @@ public class JoinHandler implements Handler {
 		// TODO Auto-generated method stub
 		String view = "/index.jsp";
 		if (request.getMethod().equals("GET")) {
-			view = "/member/join.jsp";
+			view = "/member/projection/join.jsp";
 		} else {
 			String loginId = request.getParameter("loginId");
 			//log.info("username 확인 : {}", username);

@@ -79,7 +79,6 @@ public class EditHandler implements Handler {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
             view = "redirect:/index.jsp";
         }
 

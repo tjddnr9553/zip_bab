@@ -41,7 +41,7 @@
         <input name="loginId" id="loginId" type="text" placeholder="loginId" value="${m.loginId }" readonly></div>
       <div class="field half first">
         <label for="password">비밀번호</label>
-        <input name="password" id="password" type="email" placeholder="password" value="${m.password }" readonly></div>
+        <input name="password" id="password" type="password" placeholder="password" value="${m.password }" readonly></div>
       <div class="field half first">
         <label for="nickname">닉네임</label>
         <input name="nickname" id="nickname" type="text" placeholder="nickname" value="${m.nickname }"></div>
