@@ -118,4 +118,16 @@ public interface MemberRecipeDao {
                 "WHERE ROWNUM <= #{endRow}) c " +
             "WHERE c.rnum >= #{startRow}")
     List<MemberRecipePrefDto> selectMemberRecipesByPrefOrder(@Param("startRow") int startRow, @Param("endRow") int endRow, @Param("memberId") int memberId, @Param("order") int order);
+
+    // 북마크 확인
+    @Select("SELECT COUNT(*) FROM \"MemberRecipeBookmark\" WHERE \"recipeId\" = #{recipeId} AND \"memberId\" = #{memberId}")
+    int isBooked(@Param("recipeId") int recipeId, @Param("memberId") int memberId);
+
+    // 북마크 추가
+    @Insert("INSERT INTO \"MemberRecipeBookmark\" VALUES(MemberRecipeBookmark_seq.nextval, #{recipeId}, #{memberId})")
+    void addBookmark(@Param("recipeId") int recipeId, @Param("memberId") int memberId);
+
+    // 북마크 삭제
+    @Delete("DELETE FROM \"MemberRecipeBookmark\" WHERE \"recipeId\" = #{recipeId} AND \"memberId\" = #{memberId}")
+    void delBookmark(@Param("recipeId") int recipeId, @Param("memberId") int memberId);
 }

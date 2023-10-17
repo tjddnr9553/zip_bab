@@ -63,7 +63,7 @@
             <c:forEach var="r" items="${list}">
                 <div class="col mb-4">
                     <div class="card h-100" style="">
-                        <a href="${pageContext.request.contextPath}/recipe/detail.do?recipeId=${r.memberRecipeId}">
+                        <a href="${pageContext.request.contextPath}/memberrecipe/detail.do?memberRecipeId=${r.memberRecipeId}">
                             <c:if test="${not empty r.completePicture}">
                                 <img class="card-img-top img-fluid" src="<c:url value="/images/${r.completePicture}"/>"
                                      alt="${r.completePicture}"
@@ -79,20 +79,21 @@
                         <div class="card-body">
                             <div class="col text-center">
                                 <h6 class="card-title" style="text-align:center"><strong>${r.title}</strong></h6>
-                                <a href="${pageContext.request.contextPath}/recipe/detail.do?recipeId=${r.memberRecipeId}"
+                                <a href="${pageContext.request.contextPath}/memberrecipe/detail.do?memberRecipeId=${r.memberRecipeId}"
                                    class="btn btn-success btn-sm">레시피</a>&emsp;
 
                                 <!-- 북마크 여부 확인 -->
-                                <!-- 중복된 recipeId가 있는 경우에만 북마크 취소 버튼 출력 -->
-                                <c:if test="${r.isBooked eq 1}">
-                                    <a href="${pageContext.request.contextPath}/memberrecipe/bookmark.do?recipeId=${r.memberRecipeId}"
-                                       class="btn btn-warning btn-sm"><i class="bi bi-check-circle-fill"></i>찜</a>
-                                </c:if>
-                                <!-- 중복된 recipeId가 없는 경우 북마크 완료 버튼 출력 -->
-                                <c:if test="${r.isBooked eq 0}">
-                                    <a href="${pageContext.request.contextPath}/memberrecipe/bookmark.do?recipeId=${r.memberRecipeId}"
-                                       class="btn btn-success btn-sm"><i class="bi bi-check-circle"></i>찜</a>
-                                </c:if>
+                                <form action="${pageContext.request.contextPath}/memberrecipe/bookmark.do" method="POST" class="d-inline-block">
+                                    <!-- 중복된 recipeId가 있는 경우에만 북마크 취소 버튼 출력 -->
+                                    <input type="hidden" name="recipeId" value="${r.memberRecipeId}">
+                                    <c:if test="${r.isBooked eq 1}">
+                                        <button class="btn btn-warning btn-sm"><i class="bi bi-check-circle-fill"></i>찜</button>
+                                    </c:if>
+                                    <!-- 중복된 recipeId가 없는 경우 북마크 완료 버튼 출력 -->
+                                    <c:if test="${r.isBooked eq 0}">
+                                        <button class="btn btn-success btn-sm"><i class="bi bi-check-circle"></i>찜</button>
+                                    </c:if>
+                                </form>
                             </div>
                         </div>
                         <div class="card-body">

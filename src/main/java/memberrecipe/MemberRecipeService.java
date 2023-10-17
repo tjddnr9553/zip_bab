@@ -125,4 +125,28 @@ public class MemberRecipeService {
         session.close();
         return list;
     }
+
+    public boolean isBooked(int recipeId, int memberId) {
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
+        int isBooked = dao.isBooked(recipeId, memberId);
+        session.close();
+        return isBooked != 0;
+    }
+
+    public void addBookmark(int recipeId, int memberId) {
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
+        dao.addBookmark(recipeId, memberId);
+        session.commit();
+        session.close();
+    }
+
+    public void delBookmark(int recipeId, int memberId) {
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
+        dao.delBookmark(recipeId, memberId);
+        session.commit();
+        session.close();
+    }
 }
