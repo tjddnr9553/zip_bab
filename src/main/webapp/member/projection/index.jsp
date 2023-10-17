@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-l
 <!DOCTYPE HTML>
 <html>
 <head><title>Projection by TEMPLATED</title>
@@ -11,18 +10,6 @@ l
   <link rel="stylesheet" href="${pageContext.request.contextPath}/member/projection/assets/css/main.css">
 </head>
 <body>
-
-<%--<!-- Header -->--%>
-<%--<header id="header">--%>
-<%--  <div class="inner">--%>
-<%--    <a href="index.html" class="logo"><strong>집밥</strong></a>--%>
-<%--    <nav id="nav"><a href="index.html">Home</a>--%>
-<%--      <a href="generic.html">Generic</a>--%>
-<%--      <a href="elements.html">Elements</a>--%>
-<%--    </nav>--%>
-<%--    <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>--%>
-<%--  </div>--%>
-<%--</header>--%>
 
 <!-- Banner -->
 <section id="banner">
