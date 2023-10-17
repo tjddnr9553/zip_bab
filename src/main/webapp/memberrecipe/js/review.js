@@ -25,7 +25,7 @@ erForm.forEach((ele) => {
 
         let param = 'content=' + content + '&recipeId=' + recipeId +'&reviewId=' + reviewId
 
-        req.open('POST', contextPath + '/review/edit.do')
+        req.open('POST', contextPath + '/recipereview/edit.do')
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
         req.send(param)
 
@@ -57,7 +57,7 @@ delForms.forEach((ele) => {
 
         let param = 'recipeId=' + recipeId +'&reviewId=' + reviewId
 
-        req.open('POST', contextPath + '/review/delete.do')
+        req.open('POST', contextPath + '/recipereview/delete.do')
         req.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
         req.send(param)
 

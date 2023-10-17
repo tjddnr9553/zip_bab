@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import memberrecipe.dto.MemberRecipePrefDto;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import recipe.RecipePref;
 import sqlsession.Factory;
 
 import java.util.List;
@@ -126,6 +127,7 @@ public class MemberRecipeService {
         return list;
     }
 
+
     public boolean isBooked(int recipeId, int memberId) {
         SqlSession session = sqlSessionFactory.openSession();
         MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
@@ -146,6 +148,14 @@ public class MemberRecipeService {
         SqlSession session = sqlSessionFactory.openSession();
         MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
         dao.delBookmark(recipeId, memberId);
+        session.commit();
+        session.close();
+    }
+
+    public void increaseRpCnt(RecipePref rp) {
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
+        dao.upsertRecipePreference(rp);
         session.commit();
         session.close();
     }
