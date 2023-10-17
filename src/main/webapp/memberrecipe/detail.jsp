@@ -29,7 +29,7 @@
                 <button type="button" class="btn btn-success" data-bs-toggle="collapse" data-bs-target="#col1"><h5
                         id="ingredient"><strong><i class="bi bi-card-list"></i>&nbsp; 재 료 목 록</strong></h5></button>
                 <div class="collapse" id="col1">
-                    <c:forEach var="ingredient" items="${ingredient}">
+                    <c:forEach var="ingredient" items="${ingredients}">
                         <c:if test="${not empty ingredient}">
                             <h5>
                                 <p><strong>
@@ -62,32 +62,38 @@
     <div class="img-box">
         <h3 id="manual"><span class="badge">조 리 방 법</span></h3>
         <div>
-            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_01}" class="img-rounded" onerror="this.style.display='none'" alt=""
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_01}" class="img-rounded"
+                 onerror="this.style.display='none'" alt=""
                  class="img-thumbnail" id="image-01">
             <span class="badge text-wrap" style="width: 60rem; text-align:left;">${r.manual_01}</span>
         </div>
         <div>
-            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_02}" class="img-rounded" onerror="this.style.display='none'" alt=/"
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_02}" class="img-rounded"
+                 onerror="this.style.display='none'" alt=/"
                  class="img-thumbnail" id="image-02">
             <span class="badge text-wrap" style="width: 60rem;">${r.manual_02}</span>
         </div>
         <div>
-            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_03}" class="img-rounded" onerror="this.style.display='none'" alt=/"
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_03}" class="img-rounded"
+                 onerror="this.style.display='none'" alt=/"
                  class="img-thumbnail" id="image-03">
             <span class="badge text-wrap" style="width: 60rem;">${r.manual_03}</span>
         </div>
         <div>
-            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_04}" class="img-rounded" onerror="this.style.display='none'" alt=/"
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_04}" class="img-rounded"
+                 onerror="this.style.display='none'" alt=/"
                  class="img-thumbnail" id="image-04">
             <span class="badge text-wrap" style="width: 60rem;">${r.manual_04}</span>
         </div>
         <div>
-            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_05}" class="img-rounded" onerror="this.style.display='none'" alt=/"
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_05}" class="img-rounded"
+                 onerror="this.style.display='none'" alt=/"
                  class="img-thumbnail" id="image-05">
             <span class="badge text-wrap" style="width: 60rem;">${r.manual_05}</span>
         </div>
         <div>
-            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_06}" class="img-rounded" onerror="this.style.display='none'" alt=/"
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_06}" class="img-rounded"
+                 onerror="this.style.display='none'" alt=/"
                  class="img-thumbnail" id="image-06">
             <span class="badge text-wrap" style="width: 60rem;">${r.manual_06}</span>
         </div>
@@ -95,7 +101,8 @@
     <div class="img-box">
         <h3 id="comPic"><span class="badge">완 성 사 진</span></h3>
         <div>
-            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.completePicture}" class="img-rounded" alt=/" style="width:500px; height:400px;">
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.completePicture}" class="img-rounded"
+                 alt=/" style="width:500px; height:400px;">
         </div>
     </div>
 
