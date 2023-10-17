@@ -44,7 +44,7 @@ public interface ReviewDao {
     void deleteReviewLike(@Param("memberId") int memberId, @Param("reviewId") int reviewId);
 
     // 존재 유무
-    @Select("SELECT count(*) FROM \"Like\" l WHERE l.\"memberId\" = #{memberId} AND l.\"reviewId\" = #{reviewId}")
+    @Select("SELECT COUNT(*) FROM \"Like\" l WHERE l.\"memberId\" = #{memberId} AND l.\"reviewId\" = #{reviewId}")
     int isLikedReview(@Param("memberId") int memberId, @Param("reviewId") int reviewId);
 
     @Select("SELECT r.* FROM \"Like\" l JOIN \"Review\" r ON l.\"memberId\" = r.\"memberId\" WHERE \"memberId\" = #{memberId}")
