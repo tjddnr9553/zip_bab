@@ -31,8 +31,8 @@
                 </li>&emsp;
 
                 <c:if test="${sessionScope.loginId != null }">
-                    <li class="nav-item dropdown ms-auto">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    <li class="nav-item dropdown ms-md-auto">
+                        <a class="nav-link dropdown-toggle me-5" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
                                 ${sessionScope.loginId.nickname}
                         </a>
@@ -53,10 +53,10 @@
                 </c:if>
 
                 <c:if test="${sessionScope.loginId == null }">
-                    <li class="nav-item ms-auto">
+                    <li class="nav-item ms-md-auto">
                         <a class="nav-link" href="${pageContext.request.contextPath}/member/login.do">로그인</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item me-2">
                         <a class="nav-link" href="${pageContext.request.contextPath}/member/join.do">회원가입</a>
                     </li>
                 </c:if>

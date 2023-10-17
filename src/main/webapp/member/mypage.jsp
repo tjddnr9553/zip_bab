@@ -51,7 +51,7 @@
                 <c:forEach var="r" items="${rlist}" varStatus="loop">
                   <div class="swiper-slide">
                     <a href="${pageContext.request.contextPath}/recipe/detail.do?recipeId=${r.recipeId}">
-                      <img src="${r.completePicture}" style="width:200px; height:200px;" class="border rounded" alt="${pageContext.request.contextPath }/images/recipe/default.jpg">
+                      <img src="${r.completePicture}" style="width:200px; height:200px;" class="border rounded" alt="${pageContext.request.contextPath }/images/logo/z_no_image.png">
                     </a>
                   </div>
                 </c:forEach>

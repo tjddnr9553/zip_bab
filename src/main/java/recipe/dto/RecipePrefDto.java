@@ -1,0 +1,24 @@
+package recipe.dto;
+
+import lombok.*;
+import recipe.Recipe;
+
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@ToString(callSuper = true)
+public class RecipePrefDto extends Recipe {
+    // pref
+    private int under_20;
+    private int over_20;
+    private int over_30;
+    private int over_40;
+    private int over_50;
+    private int male;
+    private int female;
+    private int hits;
+
+    private int isBooked;
+    private int totalCnt;
+}

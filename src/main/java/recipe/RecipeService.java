@@ -2,6 +2,7 @@ package recipe;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import recipe.dto.RecipePrefDto;
 import sqlsession.Factory;
 
 import java.util.ArrayList;
@@ -92,5 +93,38 @@ public class RecipeService {
         dao.upsertRecipePreference(rp);
         session.commit();
         session.close();
+    }
+
+    // 전체 목록 (페이징 처리)
+    public ArrayList<RecipePrefDto> getAllByPage(int startRow, int endRow, int memberId) {
+        SqlSession session = sqlSessionFactory.openSession();
+        RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
+        ArrayList<RecipePrefDto> list = dao.selectAllByPage(startRow, endRow, memberId);
+        session.close();
+        return list;
+    }
+
+    public ArrayList<RecipePrefDto> getAllByTitle(int startRow, int endRow, String title, int memberId) {
+        SqlSession session = sqlSessionFactory.openSession();
+        RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
+        ArrayList<RecipePrefDto> list = dao.selectAllByTitle(startRow, endRow, title, memberId);
+        session.close();
+        return list;
+    }
+
+    public ArrayList<RecipePrefDto> getAllByIngred(int startRow, int endRow, String ingred, int memberId) {
+        SqlSession session = sqlSessionFactory.openSession();
+        RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
+        ArrayList<RecipePrefDto> list = dao.selectAllByIngred(startRow, endRow, ingred, memberId);
+        session.close();
+        return list;
+    }
+
+    public ArrayList<RecipePrefDto> getAllByPrefOrder(int startRow, int endRow, int order, int memberId) {
+        SqlSession session = sqlSessionFactory.openSession();
+        RecipeDao dao = (RecipeDao) session.getMapper(RecipeDao.class);
+        ArrayList<RecipePrefDto> list = dao.selectAllByPrefOrder(startRow, endRow, order, memberId);
+        session.close();
+        return list;
     }
 }

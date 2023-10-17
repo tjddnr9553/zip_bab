@@ -1,6 +1,7 @@
 package memberrecipe;
 
 import lombok.extern.slf4j.Slf4j;
+import memberrecipe.dto.MemberRecipePrefDto;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import sqlsession.Factory;
@@ -90,5 +91,38 @@ public class MemberRecipeService {
         dao.updateImg(memberRecipe);
         session.commit();
         session.close();
+    }
+
+    // list 시작
+    public List<MemberRecipePrefDto> getAllByPage(int startRow, int endRow, int memberId) {
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
+        List<MemberRecipePrefDto> list = dao.selectAllByPage(startRow, endRow, memberId);
+        session.close();
+        return list;
+    }
+
+    public List<MemberRecipePrefDto> getMemberRecipesByTitle(int startRow, int endRow, int memberId, String title) {
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
+        List<MemberRecipePrefDto> list = dao.selectMemberRecipesByTitle(startRow, endRow, memberId, title);
+        session.close();
+        return list;
+    }
+
+    public List<MemberRecipePrefDto> getMemberRecipesByIngred(int startRow, int endRow, int memberId, String ingredient) {
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
+        List<MemberRecipePrefDto> list = dao.selectMemberRecipesByIngred(startRow, endRow, memberId, ingredient);
+        session.close();
+        return list;
+    }
+
+    public List<MemberRecipePrefDto> getMemberRecipesByPrefOrder(int startRow, int endRow, int memberId, int order) {
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
+        List<MemberRecipePrefDto> list = dao.selectMemberRecipesByPrefOrder(startRow, endRow, memberId, order);
+        session.close();
+        return list;
     }
 }
