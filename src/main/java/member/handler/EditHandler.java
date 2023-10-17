@@ -15,7 +15,6 @@ import java.io.IOException;
 
 @Slf4j
 public class EditHandler implements Handler {
-    //private final String path = "C:\\Users\\김현주\\OneDrive\\바탕 화면\\집밥\\zip_bab\\src\\main\\webapp\\images\\profile";
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) {
         // FIX Auto-generated method stub
@@ -44,26 +43,39 @@ public class EditHandler implements Handler {
 
                 MultipartRequest req = new MultipartRequest(request, path, size, "utf-8", new DefaultFileRenamePolicy());
                 File f = req.getFile("profile");
+                String nickname = req.getParameter("nickname");
+                String loginId = req.getParameter("loginId");
+                log.info("nickname: {}",nickname);
+                log.info("loginId: {}",loginId);
 
                 String profile;//업로드된 파일의 파일명을 저장할 배열
                 if (f != null && f.length() != 0) {
                     profile = f.getName();
+                    log.info("profile: {}",profile);
+                    Member m = Member.builder()
+                            .memberId(0)
+                            .loginId(loginId)
+                            .nickname(nickname)
+                            .email("")
+                            .password("")
+                            .birthday(null)
+                            .gender(0)
+                            .profile(profile)
+                            .build();
+                    service.editMember(m);
                 } else {
-                    profile = "";
+                    Member m = Member.builder()
+                            .memberId(0)
+                            .loginId(loginId)
+                            .nickname(nickname)
+                            .email("")
+                            .password("")
+                            .birthday(null)
+                            .gender(0)
+                            .build();
+                    service.editMember2(m);
                 }
-                String nickname = req.getParameter("nickname");
-                String loginId = req.getParameter("loginId");
-                Member m = Member.builder()
-                        .memberId(0)
-                        .loginId(loginId)
-                        .nickname(nickname)
-                        .email("")
-                        .password("")
-                        .birthday(null)
-                        .gender(0)
-                        .profile(profile)
-                        .build();
-                service.editMember(m);
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

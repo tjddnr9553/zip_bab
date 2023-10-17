@@ -1,10 +1,11 @@
 package follow;
 
-import member.Member;
-import member.MemberDao;
+import follow.handler.Follow;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import sqlsession.Factory;
+
+import java.util.List;
 
 public class FollowService {
 
@@ -30,15 +31,37 @@ public class FollowService {
         session.close();
     }
 
+    public List<Integer> getFollowingId(int memberId) {
+        SqlSession session = sqlSessionFactory.openSession();
+        FollowDao dao = session.getMapper(FollowDao.class);
+        List<Integer> following = dao.getFollowingId(memberId);
+        session.commit();
+        session.close();
+
+        return following;
+    }
+
+    public List<Integer> getFollowerId(int memberId) {
+        SqlSession session = sqlSessionFactory.openSession();
+        FollowDao dao = session.getMapper(FollowDao.class);
+        List<Integer> follower = dao.getFollowerId(memberId);
+        session.commit();
+        session.close();
+
+
+        return follower;
+    }
+
     public int getFollower(int memberId){
         SqlSession session = sqlSessionFactory.openSession();
         FollowDao dao = session.getMapper(FollowDao.class);
         int count = dao.getFollower(memberId);
         session.commit();
         session.close();
-
         return count;
     }
+
+
 
     public int getFollowing(int memberId){
         SqlSession session = sqlSessionFactory.openSession();

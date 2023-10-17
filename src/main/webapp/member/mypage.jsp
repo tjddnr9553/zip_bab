@@ -33,8 +33,8 @@
 </form>
 
     이름: <input type="text" name="loginId" value="${member.nickname }" readonly><br/>
-    팔로우: <input type="number" name="followerCount" value="${followerCount}" readonly><br/>
-    팔로잉: <input type="number" name="followingCount" value="${followingCount}" readonly>
+    팔로우: <input type="number" name="followerCount" value="${followingCount}" readonly><br/>
+    팔로잉: <input type="number" name="followingCount" value="${followerCount}" readonly>
 
     <c:if test="${sessionScope.loginId.loginId ne member.loginId }">
     <input type="button" value="팔로우" onclick="follow()">
