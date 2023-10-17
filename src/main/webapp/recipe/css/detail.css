@@ -79,6 +79,7 @@ span.badge.text-wrap {
     margin: 5px;
     justify-content: left;
     align-items: center;
+    font-weight: 900px;
 }
 
 .dropend-toggle {
@@ -92,4 +93,8 @@ div .dropdown {
 
 .dropdown-menu {
      text-align: center;
+}
+
+a.no-underline {
+    text-decoration: none;
 }

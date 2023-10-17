@@ -4,10 +4,18 @@
 <html>
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/detail.css">
   <link rel="stylesheet" href="css/remote.css">
   <script type="text/javascript">
+    function naverShopping(ingredient) {
+        var width = 1200;
+        var height = 1800;
+        var left = (window.innerWidth - width) / 2;
+        var top = (window.innerHeight - height) / 2;
 
+        window.open("${pageContext.request.contextPath}/recipe/naverShopping.do?ingredient=" + ingredient, "_blank", "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top + ",history=no,resizable=no,status=no,scrollbars=yes,menubar=no");
+    }
   </script>
 </head>
 <body data-context-path="${pageContext.request.contextPath }" data-recipe-id="${r.recipeId }" data-recipe-img="${r.completePicture }">
@@ -18,13 +26,13 @@
         <div class="grid-item">
             <button type="button" class="btn btn-success" data-bs-toggle="collapse" data-bs-target="#col1"><h5 id="ingredient"><strong><i class="bi bi-card-list"></i>&nbsp; 재 료 목 록</strong></h5></button>
                 <div class="collapse" id="col1">
-                    <c:forEach var="ingredient" items="${ingredient}">
+                    <c:forEach var="ingredientInfo" items="${ingredient}">
                        <c:if test="${not empty ingredient}">
-                           <div class="dropdown">
-                             <a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}" class="dropend-toggle" data-bs-toggle="dropdown" aria-expanded="false"><h5><strong>${ingredient}</strong></h5></a>
+                           <div class="dropend">
+                             <a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}" class="dropend-toggle no-underline" data-bs-toggle="dropdown" aria-expanded="false"><h5><strong>${ingredientInfo}</strong></h5></a>
                              <ul class="dropdown-menu">
-                                <li><a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}">재료가 포함된 레시피</a></li>
-                                <li><a href="=${pageContext.request.contextPath}/recipe/naverShopping.do?ingredient=${ingredient}">재료 구매하기</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}">재료가 포함된 레시피</a></li>
+                                <li><a class="dropdown-item" href ="#" onclick='naverShopping("${ingredientInfo}")'>재료 구매하기</a></li>
                              </ul>
                            </div>
                        </c:if>
@@ -49,7 +57,7 @@
         <h3 id="manual"><span class="badge">조 리 방 법</span></h3>
          <div>
          <img src="${r.manual_img_01}" class="img-rounded" onerror="this.style.display='none'" alt="" class="img-thumbnail" id="image-01">
-         <span class="badge text-wrap" style="width: 60rem; text-align:left;">${r.manual_01}</span>
+         <span class="badge text-wrap" style="width: 60rem;">${r.manual_01}</span>
          </div>
          <div>
          <img src="${r.manual_img_02}" class="img-rounded" onerror="this.style.display='none'" alt=/" class="img-thumbnail" id="image-02">

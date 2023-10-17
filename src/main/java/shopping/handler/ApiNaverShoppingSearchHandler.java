@@ -1,6 +1,7 @@
 package shopping.handler;
 
 import handler.Handler;
+import io.github.cdimascio.dotenv.Dotenv;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -21,26 +22,29 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Slf4j
-public class ApiNaverShoppingSearch implements Handler {
+public class ApiNaverShoppingSearchHandler implements Handler {
 
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) {
-        String clientId = "discord gogo"; //애플리케이션 클라이언트 아이디
-        String clientSecret = "discord gogo"; //애플리케이션 클라이언트 시크릿
+        Dotenv dotenv = Dotenv.load();
+        String view = "/index.jsp";
+        String clientId = dotenv.get("Naver_Client_Id"); //애플리케이션 클라이언트 아이디
+        String clientSecret = dotenv.get("Naver_Client_Secret"); //애플리케이션 클라이언트 시크릿
 
-        String input = request.getParameter("input");
+        String input = request.getParameter("ingredient");
         String text = URLEncoder.encode(input, StandardCharsets.UTF_8);
 
-        String apiURL = "https://openapi.naver.com/v1/search/shop?query=" + text;    // JSON 결과
+        String apiURL = "https://openapi.naver.com/v1/search/shop?display=51&query=" + text;    // JSON 결과
 
         Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("X-Naver-Client-Id", clientId);
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
         List<NaverShoppingInfo> shoppingInfos = get(apiURL, requestHeaders);
         log.info("shopping infos : {}", shoppingInfos);
-        request.setAttribute("shoppingInfos", shoppingInfos);
 
-        return null;
+        request.setAttribute("items", shoppingInfos);
+        request.setAttribute("view","/recipe/naverShopping.jsp");
+        return view;
     }
 
     private static List<NaverShoppingInfo> get(String apiUrl, Map<String, String> requestHeaders) {
@@ -89,7 +93,7 @@ public class ApiNaverShoppingSearch implements Handler {
                 String title = getParseValue(item.get("title").toString());
                 String link = getParseValue(item.get("link").toString());
                 String image = getParseValue(item.get("image").toString());
-                String price = getParseValue((String) item.get("price"));
+                String price = getParseValue((String) item.get("lprice"));
                 String mallName = getParseValue(item.get("mallName").toString());
                 String brand = getParseValue(item.get("brand").toString());
                 String maker = getParseValue(item.get("maker").toString());
