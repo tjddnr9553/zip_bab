@@ -99,18 +99,20 @@
       <c:forEach var="review" items="${reviews}">
         <div id="review-item-${review.reviewId}" class="review-item border-bottom pt-3 pb-5">
           <div class="review-info d-flex w-75">
-            <div class="profile-img d-inline-block rounded-circle" style="">
-              <c:if test="${review.profile != null}">
-                <img src="${pageContext.request.contextPath}/images/profile/${review.profile}" alt="profile_img"
-                     class="img-fluid rounded-circle">
-              </c:if>
-              <c:if test="${review.profile == null}">
-                <img src="${pageContext.request.contextPath}/images/profile/프사기본.jpg" alt="default_profile_img"
-                     class="img-fluid rounded-circle">
-              </c:if>
-            </div>
+            <a href="<c:url value="/follow/mypage.do?loginId=${review.loginId}"/>">
+              <div class="profile-img d-inline-block rounded-circle" style="">
+                <c:if test="${review.profile != null}">
+                  <img src="${pageContext.request.contextPath}/images/profile/${review.profile}" alt="profile_img"
+                       class="img-fluid rounded-circle">
+                </c:if>
+                <c:if test="${review.profile == null}">
+                  <img src="${pageContext.request.contextPath}/images/profile/프사기본.jpg" alt="default_profile_img"
+                       class="img-fluid rounded-circle">
+                </c:if>
+              </div>
+            </a>
             <div class="review-info-text align-self-center ms-3">
-                ${review.nickname} | <span class="text-secondary">${review.formattedDateTime}</span>&nbsp;
+              <a href="<c:url value="/follow/mypage.do?loginId=${review.loginId}"/>" class="text-decoration-none">${review.nickname}</a> | <span class="text-secondary">${review.formattedDateTime}</span>&nbsp;
             </div>
             <div class="review-info-btn ms-auto">
               <c:if test="${sessionScope.loginId.memberId == review.memberId}">

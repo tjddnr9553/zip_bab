@@ -8,7 +8,7 @@ window.onload = () => {
             let param = 'reviewId=' + reviewId
             console.log(reviewId)
 
-            likeReq.open('POST', contextPath + '/review/like.do')
+            likeReq.open('POST', contextPath + '/recipereview/like.do')
             likeReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
             likeReq.send(param)
 

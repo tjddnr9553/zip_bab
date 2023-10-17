@@ -5,7 +5,6 @@ import follow.FollowDao;
 import io.github.cdimascio.dotenv.Dotenv;
 import member.MemberDao;
 import memberrecipe.MemberRecipeDao;
-
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
@@ -14,6 +13,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import recipe.RecipeDao;
+import recipereview.RecipeReviewDao;
 import review.ReviewDao;
 
 public class Factory {
@@ -54,7 +54,8 @@ public class Factory {
 					ReviewDao.class,
 					MemberRecipeDao.class,
 					BookmarkDao.class,
-					FollowDao.class
+					FollowDao.class,
+					RecipeReviewDao.class,
 			};
 
 			for (Class mapperClass : mapperClasses) {
