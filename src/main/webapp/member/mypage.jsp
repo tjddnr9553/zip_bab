@@ -150,11 +150,6 @@
     }
 </script>
 
-
-<c:forEach var="r" items="${rlist}" varStatus="loop">
-  <a href="${pageContext.request.contextPath}/member/mypage.do?memberId=${member.nickname}"></a>
-</c:forEach>
-
 <script>
     function loadFollowingList() {
         var width = 600;
