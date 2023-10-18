@@ -8,6 +8,8 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/member/css/main.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="/css/mypage.css">
 </head>
 <body>
 
@@ -63,7 +65,7 @@
 
 
 <c:if test="${rlist != null}">
-  <h3>북마크 목록</h3>
+  <h3><span class="badge text-bg-primary">${member.nickname}님의 <strong style="color:red;">찜</strong> 목록</span></span></h3>
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <c:forEach var="r" items="${rlist}" varStatus="loop">
@@ -78,7 +80,6 @@
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   </div>
-
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>

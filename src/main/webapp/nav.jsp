@@ -26,9 +26,9 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/memberrecipe/list.do?pageNum=1">유저 레시피
                         보기</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">재료 보기</a>
-                </li>&emsp;
+<%--                <li class="nav-item">--%>
+<%--                    <a class="nav-link" href="#">재료 보기</a>--%>
+<%--                </li>&emsp;--%>
 
                 <c:if test="${sessionScope.loginId != null }">
                     <li class="nav-item dropdown ms-md-auto">
