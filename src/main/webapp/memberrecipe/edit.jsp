@@ -40,7 +40,7 @@
     </form>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/memberrecipe/create.do" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/memberrecipe/edit.do" method="post" enctype="multipart/form-data">
 
     <table border="1">
         <tr>
