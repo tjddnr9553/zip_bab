@@ -27,7 +27,7 @@
         </c:if>
         <c:if test="${member.profile == null}">
           <div class="image round">
-            <img class="profile" src="/images/profile/프사기본.jpg" alt="profile_img" width="150" alt="Pic 01"
+            <img class="profile" src="${pageContext.request.contextPath }/images/profile/프사기본.jpg" alt="profile_img" width="150" alt="Pic 01"
                  height="150">
           </div>
         </c:if>
@@ -93,8 +93,8 @@
           },
       });
 
-      document.querySelector('.swiper-button-next').style.top = 350 + 'px';
-      document.querySelector('.swiper-button-prev').style.top = 350 + 'px';
+      document.querySelector('.swiper-button-next').style.top = 1250 + 'px';
+      document.querySelector('.swiper-button-prev').style.top = 1250 + 'px';
   </script>
 </c:if>
 
