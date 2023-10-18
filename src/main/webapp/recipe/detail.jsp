@@ -29,9 +29,9 @@
                     <c:forEach var="ingredientInfo" items="${ingredient}">
                        <c:if test="${not empty ingredient}">
                            <div class="dropend">
-                             <a href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}" class="dropend-toggle no-underline" data-bs-toggle="dropdown" aria-expanded="false"><h5><strong>${ingredientInfo}</strong></h5></a>
+                             <a href="${pageContext.request.contextPath}/recipe/listByPage.do?ingredient=${ingredientInfo}" class="dropend-toggle no-underline" data-bs-toggle="dropdown" aria-expanded="false"><h5><strong>${ingredientInfo}</strong></h5></a>
                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/recipe/getByIngredient.do?ingredient=${ingredient}">재료가 포함된 레시피</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/recipe/listByPage.do?ingredient=${ingredientInfo}">재료가 포함된 레시피</a></li>
                                 <li><a class="dropdown-item" href ="#" onclick='naverShopping("${ingredientInfo}")'>재료 구매하기</a></li>
                              </ul>
                            </div>
