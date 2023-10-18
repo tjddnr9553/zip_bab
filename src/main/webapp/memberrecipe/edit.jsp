@@ -30,15 +30,40 @@
         });
     </script>
 
-    <form id="ef" style="position:absolute;top:100px;height:100px;background-color:yellow"
-          action="${pageContext.request.contextPath}/memberrecipe/imgedit.do" method="post"
-          enctype="multipart/form-data">
-        <input type="file" name="f"><br/>
+<%--    <form id="ef" style="position:fixed;top:50%;left:50%; transform:translate(-50%, -50%); height:100px;background-color:yellow"--%>
+<%--          action="${pageContext.request.contextPath}/memberrecipe/imgedit.do" method="post"--%>
+<%--          enctype="multipart/form-data">--%>
+<%--        <input type="file" name="f"><br/>--%>
+<%--        <input type="hidden" name="memberRecipeId" value="${memberRecipe.memberRecipeId}">--%>
+<%--        <input type="hidden" name="imgname" id="imgname">--%>
+<%--        <input type="submit" value="등록"> <input type="button" id="cancel" value="취소">--%>
+<%--    </form>--%>
+
+    <form id="ef" style="
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+"action="${pageContext.request.contextPath}/memberrecipe/imgedit.do" method="post" enctype="multipart/form-data">
+
+        <input type="file" name="f" style="width:100%;margin-bottom:10px;box-sizing:border-box;"><br/>
+
         <input type="hidden" name="memberRecipeId" value="${memberRecipe.memberRecipeId}">
         <input type="hidden" name="imgname" id="imgname">
-        <input type="submit" value="등록"> <input type="button" id="cancel" value="취소">
+
+        <input type::submit value=등록 style="display:block;width:100%;padding-top:.5rem;
+        padding-bottom:.5rem;background-color:#E54C5C; color:white; border:none; border-radius:.25rem;text-align:center;">
+
+        <input type::button id=cancel value=취소 style="display:block;width:100%; margin-top:.5rem;
+        padding-top:.5rem;padding-bottom:.5rem;border:none;background-color:#6c757d;color:white;border-radius:.25rem;text-align:center;">
     </form>
 </head>
+
 <body>
 <form action="${pageContext.request.contextPath}/memberrecipe/edit.do" method="post" enctype="multipart/form-data">
 
