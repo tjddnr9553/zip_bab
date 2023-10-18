@@ -8,7 +8,6 @@ import memberrecipe.MemberRecipeService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
 
 public class EditHandler implements Handler {
@@ -18,9 +17,10 @@ public class EditHandler implements Handler {
         String view = "/index.jsp";
         MemberRecipeService service = new MemberRecipeService();
 
-        int memberRecipeId = Integer.parseInt(request.getParameter("memberRecipeId"));
+        int memberRecipeId;
 
         if (request.getMethod().equals("GET")) {//get 방식 처리
+            memberRecipeId = Integer.parseInt(request.getParameter("memberRecipeId"));
             MemberRecipe memberRecipe = service.getById(memberRecipeId);
             request.setAttribute("memberRecipe", memberRecipe);
             request.setAttribute("view", "/memberrecipe/edit.jsp");
@@ -28,14 +28,12 @@ public class EditHandler implements Handler {
             String path = request.getServletContext().getRealPath("/images/memberrecipe/");
             try {
                 MultipartRequest req = new MultipartRequest(request, path, size, "utf-8", new DefaultFileRenamePolicy());
-                File[] f = {req.getFile("img1"), req.getFile("img2"), req.getFile("img3"), req.getFile("img4"),
-                        req.getFile("img5"), req.getFile("img6"), req.getFile("img7"), req.getFile("img8"),
-                        req.getFile("img9"), req.getFile("img10"), req.getFile("img11"), req.getFile("img12"),
-                        req.getFile("completePicture")};
+
+                memberRecipeId = Integer.parseInt(req.getParameter("memberRecipeId"));
                 int memberId = Integer.parseInt(req.getParameter("memberId"));
                 String title = req.getParameter("title");
                 String subTitle = req.getParameter("subTitle");
-                String way = req.getParameter("subTitle");
+                String way = req.getParameter("way");
                 String ingredientInfo = req.getParameter("ingredientInfo");
                 String manual_01 = req.getParameter("manual_01");
                 String manual_02 = req.getParameter("manual_02");
@@ -50,18 +48,6 @@ public class EditHandler implements Handler {
                 String manual_11 = req.getParameter("manual_11");
                 String manual_12 = req.getParameter("manual_12");
                 String calorie = req.getParameter("calorie");
-
-                String[] imgs = new String[13];//업로드된 파일의 파일명을 저장할 배열
-                for (int i = 0; i < f.length; i++) {
-                    if (f[i] != null && f[i].length() != 0) {
-                        imgs[i] = f[i].getName();
-                    } else {
-                        imgs[i] = "";
-                    }
-                }
-                for (String s : imgs) {
-                    System.out.println(s);
-                }
 
                 service.editMemberRecipe(
                         MemberRecipe.builder()
@@ -91,7 +77,7 @@ public class EditHandler implements Handler {
                 throw new RuntimeException(e);
             }
 
-            view = "redirect:/memberrecipe/list.do?memberRecipeId="+memberRecipeId;
+            view = "redirect:/memberrecipe/list.do?memberRecipeId=" + memberRecipeId;
         }
 
         return view;
