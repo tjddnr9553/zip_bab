@@ -61,7 +61,7 @@ public class ListHandler implements Handler {
             list = mrService.getAllByPage(startRow, endRow, memberId);
         }
 
-        int totalPage = 0;
+        int totalPage = 1;
         if (!list.isEmpty()) {
             totalPage = (int) Math.ceil((double) list.get(0).getTotalCnt() / RECIPES_PER_PAGE);
         }

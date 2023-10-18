@@ -110,7 +110,7 @@ public interface RecipeDao {
                     "ORDER BY r.\"recipeId\") a " +
                 "WHERE ROWNUM <= #{endRow}) c " + // 30
             "WHERE c.rnum >= #{startRow}") // 1
-    ArrayList<RecipePrefDto> selectAllByIngred(@Param("startRow") int startRow, @Param("endRow") int endRow, @Param("title") String ingredientInfo, @Param("memberId") int memberId);
+    ArrayList<RecipePrefDto> selectAllByIngred(@Param("startRow") int startRow, @Param("endRow") int endRow, @Param("ingredientInfo") String ingredientInfo, @Param("memberId") int memberId);
 
     // 선호도 정렬(페이징 처리)
     @Select("SELECT " +

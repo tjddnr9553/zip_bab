@@ -14,7 +14,7 @@
     <h2 class="shadow-effect mt-3"><strong>레시피 모음</strong></h2>
     <h4><strong>편리하고 다양한 즐거운 집밥</strong></h4>
     <%-- 정렬 / 검색 --%>
-    <div id="sort" class="d-flex">
+    <div id="sort" class="d-flex align-items-center">
         <div id="order">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,8 +43,18 @@
         </div>
         <form id="search-form" action="${pageContext.request.contextPath}/recipe/listByPage.do" method="GET"
               class="text-end ms-auto me-0 flex-grow-1">
-            <input id="search-input" type="text" name="title" placeholder="Search.." style="" class="d-inline-block">
+            <input id="search-input" type="text" value="${param.title}${param.ingredient}" name="<c:if test='${empty param.ingredient}'>title</c:if><c:if test='${not empty param.ingredient}'>ingredient</c:if>" placeholder="Search.." style="" class="d-inline-block">
         </form>
+        <div class="dropdown ms-2">
+            <button id="search-type" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <c:if test='${empty param.ingredient}'>이름</c:if>
+                <c:if test='${not empty param.ingredient}'>재료</c:if>
+            </button>
+            <ul class="dropdown-menu">
+                <li><button id="search-title" class="dropdown-item <c:if test='${empty param.ingredient}'>active</c:if>" >이름</button></li>
+                <li><button id="search-ingredient" class="dropdown-item <c:if test='${not empty param.ingredient}'>active</c:if>">재료</button></li>
+            </ul>
+        </div>
     </div>
     <%-- 정렬 / 검색 끝 --%>
 
@@ -56,7 +66,8 @@
                     <div class="card h-100" style="">
                         <a href="${pageContext.request.contextPath}/recipe/detail.do?recipeId=${r.recipeId}">
                             <img class="card-img-top img-fluid" src="${r.completePicture}"
-                                 alt="${pageContext.request.contextPath }/images/logo/z_no_image.png"
+                                 onerror="this.src='${pageContext.request.contextPath }/images/logo/z_no_image.png'"
+                                 alt="완성 사진"
                                  style="height:220px;">
                         </a>
                         <div class="card-body">
@@ -140,5 +151,7 @@
         </c:if>
     </ul>
 </div>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/recipe/js/list.js"></script>
 </body>
 </html>
