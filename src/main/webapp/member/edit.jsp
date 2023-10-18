@@ -29,7 +29,7 @@
       <c:if test="${m.profile eq null}">
         <div class="image round">
           <label for="imgUpload">
-            <img class="profile" src="/images/profile/프사기본.jpg" alt="profile_img" width="150" height="150">
+            <img class="profile" src="${pageContext.request.contextPath}/images/profile/프사기본.jpg" alt="profile_img" width="150" height="150">
           </label>
         </div>
       </c:if>
