@@ -89,7 +89,7 @@
 
   <%-- 후기 --%>
   <div id="review-container">
-    <h3 class="mb-3" id="review"><span class="badge bg-secondary">🔘 후 기</span></h3>
+    <h3 class="mb-3" id="review"><span class="badge">후 기</span></h3>
 
     <%-- 후기 작성 --%>
     <button id="write-review" class="btn btn-primary">후기 작성</button>
