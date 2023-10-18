@@ -48,6 +48,7 @@
     background-color: #f8f9fa;
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    z-index: 100;
 " action="${pageContext.request.contextPath}/memberrecipe/imgedit.do" method="post" enctype="multipart/form-data">
 
     <input type="file" name="f" style="width:100%;margin-bottom:10px;box-sizing:border-box;"><br/>
