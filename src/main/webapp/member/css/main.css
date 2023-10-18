@@ -1589,7 +1589,7 @@
 
 	body, input, select, textarea {
 		color: #9a9a9a;
-		font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+		font-family: 'SOYOMapleRegularTTF', sans-serif;
 		font-size: 14pt;
 		font-weight: 400;
 		line-height: 1.65;
@@ -1721,7 +1721,7 @@
 		background: rgba(144, 144, 144, 0.075);
 		border-radius: 0;
 		border: solid 1px #dbdbdb;
-		font-family: "Courier New", monospace;
+		font-family: 'SOYOMapleRegularTTF', sans-serif;
 		font-size: 0.9em;
 		margin: 0 0.25em;
 		padding: 0.25em 0.65em;
@@ -1729,7 +1729,7 @@
 
 	pre {
 		-webkit-overflow-scrolling: touch;
-		font-family: "Courier New", monospace;
+		font-family: 'SOYOMapleRegularTTF', sans-serif;
 		font-size: 0.9em;
 		margin: 0 0 2em 0;
 	}
@@ -2018,7 +2018,7 @@
 			content: "";
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
-			font-family: FontAwesome;
+			font-family: 'SOYOMapleRegularTTF', sans-serif;
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
@@ -2083,7 +2083,7 @@
 			input[type="radio"] + label:before {
 				-moz-osx-font-smoothing: grayscale;
 				-webkit-font-smoothing: antialiased;
-				font-family: FontAwesome;
+				font-family: 'SOYOMapleRegularTTF', sans-serif;
 				font-style: normal;
 				font-weight: normal;
 				text-transform: none !important;
@@ -2200,7 +2200,7 @@
 		.icon:before {
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
-			font-family: FontAwesome;
+			font-family: 'SOYOMapleRegularTTF', sans-serif;
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
@@ -2822,6 +2822,7 @@
 
 		#nav {
 			display: none;
+			font-family: 'SOYOMapleRegularTTF', sans-serif;
 		}
 
 	}
@@ -2897,7 +2898,7 @@
 			#navPanel .close:before {
 				-moz-osx-font-smoothing: grayscale;
 				-webkit-font-smoothing: antialiased;
-				font-family: FontAwesome;
+				font-family: 'SOYOMapleRegularTTF', sans-serif;
 				font-style: normal;
 				font-weight: normal;
 				text-transform: none !important;
@@ -3113,10 +3114,10 @@
 /* Footer */
 
 	#footer {
-		padding: 6em 0;
 		background: #6cc091;
-		color: #fff;
+		color: black;
 		text-align: center;
+		font-family: 'SOYOMapleRegularTTF', sans-serif;
 	}
 
 		#footer h3 {
