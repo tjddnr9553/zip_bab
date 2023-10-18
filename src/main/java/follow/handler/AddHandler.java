@@ -23,6 +23,6 @@ public class AddHandler implements Handler {
         }
 
         Member m = mService.getMemberByMemberId(followingId);
-        return "redirect:/follow/mypage.do?loginId=" + m.getLoginId();
+        return "redirect:/member/mypage.do?loginId=" + m.getLoginId();
     }
 }

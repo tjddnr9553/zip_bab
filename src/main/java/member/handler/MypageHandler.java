@@ -1,4 +1,4 @@
-package follow.handler;
+package member.handler;
 
 import bookmark.Bookmark;
 import bookmark.BookmarkService;

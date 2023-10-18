@@ -37,7 +37,7 @@ public class EditHandler implements Handler {
             Member m = service.getMember(loginId);
             log.info("member : {}", m);
             request.setAttribute("m", m);
-            request.setAttribute("view", "/member/projection/edit.jsp");
+            request.setAttribute("view", "/member/edit.jsp");
         } else {
             try {
 
