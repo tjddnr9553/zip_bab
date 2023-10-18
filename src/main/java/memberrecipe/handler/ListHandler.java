@@ -66,7 +66,7 @@ public class ListHandler implements Handler {
             totalPage = (int) Math.ceil((double) list.get(0).getTotalCnt() / RECIPES_PER_PAGE);
         }
 
-        if (pageNum < 1 || pageNum > totalPage) {
+        if (pageNum < 1) {
             String msg = "존재하지 않는 페이지입니다. 1페이지로 이동합니다.";
             String url = request.getContextPath() + "/recipe/listByPage.do?pageNum=1&" + queryStr;
             return "responsebody/<script>alert('" + msg + "');location.href='" + url + "';</script>";
