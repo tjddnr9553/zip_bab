@@ -6,6 +6,8 @@ import follow.FollowService;
 import handler.Handler;
 import member.Member;
 import member.MemberService;
+import memberrecipe.MemberRecipe;
+import memberrecipe.MemberRecipeService;
 import recipe.Recipe;
 import recipe.RecipeService;
 
@@ -40,7 +42,13 @@ public class MypageHandler implements Handler {
             rlist.add(r);
         }
 
+        // 작성한 글 출력
+        MemberRecipeService mrService = new MemberRecipeService();
+        List<MemberRecipe> wlist = mrService.getByMemberId(m.getMemberId());
+
+
         request.setAttribute("rlist", rlist);
+        request.setAttribute("wlist", wlist);
         request.setAttribute("view","/member/mypage.jsp");
         request.setAttribute("member", m);
         request.setAttribute("followerCount", followerCount);
