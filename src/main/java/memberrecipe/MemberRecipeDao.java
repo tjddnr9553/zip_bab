@@ -41,7 +41,7 @@ public interface MemberRecipeDao {
     void delete(@Param("memberRecipeId") int memberRecipeId);
 
     @Update("update \"MemberRecipe\" set \"title\"=#{title}, \"subTitle\"=#{subTitle}, \"way\"=#{way}" +
-            "\"ingredientInfo\"=#{ingredientInfo}, \"manual_01\"=#{manual_01},\"manual_02\"=#{manual_02},\"manual_03\"=#{manual_03}" +
+            ",\"ingredientInfo\"=#{ingredientInfo}, \"manual_01\"=#{manual_01},\"manual_02\"=#{manual_02},\"manual_03\"=#{manual_03}" +
             ",\"manual_04\"=#{manual_04},\"manual_05\"=#{manual_05},\"manual_06\"=#{manual_06},\"manual_07\"=#{manual_07}" +
             " ,\"manual_08\"=#{manual_08}, \"manual_09\"=#{manual_09}, \"manual_10\"=#{manual_10}, \"manual_11\"=#{manual_11}" +
             ", \"manual_12\"=#{manual_12} , \"calorie\"=#{calorie} where \"memberRecipeId\"=#{memberRecipeId} ")

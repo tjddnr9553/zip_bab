@@ -40,7 +40,7 @@
     </form>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/memberrecipe/create.do" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/memberrecipe/edit.do" method="post" enctype="multipart/form-data">
 
     <table border="1">
         <tr>
@@ -49,7 +49,7 @@
         </tr>
         <tr>
             <%--            <th>memberId</th>--%>
-            <td><input type="hidden" name="memberId" value="${sessionScope.loginId}" readonly></td>
+            <td><input type="hidden" name="memberId" value="${sessionScope.loginId.memberId}" readonly></td>
         </tr>
         <tr>
             <th>title</th>
