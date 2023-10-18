@@ -102,7 +102,7 @@ public interface MemberRecipeDao {
                     "ORDER BY r.\"memberRecipeId\") a " +
                 "WHERE ROWNUM <= #{endRow}) c " + // 30
             "WHERE c.rnum >= #{startRow}") // 1
-    List<MemberRecipePrefDto> selectMemberRecipesByIngred(@Param("startRow") int startRow, @Param("endRow") int endRow, @Param("memberId") int memberId, @Param("title") String ingredientInfo);
+    List<MemberRecipePrefDto> selectMemberRecipesByIngred(@Param("startRow") int startRow, @Param("endRow") int endRow, @Param("memberId") int memberId, @Param("ingredientInfo") String ingredientInfo);
 
     // 선호도 정렬 (페이징)
     @Select("SELECT " +

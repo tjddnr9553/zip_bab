@@ -52,8 +52,18 @@
         </div>
         <form id="search-form" action="${pageContext.request.contextPath}/memberrecipe/list.do" method="GET"
               class="text-end ms-auto me-0 flex-grow-1">
-            <input id="search-input" type="text" name="title" placeholder="Search.." style="" class="d-inline-block">
+            <input id="search-input" type="text" value="${param.title}${param.ingredient}" name="<c:if test='${empty param.ingredient}'>title</c:if><c:if test='${not empty param.ingredient}'>ingredient</c:if>" placeholder="Search.." style="" class="d-inline-block">
         </form>
+        <div class="dropdown ms-2">
+            <button id="search-type" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <c:if test='${empty param.ingredient}'>이름</c:if>
+                <c:if test='${not empty param.ingredient}'>재료</c:if>
+            </button>
+            <ul class="dropdown-menu">
+                <li><button id="search-title" class="dropdown-item <c:if test='${empty param.ingredient}'>active</c:if>" >이름</button></li>
+                <li><button id="search-ingredient" class="dropdown-item <c:if test='${not empty param.ingredient}'>active</c:if>">재료</button></li>
+            </ul>
+        </div>
     </div>
     <%-- 정렬 / 검색 끝 --%>
 
@@ -65,7 +75,8 @@
                     <div class="card h-100" style="">
                         <a href="${pageContext.request.contextPath}/memberrecipe/detail.do?memberRecipeId=${r.memberRecipeId}">
                             <c:if test="${not empty r.completePicture}">
-                                <img class="card-img-top img-fluid" src="<c:url value="/images/${r.completePicture}"/>"
+                                <img class="card-img-top img-fluid" src="<c:url value="/images/memberrecipe/${r.completePicture}"/>"
+                                     onerror="this.src='${pageContext.request.contextPath }/images/logo/z_no_image.png'"
                                      alt="${r.completePicture}"
                                      style="height:220px;">
                             </c:if>
@@ -117,11 +128,11 @@
         <c:if test="${currentPage gt 1}">
             <li class="page-item">
                 <a class="page-link"
-                   href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=1&${queryStr}">처음으로</a>
+                   href="${pageContext.request.contextPath}/memberrecipe/list.do?pageNum=1&${queryStr}">처음으로</a>
             </li>
             <li class="page-item">
                 <a class="page-link"
-                   href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=${currentPage - 1}&${queryStr}">이전</a>
+                   href="${pageContext.request.contextPath}/memberrecipe/list.do?pageNum=${currentPage - 1}&${queryStr}">이전</a>
             </li>
         </c:if>
         <c:if test="${currentPage le 1}">
@@ -134,12 +145,12 @@
             <c:if test="${p ge currentPage - 5 and p le currentPage + 5}">
                 <c:if test="${p eq currentPage}">
                     <li class="page-item active">
-                        <a class="page-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=${p}&${queryStr}">${p}</a>
+                        <a class="page-link" href="${pageContext.request.contextPath}/memberrecipe/list.do?pageNum=${p}&${queryStr}">${p}</a>
                     </li>
                 </c:if>
                 <c:if test="${p ne currentPage}">
                     <li class="page-item">
-                        <a class="page-link" href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=${p}&${queryStr}">${p}</a>
+                        <a class="page-link" href="${pageContext.request.contextPath}/memberrecipe/list.do?pageNum=${p}&${queryStr}">${p}</a>
                     </li>
                 </c:if>
             </c:if>
@@ -148,11 +159,11 @@
         <c:if test="${currentPage lt totalPage}">
             <li class='page-item'>
                 <a class='page-link'
-                   href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=${currentPage + 1}&${queryStr}">다음</a>
+                   href="${pageContext.request.contextPath}/memberrecipe/list.do?pageNum=${currentPage + 1}&${queryStr}">다음</a>
             </li>
             <li class='page-item'>
                 <a class='page-link'
-                   href="${pageContext.request.contextPath}/recipe/listByPage.do?pageNum=${totalPage}&${queryStr}">마지막으로</a>
+                   href="${pageContext.request.contextPath}/memberrecipe/list.do?pageNum=${totalPage}&${queryStr}">마지막으로</a>
             </li>
         </c:if>
         <c:if test="${currentPage ge totalPage}">
@@ -163,5 +174,7 @@
     </ul>
     <!-- 페이징 끝 -->
 </div>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/memberrecipe/js/list.js"></script>
 </body>
 </html>

@@ -8,6 +8,8 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/member/css/main.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="/css/mypage.css">
 </head>
 <body>
 
@@ -25,7 +27,7 @@
         </c:if>
         <c:if test="${member.profile == null}">
           <div class="image round">
-            <img class="profile" src="/images/profile/프사기본.jpg" alt="profile_img" width="150" alt="Pic 01"
+            <img class="profile" src="${pageContext.request.contextPath }/images/profile/프사기본.jpg" alt="profile_img" width="150" alt="Pic 01"
                  height="150">
           </div>
         </c:if>
@@ -63,7 +65,7 @@
 
 
 <c:if test="${rlist != null}">
-  <h3>북마크 목록</h3>
+  <h3><span class="badge text-bg-primary">${member.nickname}님의 <strong style="color:red;">찜</strong> 목록</span></span></h3>
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <c:forEach var="r" items="${rlist}" varStatus="loop">
@@ -79,7 +81,6 @@
     <div class="swiper-button-prev"></div>
   </div>
 
-
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
       var swiper = new Swiper('.swiper-container', {
@@ -92,8 +93,8 @@
           },
       });
 
-      document.querySelector('.swiper-button-next').style.top = 350 + 'px';
-      document.querySelector('.swiper-button-prev').style.top = 350 + 'px';
+      document.querySelector('.swiper-button-next').style.top = 1250 + 'px';
+      document.querySelector('.swiper-button-prev').style.top = 1250 + 'px';
   </script>
 </c:if>
 

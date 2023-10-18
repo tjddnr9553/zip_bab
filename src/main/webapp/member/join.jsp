@@ -13,14 +13,13 @@
   <div class="inner">
     <h3>회원가입</h3>
     <form action="${pageContext.request.contextPath }/member/join.do" method="post" name="f">
-
       <input type="hidden" name="flag" value="false"/>
       <div class="field half first">
         <label for="loginId">아이디</label>
         <div style="display: flex;">
           <input name="loginId" id="loginId" type="text" placeholder="loginId" onchange="c()" style="flex: 1;">
           <div style="margin-left: 10px;">
-            <input value="중복체크" class="button alt" type="button" onclick="a()"><span id="res"></span>
+            <input value="중복체크" class="button alt" type="button" onclick="a()">&emsp;<span id="res"></span>
           </div>
         </div>
       </div>

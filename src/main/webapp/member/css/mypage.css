@@ -8,3 +8,28 @@
 .swiper-button-prev::after {
   font-size: inherit;
 }
+
+h4 > .badge{
+  padding: 10px;
+}
+
+.bookmark-title {
+  font-size: 24px;
+}
+
+.bookmark-container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.bookmark-item {
+  display: flex;
+}
+
+.bookmark-image {
+  width: auto;
+}
+
+.rounded {
+  border-radius: 40px;
+}
