@@ -64,7 +64,7 @@ public interface MemberRecipeDao {
                 "FROM (" +
                     "SELECT r.*, rp.\"rpId\", rp.\"recipeId\" as \"rp_recipeId\", NVL(rp.\"under_20\", 0) \"under_20\", NVL(rp.\"over_20\", 0) \"over_20\", NVL(rp.\"over_30\", 0) \"over_30\", NVL(rp.\"over_40\", 0) \"over_40\", NVL(rp.\"over_50\", 0) \"over_50\", NVL(rp.\"male\", 0) \"male\", NVL(rp.\"female\", 0) \"female\", NVL(rp.\"hits\", 0) \"hits\" " +
                     "FROM \"MemberRecipe\" r " +
-                    "FULL OUTER JOIN \"MemberRecipePreference\" rp ON r.\"memberRecipeId\" = rp.\"recipeId\" " +
+                    "LEFT JOIN \"MemberRecipePreference\" rp ON r.\"memberRecipeId\" = rp.\"recipeId\" " +
                     "ORDER BY r.\"memberRecipeId\") a " +
                 "WHERE ROWNUM <= #{endRow}) c " +
             "WHERE c.rnum >= #{startRow}")
@@ -80,7 +80,7 @@ public interface MemberRecipeDao {
                 "FROM (" +
                     "SELECT r.*, rp.\"rpId\", rp.\"recipeId\" as \"rp_recipeId\", NVL(rp.\"under_20\", 0) \"under_20\", NVL(rp.\"over_20\", 0) \"over_20\", NVL(rp.\"over_30\", 0) \"over_30\", NVL(rp.\"over_40\", 0) \"over_40\", NVL(rp.\"over_50\", 0) \"over_50\", NVL(rp.\"male\", 0) \"male\", NVL(rp.\"female\", 0) \"female\", NVL(rp.\"hits\", 0) \"hits\" " +
                     "FROM \"MemberRecipe\" r " +
-                    "FULL OUTER JOIN \"MemberRecipePreference\" rp ON r.\"memberRecipeId\" = rp.\"recipeId\" " +
+                    "LEFT JOIN \"MemberRecipePreference\" rp ON r.\"memberRecipeId\" = rp.\"recipeId\" " +
                     "WHERE \"title\" like '%'||#{title}||'%' " +
                     "ORDER BY r.\"memberRecipeId\") a " +
                 "WHERE ROWNUM <= #{endRow}) c " +
@@ -97,7 +97,7 @@ public interface MemberRecipeDao {
                 "FROM (" +
                     "SELECT r.*, rp.\"rpId\", rp.\"recipeId\" as \"rp_recipeId\", NVL(rp.\"under_20\", 0) \"under_20\", NVL(rp.\"over_20\", 0) \"over_20\", NVL(rp.\"over_30\", 0) \"over_30\", NVL(rp.\"over_40\", 0) \"over_40\", NVL(rp.\"over_50\", 0) \"over_50\", NVL(rp.\"male\", 0) \"male\", NVL(rp.\"female\", 0) \"female\", NVL(rp.\"hits\", 0) \"hits\" " +
                     "FROM \"MemberRecipe\" r " +
-                    "FULL OUTER JOIN \"MemberRecipePreference\" rp ON r.\"memberRecipeId\" = rp.\"recipeId\" " +
+                    "LEFT JOIN \"MemberRecipePreference\" rp ON r.\"memberRecipeId\" = rp.\"recipeId\" " +
                     "WHERE \"ingredientInfo\" like '%'||#{ingredientInfo}||'%' " +
                     "ORDER BY r.\"memberRecipeId\") a " +
                 "WHERE ROWNUM <= #{endRow}) c " + // 30
@@ -114,7 +114,7 @@ public interface MemberRecipeDao {
                 "FROM (" +
                     "SELECT r.*, rp.\"rpId\", rp.\"recipeId\" as \"rp_recipeId\", NVL(rp.\"under_20\", 0) \"under_20\", NVL(rp.\"over_20\", 0) \"over_20\", NVL(rp.\"over_30\", 0) \"over_30\", NVL(rp.\"over_40\", 0) \"over_40\", NVL(rp.\"over_50\", 0) \"over_50\", NVL(rp.\"male\", 0) \"male\", NVL(rp.\"female\", 0) \"female\", NVL(rp.\"hits\", 0) \"hits\" " +
                     "FROM \"MemberRecipe\" r " +
-                    "FULL OUTER JOIN \"MemberRecipePreference\" rp ON r.\"memberRecipeId\" = rp.\"recipeId\" " +
+                    "LEFT JOIN \"MemberRecipePreference\" rp ON r.\"memberRecipeId\" = rp.\"recipeId\" " +
                     "ORDER BY ${order} DESC, 1) a " +
                 "WHERE ROWNUM <= #{endRow}) c " +
             "WHERE c.rnum >= #{startRow}")
