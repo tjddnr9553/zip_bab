@@ -12,6 +12,7 @@
 </div>
 <div class="mt-2 ms-2">
   <c:forEach var="m" items="${list}">
+    <a href="${pageContext.request.contextPath}/member/mypage.do?loginId=${m.loginId}">
     <div class="card card-sm mb-3" style="max-width: 540px;">
       <div class="row g-0 align-items-center">
         <div class="col-4" style="width:5rem; height:5rem;">
@@ -29,6 +30,7 @@
         </div>
       </div>
     </div>
+    </a>
   </c:forEach>
 </div>
 
