@@ -19,14 +19,14 @@ public class MypageHandler implements Handler {
     @Override
     public String process(HttpServletRequest request, HttpServletResponse response) {
         String view = "/index.jsp";
-        String userId = request.getParameter("loginId");
+        String loginId = request.getParameter("loginId");
 
         HttpSession session = request.getSession();
-//      Member loginMember = (Member) session.getAttribute("loginId");
+        Member loginMember = (Member) session.getAttribute("loginId");
         FollowService followService = new FollowService();
 
         MemberService service = new MemberService();
-        Member m = service.getMember(userId);
+        Member m = service.getMember(loginId);
         int followerCount = followService.getFollower(m.getMemberId());
         int followingCount = followService.getFollowing(m.getMemberId());
 
@@ -62,6 +62,10 @@ public class MypageHandler implements Handler {
             Member member = service.getMemberByMemberId(loop);
             followersMembers.add(member);
         }
+        boolean isFollowed = false;
+        if(loginMember!=null){
+            isFollowed = followService.isFollowed(loginMember.getMemberId(),m.getMemberId());
+        }
 
         request.setAttribute("member", m);
         request.setAttribute("followerCount", followerCount);
@@ -70,6 +74,7 @@ public class MypageHandler implements Handler {
         request.setAttribute("follower", followers);
         request.setAttribute("followingMembers", follwingMembers);
         request.setAttribute("followersMembers", followersMembers);
+        request.setAttribute("isFollowed", isFollowed);
 
         return view;
 
