@@ -77,13 +77,13 @@
         <div class="swiper-slide">
           <a href="${pageContext.request.contextPath}/recipe/detail.do?recipeId=${r.recipeId}">
             <img src="${r.completePicture}" style="width:200px; height:200px;" class="border rounded"
-                 alt="${pageContext.request.contextPath }/images/recipe/default.jpg">
+                 alt="${r.title}">
           </a>
         </div>
       </c:forEach>
     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+<%--    <div class="swiper-button-next"></div>--%>
+<%--    <div class="swiper-button-prev"></div>--%>
   </div>
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -98,8 +98,42 @@
           },
       });
 
-      document.querySelector('.swiper-button-next').style.top = 1250 + 'px';
-      document.querySelector('.swiper-button-prev').style.top = 1250 + 'px';
+      document.querySelector('.swiper-button-next').style.top = 650 + 'px';
+      document.querySelector('.swiper-button-prev').style.top = 650 + 'px';
+  </script>
+</c:if>
+
+<c:if test="${wlist != null}">
+  <h3><span class="badge text-bg-primary">${member.nickname}님이 <strong style="color:red;">작성한 레시피</strong> 목록</span></h3>
+  <div class="swiper-container2">
+    <div class="swiper-wrapper">
+      <c:forEach var="r" items="${wlist}" varStatus="loop">
+        <div class="swiper-slide">
+          <a href="${pageContext.request.contextPath}/memberrecipe/detail.do?memberRecipeId=${r.memberRecipeId}">
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.completePicture}" style="width:200px; height:200px;" class="border rounded"
+                 onerror="this.src='${pageContext.request.contextPath }/images/logo/z_no_image.png'"
+                 alt="${r.title}">
+          </a>
+        </div>
+      </c:forEach>
+    </div>
+<%--    <div class="swiper-button-next2"></div>--%>
+<%--    <div class="swiper-button-prev2"></div>--%>
+  </div>
+
+  <script>
+    var swiper = new Swiper('.swiper-container2', {
+      slidesPerView: 6,
+      spaceBetween: 100,
+
+      navigation: {
+        nextEl: '.swiper-button-next2',
+        prevEl: '.swiper-button-prev2',
+      },
+    });
+
+    document.querySelector('.swiper-button-next2').style.top = 950 + 'px';
+    document.querySelector('.swiper-button-prev2').style.top = 950 + 'px';
   </script>
 </c:if>
 

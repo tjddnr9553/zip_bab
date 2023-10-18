@@ -62,6 +62,16 @@ public class MemberRecipeService {
         return list;
     }
 
+    // 멤버로 검색
+    public List<MemberRecipe> getByMemberId(int MemberId) {
+        SqlSession session = sqlSessionFactory.openSession();
+        MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
+        List<MemberRecipe> list = dao.selectByMemberId(MemberId);
+        session.close();
+
+        return list;
+    }
+
     public void addMemberRecipe(MemberRecipe memberRecipe) {
         SqlSession session = sqlSessionFactory.openSession();
         MemberRecipeDao dao = session.getMapper(MemberRecipeDao.class);
