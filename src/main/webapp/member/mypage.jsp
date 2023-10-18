@@ -53,7 +53,12 @@
 
       <footer>
         <c:if test="${sessionScope.loginId.loginId ne member.loginId }">
-          <a onclick="follow()" class="button">팔로우</a>
+          <c:if test="${not isFollowed }">
+            <a onclick="follow()" class="button <c:if test="${empty loginId}">disabled</c:if>">팔로우</a>
+          </c:if>
+          <c:if test="${isFollowed }">
+            <a onclick="follow()" class="button">팔로우취소</a>
+          </c:if>
         </c:if>
         <c:if test="${sessionScope.loginId.loginId eq member.loginId}">
           <a href="${pageContext.request.contextPath }/member/edit.do?loginId=${sessionScope.loginId.loginId}" class="button">프로필편집</a>
@@ -65,7 +70,7 @@
 
 
 <c:if test="${rlist != null}">
-  <h3><span class="badge text-bg-primary">${member.nickname}님의 <strong style="color:red;">찜</strong> 목록</span></span></h3>
+  <h3><span class="badge text-bg-primary">${member.nickname}님의 <strong style="color:red;">찜</strong> 목록</span></h3>
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <c:forEach var="r" items="${rlist}" varStatus="loop">
@@ -101,8 +106,13 @@
 
 <!-- Scripts -->
 <script type="text/javascript">
+    console.log('${loginId}')
     function follow() {
-        window.location.href = "/follow/add.do?followerId=${sessionScope.loginId.memberId}&followingId=${member.memberId}";
+        if ('${loginId}' === '') {
+            alert("로그인을 해주세요.")
+        } else {
+          window.location.href = "/follow/add.do?followerId=${sessionScope.loginId.memberId}&followingId=${member.memberId}";
+        }
     }
 </script>
 
