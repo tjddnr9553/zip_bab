@@ -37,12 +37,10 @@
       </div>
 
     <div class="flex ">
-      <a href="${pageContext.request.contextPath}/" target="followList">
         <div id="followingCount">
           <h3>${followingCount}</h3>
           <p>팔로워</p> <!--날 추종함-->
         </div>
-      </a>
 
       <div id="followerCount">
         <h3>${followerCount}</h3>
