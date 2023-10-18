@@ -15,7 +15,7 @@
     <a href="${pageContext.request.contextPath}/member/mypage.do?loginId=${m.loginId}">
     <div class="card card-sm mb-3" style="max-width: 540px;">
       <div class="row g-0 align-items-center">
-        <div class="col-4" style="width:5rem; height:5rem;">
+        <div class="col-4" style="width:10rem; height:10rem;">
           <c:if test="${empty m.profile || m.profile eq ''}">
             <img src="/images/profile/프사기본.jpg" alt="프로필사진" class="img-fluid rounded-start">
           </c:if>
@@ -23,9 +23,9 @@
             <img src="<c:url value="/images/profile/${m.profile}"/>" alt="프로필사진" class="img-fluid rounded-start">
           </c:if>
         </div>
-        <div class="col-8" style="width:5rem; height:5rem;">
+        <div class="col-8" style="width:20rem; height:5rem;">
           <div class="card-body text-center">
-            <h5 class="card-title">${m.nickname}</h5>
+            <h4 class="card-title">${m.nickname}</h4>
           </div>
         </div>
       </div>

@@ -15,7 +15,8 @@
 
 <!-- Banner -->
 <section id="banner">
-  <div class="inner">
+  <div class="inner" style="padding-top: 20px;">
+    <h2 style="color: white;">${member.nickname }님의 마이페이지</h2>
     <header>
       <div class="inner">
         <c:if test="${member.profile != null}">
@@ -152,8 +153,8 @@
 
 <script>
     function loadFollowingList() {
-        var width = 600;
-        var height = 600;
+        var width = 1200;
+        var height = 800;
         var left = (window.innerWidth - width) / 2;
         var top = (window.innerHeight - height) / 2;
 
@@ -163,8 +164,8 @@
 </script>
 <script>
     function loadFollowerList() {
-        var width = 600;
-        var height = 600;
+        var width = 1200;
+        var height = 800;
         var left = (window.innerWidth - width) / 2;
         var top = (window.innerHeight - height) / 2;
 
