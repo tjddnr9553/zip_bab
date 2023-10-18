@@ -26,7 +26,7 @@ public class DetailHandler implements Handler {
 
         // recipe 선호도 관련
         HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("loginId") != null && session.getAttribute("r_view_" + memberRecipeId) == null) {
+        if (session != null && session.getAttribute("loginId") != null && session.getAttribute("mr_view_" + memberRecipeId) == null) {
             session.setAttribute("mr_view_" + memberRecipeId, true);
             LocalDate currentDate = LocalDate.now();
             Member m = (Member) session.getAttribute("loginId");
