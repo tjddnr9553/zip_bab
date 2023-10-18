@@ -19,7 +19,7 @@ public class AddHandler implements Handler {
     public String process(HttpServletRequest request, HttpServletResponse response) {
         String view = "/index.jsp";
         if (request.getMethod().equals("GET")) {
-            request.setAttribute("view", "/memberrecipe/create.jsp");
+            request.setAttribute("view", "/memberrecipe/create2.jsp");
         } else {
             try {
                 String path = request.getServletContext().getRealPath("/images/memberrecipe/");
@@ -35,7 +35,7 @@ public class AddHandler implements Handler {
                 int memberId = Integer.parseInt(req.getParameter("memberId"));
                 String title = req.getParameter("title");
                 String subTitle = req.getParameter("subTitle");
-                String way = req.getParameter("subTitle");
+                String way = req.getParameter("way");
                 String ingredientInfo = req.getParameter("ingredientInfo");
                 String manual_01 = req.getParameter("manual_01");
                 String manual_02 = req.getParameter("manual_02");
