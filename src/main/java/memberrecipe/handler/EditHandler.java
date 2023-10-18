@@ -23,7 +23,7 @@ public class EditHandler implements Handler {
             memberRecipeId = Integer.parseInt(request.getParameter("memberRecipeId"));
             MemberRecipe memberRecipe = service.getById(memberRecipeId);
             request.setAttribute("memberRecipe", memberRecipe);
-            request.setAttribute("view", "/memberrecipe/edit.jsp");
+            request.setAttribute("view", "/memberrecipe/edit2.jsp");
         } else {//post 방식 처리
             String path = request.getServletContext().getRealPath("/images/memberrecipe/");
             try {

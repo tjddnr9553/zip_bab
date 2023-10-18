@@ -107,14 +107,6 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <c:if test="${sessionScope.loginId.memberId eq r.memberId}">
-                                <button type="button" class="btn btn-danger btn-sm"
-                                        onclick="location.href='${pageContext.request.contextPath }/memberrecipe/delete.do?memberRecipeId='+${r.memberRecipeId}">
-                                    삭제하기
-                                </button>
-                            </c:if>
-                        </div>
                     </div>
                 </div>
             </c:forEach>
