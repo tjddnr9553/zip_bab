@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/member/projection/assets/css/main.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/member/css/main.css">
 
 </head>
 <body>
@@ -69,8 +69,8 @@
 </body>
 
 <!-- Scripts -->
-<script src="${pageContext.request.contextPath}/member/projection/assets/js/skel.min.js"></script>
-<script src="${pageContext.request.contextPath}/member/projection/assets/js/util.js"></script>
-<script src="${pageContext.request.contextPath}/member/projection/assets/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/member/js/skel.min.js"></script>
+<script src="${pageContext.request.contextPath}/member/js/util.js"></script>
+<script src="${pageContext.request.contextPath}/member/js/main.js"></script>
 </body>
 </html>
