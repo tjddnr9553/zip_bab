@@ -373,6 +373,7 @@
                     <!-- 열량 input-->
                     <div class="form-floating mb-3">
                         <input class="form-control" id="calorie" value="${memberRecipe.calorie}" type="text"
+                               name="calorie"
                                placeholder="Enter your calorie..." data-sb-validations="required"/>
                         <label for="calorie">칼로리</label>
                         <div class="invalid-feedback" data-sb-feedback="calorie:required">A calorie is required.</div>
@@ -398,7 +399,7 @@
                         <div class="text-center text-danger mb-3">Error sending message!</div>
                     </div>
                     <!-- Submit Button-->
-                    <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Send</button>
+                    <button class="btn btn-primary btn-xl" type="submit">Send</button>
                 </form>
             </div>
         </div>
