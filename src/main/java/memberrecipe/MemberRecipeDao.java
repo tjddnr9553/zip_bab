@@ -24,6 +24,10 @@ public interface MemberRecipeDao {
     @Select("Select * from \"MemberRecipe\" where \"ingredientInfo\" in #{ingredientInfo}")
     List<MemberRecipe> selectByIngredientInfo(@Param("ingredientInfo") String ingredientInfo);
 
+    // 회원 정보로 검색
+    @Select("SELECT * from \"MemberRecipe\" WHERE \"memberId\" = #{memberId}")
+    List<MemberRecipe> selectByMemberId(@Param("memberId") int memberId);
+
     @Insert("insert into \"MemberRecipe\"( \"memberRecipeId\", \"memberId\", \"title\", \"subTitle\", \"way\", \"ingredientInfo\", \"manual_01\",\n" +
             " \"manual_02\", \"manual_03\",\"manual_04\",\"manual_05\",\"manual_06\",\"manual_07\",\"manual_08\",\n" +
             "  \"manual_09\", \"manual_10\", \"manual_11\", \"manual_12\",\"manual_img_01\", \"manual_img_02\",\n" +

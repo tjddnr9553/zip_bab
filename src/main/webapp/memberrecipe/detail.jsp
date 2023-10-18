@@ -112,7 +112,8 @@
         <h3 id="comPic"><span class="badge">완 성 사 진</span></h3>
         <div>
             <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.completePicture}" class="img-rounded"
-                 alt=/" style="width:500px; height:400px;">
+                 onerror="this.src='${pageContext.request.contextPath }/images/logo/z_no_image.png'"
+                 alt="${r.completePicture}" style="width:500px; height:400px;">
         </div>
     </div>
 
