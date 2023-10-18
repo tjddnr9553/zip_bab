@@ -16,6 +16,7 @@
 <!-- Banner -->
 <section id="banner">
   <div class="inner">
+    <h2 style="color: white; position:absolute; top:3rem; left:15em;">${member.nickname }님의 마이페이지</h2>
     <header>
       <div class="inner">
         <c:if test="${member.profile != null}">

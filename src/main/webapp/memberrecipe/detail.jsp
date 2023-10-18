@@ -107,6 +107,42 @@
                  class="img-thumbnail" id="image-06">
             <span class="badge text-wrap" style="width: 60rem;">${r.manual_06}</span>
         </div>
+        <div>
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_07}" class="img-rounded"
+                 onerror="this.style.display='none'" alt=/"
+                 class="img-thumbnail" id="image-07">
+            <span class="badge text-wrap" style="width: 60rem;">${r.manual_07}</span>
+        </div>
+        <div>
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_08}" class="img-rounded"
+                 onerror="this.style.display='none'" alt=/"
+                 class="img-thumbnail" id="image-08">
+            <span class="badge text-wrap" style="width: 60rem;">${r.manual_08}</span>
+        </div>
+        <div>
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_09}" class="img-rounded"
+                 onerror="this.style.display='none'" alt=/"
+                 class="img-thumbnail" id="image-09">
+            <span class="badge text-wrap" style="width: 60rem;">${r.manual_09}</span>
+        </div>
+        <div>
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_10}" class="img-rounded"
+                 onerror="this.style.display='none'" alt=/"
+                 class="img-thumbnail" id="image-10">
+            <span class="badge text-wrap" style="width: 60rem;">${r.manual_10}</span>
+        </div>
+        <div>
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_11}" class="img-rounded"
+                 onerror="this.style.display='none'" alt=/"
+                 class="img-thumbnail" id="image-11">
+            <span class="badge text-wrap" style="width: 60rem;">${r.manual_11}</span>
+        </div>
+        <div>
+            <img src="${pageContext.request.contextPath}/images/memberrecipe/${r.manual_img_12}" class="img-rounded"
+                 onerror="this.style.display='none'" alt=/"
+                 class="img-thumbnail" id="image-12">
+            <span class="badge text-wrap" style="width: 60rem;">${r.manual_12}</span>
+        </div>
     </div>
     <div class="img-box">
         <h3 id="comPic"><span class="badge">완 성 사 진</span></h3>

@@ -54,7 +54,7 @@ for (i = 0; i < rViewLen; i++) {
     newDiv.classList.add('history-img-container')
 
     let newImg = document.createElement('img')
-    newImg.setAttribute('src', rView[i].img)
+    newImg.setAttribute('src', imgPath+rView[i].img)
     newImg.setAttribute('onerror', 'this.src="' + contextPath + '/images/logo/z_no_image.png"')
 
     newDiv.appendChild(newImg)
