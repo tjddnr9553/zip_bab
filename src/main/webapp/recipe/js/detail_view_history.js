@@ -42,7 +42,7 @@ for (let i = 0; i < rViewLen; i++) {
     let newA = document.createElement('a')
     newA.classList.add('list-group-item')
     newA.classList.add('list-group-item-action')
-    newA.href = contextPath + '/recipe/detail.do?recipeId=' + rView[i].id
+    newA.href = contextPath + urlPath + rView[i].id
 
     let newDiv = document.createElement('div')
     newDiv.classList.add('history-img-container')
