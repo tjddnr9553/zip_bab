@@ -74,12 +74,12 @@ public class EditHandler implements Handler {
                             .gender(0)
                             .build();
                     service.editMember2(m);
+                    view = "redirect:/member/mypage.do?loginId="+loginId;
                 }
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            view = "redirect:/index.jsp";
         }
 
         return view;
