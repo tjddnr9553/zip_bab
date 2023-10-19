@@ -5,20 +5,14 @@ const recipeId = document.body.dataset.recipeId
 const recipeImg = document.body.dataset.recipeImg
 
 const newItem = { type: 1, id: recipeId, img: recipeImg }
-const existingItemIndex = rView.findIndex((item) => item.id === recipeId);
+const existingItemIndex = rView.findIndex((item) => item.id === recipeId && item.type === 1);
 
 if (existingItemIndex === -1) { // 없을 때
     if (rView.length > 9) {
         rView.pop()
     }
 } else { // 있을 때
-    if (rView[existingItemIndex].type === 1) {
-        rView.splice(existingItemIndex, 1)
-    } else {
-        if (rView.length > 9) {
-            rView.pop()
-        }
-    }
+    rView.splice(existingItemIndex, 1)
 }
 rView.unshift(newItem)
 localStorage.setItem('rView', JSON.stringify(rView))
