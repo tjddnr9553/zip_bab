@@ -1,5 +1,5 @@
 <div align="center">
-<img width="100px" src="../zip_bab/src/main/webapp/images/logo/main_logo.png" alt="집밥"/>
+<img width="100px" src="src/main/webapp/images/logo/main_logo.png" alt="집밥"/>
 
 # Zip-bab
 
